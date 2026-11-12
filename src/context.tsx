@@ -17,7 +17,7 @@ export function ConsoleProvider({children}:{children:ReactNode}){
  const [initialBrand]=useState(()=>readSystemBrand(localStorage));
  const [branding,setBranding]=useState(initialBrand.settings),[brandingError,setBrandingError]=useState(initialBrand.error||'');
  const saveBranding=useCallback((value:SystemBrand)=>{try{writeSystemBrand(localStorage,value);const saved=readSystemBrand(localStorage);if(saved.error)throw Error(saved.error);setBranding(saved.settings);setBrandingError('');return true;}catch(e){setBrandingError(`系统标识未能保存：${(e as Error).message}。当前标识和草稿已保留。`);return false;}},[]);
- useEffect(()=>{document.title=`${branding.name} · 智能控制台`;},[branding.name]);
+ useEffect(()=>{document.title=`${branding.name} · 智能体控制台`;},[branding.name]);
  useEffect(()=>{const changed=(event:StorageEvent)=>{if(event.key!==systemBrandKey)return;const next=readSystemBrand(localStorage);setBrandingError(next.error||'');if(!next.error)setBranding(next.settings);};addEventListener('storage',changed);return()=>removeEventListener('storage',changed);},[]);
  const query=new URLSearchParams(location.search);
  const device=(query.get('device')|| (innerWidth<600?'mobile':innerWidth<1000?'tablet':'desktop')) as Device;

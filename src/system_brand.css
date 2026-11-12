@@ -1,6 +1,6 @@
 .system-brand-image{display:block;width:100%;height:100%;object-fit:contain}
 .buddy-shell .brand-mark{overflow:hidden}
-.buddy-shell .sidebar-brand-row .brand>strong{overflow:hidden;text-overflow:ellipsis}
+.buddy-shell .sidebar-brand-row .brand>strong{overflow:hidden;text-overflow:ellipsis;font-size:13px}
 .buddy-shell .sidebar-brand-row .brand>strong>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .system-brand-summary,.system-brand-preview{display:flex;align-items:center;gap:12px;min-width:0}
 .system-brand-summary{padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:4px}

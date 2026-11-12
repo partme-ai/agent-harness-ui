@@ -2,7 +2,7 @@
 export type SystemBrand={schema_version:1;name:string;slogan:string;logo:string};
 export const systemBrandKey='tinybot.system-brand.v1';
 export const maxBrandLogoBytes=256*1024;
-export function defaultSystemBrand():SystemBrand{return {schema_version:1,name:'TinyBot',slogan:'机器人控制中心',logo:''};}
+export function defaultSystemBrand():SystemBrand{return {schema_version:1,name:'Agent Harness UI',slogan:'智能体运行与编排控制台',logo:''};}
 /** 校验本地图片格式、字节签名和大小；实际解码由上传界面完成。 */
 export function validateBrandLogo(logo:string):void{
  if(logo==='')return;
@@ -25,7 +25,10 @@ export function parseSystemBrand(raw:string):SystemBrand{
  validateBrandLogo(v.logo);return {schema_version:1,name,slogan,logo:v.logo};
 }
 export function readSystemBrand(storage:Pick<Storage,'getItem'>):{settings:SystemBrand;error?:string}{
- try{const raw=storage.getItem(systemBrandKey);return {settings:raw?parseSystemBrand(raw):defaultSystemBrand()};}
+ try{const raw=storage.getItem(systemBrandKey);if(!raw)return {settings:defaultSystemBrand()};
+  const saved=parseSystemBrand(raw);
+  const isLegacyDefault=saved.name==='TinyBot'&&saved.slogan==='机器人控制中心'&&!saved.logo;
+  return {settings:isLegacyDefault?defaultSystemBrand():saved};}
  catch(e){return {settings:defaultSystemBrand(),error:`系统标识未能读取：${(e as Error).message}。原记录已保留。`};}
 }
 export function writeSystemBrand(storage:Pick<Storage,'setItem'>,settings:SystemBrand):void{storage.setItem(systemBrandKey,JSON.stringify(parseSystemBrand(JSON.stringify(settings))));}

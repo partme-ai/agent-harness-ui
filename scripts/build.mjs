@@ -17,7 +17,7 @@ await cp('reference/console/UNICODE-LICENSE.txt','dist/licenses/UNICODE-LICENSE.
 await cp('public/audio','dist/audio',{recursive:true});
 await cp('public/fonts','dist/fonts',{recursive:true});
 await build({entryPoints:['src/main.tsx','src/compare.tsx'],bundle:true,outdir:'dist/assets',minify:true,jsx:'automatic',target:'es2022',legalComments:'linked',define:{'process.env.NODE_ENV':'"production"'}});
-for(const [file,entry,title] of [['index.html','main','TinyBot · 智能控制台'],['compare.html','compare','TinyBot · 三端交互预览']]){
+for(const [file,entry,title] of [['index.html','main','Agent Harness UI · 智能体控制台'],['compare.html','compare','Agent Harness UI · 三端交互预览']]){
  const startup=entry==='main'?' data-console-booting':'';
  const startupStyle=entry==='main'?'<style>html[data-console-booting] #root{visibility:hidden}html[data-console-booting] body::after{content:"";position:fixed;inset:calc(50% - 10px) auto auto calc(50% - 10px);width:20px;height:20px;border:2px solid #dce3e9;border-top-color:#1e5a8f;border-radius:50%;animation:console-startup .8s linear infinite}@keyframes console-startup{to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){html[data-console-booting] body::after{animation:none}}</style>':'';
  await writeFile(`dist/${file}`,`<!doctype html><html lang="zh-CN"${startup}><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>${title}</title>${startupStyle}<link rel="stylesheet" href="./fonts/theme-fonts.css"><link rel="stylesheet" href="./assets/${entry}.css"></head><body><div id="root"></div><script src="./assets/${entry}.js"></script></body></html>`);

@@ -27,7 +27,7 @@ function Compare(){
   setControls(s=>s.page===v.page&&s.theme===v.theme?s:{...s,page:v.page,theme:v.theme});
  };addEventListener('message',receive);return()=>removeEventListener('message',receive);},[sync]);
  return <ConfigProvider button={{autoInsertSpace:false}} theme={{algorithm:theme==='dark'?antTheme.darkAlgorithm:antTheme.defaultAlgorithm,token:{colorPrimary:'#1677ff',borderRadius:6}}}>
- <main className={`comparison ${theme}`}><header className="comparison-header"><div className="comparison-brand"><strong>TinyBot · 三端界面设计</strong><small>参考 TinyClaw 布局 · antd 交互原型 · 本地演示</small></div>
+ <main className={`comparison ${theme}`}><header className="comparison-header"><div className="comparison-brand"><strong>Agent Harness UI · 三端界面设计</strong><small>多端排版 · antd 交互原型 · 本地演示</small></div>
  <Space wrap className="comparison-controls">
   <Segmented aria-label="功能区域" value={surfaceFor(page)} onChange={v=>change('page',({home:'01',work:'03',settings:'30',conversation:'02',mobile:'12'} as Record<string,string>)[v])} options={[{value:'home',label:'主页'},{value:'work',label:'工作'},{value:'settings',label:'设置'},{value:'conversation',label:'对话'},{value:'mobile',label:'Agent Link'}]}/>
   <Select aria-label="预览页面" className="page-picker" showSearch optionFilterProp="label" value={page} onChange={v=>change('page',v)} options={pages.map(p=>({value:p.id,label:`${p.id} · ${p.title}`}))}/>
