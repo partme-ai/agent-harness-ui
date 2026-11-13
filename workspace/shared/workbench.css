@@ -20,6 +20,18 @@
 
 .tc-drawer-account{display:flex;align-items:center;gap:8px;min-height:64px;padding-bottom:env(safe-area-inset-bottom)}.tc-drawer-account .tc-drawer-user{display:flex;align-items:center;gap:10px;flex:1;min-width:0;height:48px;padding:4px 0;justify-content:flex-start}.tc-drawer-user>span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tc-drawer-account-actions{display:flex;flex:none;gap:2px}.tc-drawer-account-actions .ant-btn,.tc-drawer .ant-drawer-extra .ant-btn{height:44px;width:44px;padding:0}.tc-drawer .ant-drawer-footer{padding:10px 16px;flex-shrink:0}.tc-phone .tc-header>.ant-btn{height:44px;width:44px}.tc-drawer-account .ant-avatar{flex-shrink:0;background:var(--surface);color:var(--text)}
 
+.tc-drawer .ant-drawer-header{min-height:48px;padding:8px 12px}
+.tc-drawer .ant-drawer-body{padding:8px 12px}
+.tc-drawer-nav,.tc-drawer-nav nav{gap:2px}
+.tc-drawer-nav>.ant-btn,.tc-drawer-nav nav>.ant-btn{height:34px;min-height:34px;padding:0 8px;font-size:12px}
+.tc-drawer-nav .ant-btn .anticon{font-size:14px}
+.tc-drawer-nav small{margin:8px 0 2px;font-size:11px}
+.tc-drawer-nav .tc-desktop-project-heading{min-height:22px}
+.tc-drawer-account{min-height:48px}
+.tc-drawer-account .tc-drawer-user{height:36px}
+.tc-drawer-account-actions .ant-btn,.tc-drawer .ant-drawer-extra .ant-btn{height:36px;width:36px}
+.tc-drawer .ant-drawer-footer{padding:6px 12px}
+
 .tc-new-conversation.ant-btn svg{width:24px!important;height:24px!important;flex-shrink:0}
 
 .tc-task-heading{margin-bottom:24px}.tc-task-heading h1{font-size:28px;margin:14px 0 8px;line-height:1.4}.tc-phone .tc-task-heading h1{font-size:22px;margin:0 0 18px}.tc-task-heading-row{display:flex;align-items:center;justify-content:space-between;gap:12px}.tc-task-heading-row p{min-width:0;margin:0;font-size:13px;color:var(--text-3);line-height:1.7}.tc-task-heading-row>.ant-btn{flex:none}

@@ -1,5 +1,6 @@
 import {usePluginResources,pluginOperation,refreshPluginRuntime} from '../plugin_runtime.js';
 import {deviceControlLabel,settingsGroupsForDevice} from './settings_config.js';
+import {modelSettingsParent} from './harness_sections.js';
 import {EXTRA_SECTIONS,ExtraSections} from './ExtraSections.jsx';
 import {Modal as AntModal, Select as AntSelect} from 'antd';
 import {AntNativeButton,AntNativeInput,AntNativeTextarea,AntNativeSelect} from '../ant_controls.jsx';
@@ -42,7 +43,7 @@ function Modal({ title, children, onClose, footer }) {
 }
 
 export function BuddySettingsSidebar({ section, setSection, onBack, footer, collapsed, device="desktop" }) {
-  const current = resolveSection(section)
+  const current = modelSettingsParent(section) || resolveSection(section)
   return <aside className={`settings-design-sidebar zs-sidebar unified-sidebar ${collapsed ? "is-collapsed" : ""}`}>
     <div className="zs-sidebar-head"><Btn onClick={onBack} aria-label="返回工作区" title={collapsed ? "返回工作区" : undefined}><ArrowLeft /><span>返回工作区</span></Btn></div>
     <nav aria-label="设置导航">
