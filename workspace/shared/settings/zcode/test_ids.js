@@ -1,0 +1,16 @@
+export const TID_SETTINGS_MEMORY_COUNT = 'settings-memory-count';
+export const TID_SETTINGS_MEMORY_FILE = 'settings-memory-file';
+export const TID_SETTINGS_MEMORY_FILE_EDITOR_ACTIONS = 'settings-memory-file-editor-actions';
+export const TID_SETTINGS_MEMORY_FILE_ICON = 'settings-memory-file-icon';
+export const TID_SETTINGS_MEMORY_FILE_NAME = 'settings-memory-file-name';
+export const TID_SETTINGS_MEMORY_FILE_UPDATED_AT = 'settings-memory-file-updated-at';
+export const TID_SETTINGS_MEMORY_REFRESH = 'settings-memory-refresh';
+export const TID_SETTINGS_MEMORY_SCOPE_ICON = 'settings-memory-scope-icon';
+export const TID_SETTINGS_MEMORY_SCOPE_TRIGGER = 'settings-memory-scope-trigger';
+export const TID_SETTINGS_MEMORY_SEARCH_CLEAR = 'settings-memory-search-clear';
+export const TID_SETTINGS_MEMORY_SEARCH_INPUT = 'settings-memory-search-input';
+export const TID_SETTINGS_MEMORY_WORKSPACE = 'settings-memory-workspace';
+export const TID_SETTINGS_MEMORY_SWITCH = 'settings-memory-switch';
+export const TID_MCP_OPEN_AUTHORIZATION_BUTTON = 'mcp-open-authorization-button';
+export const TID_MCP_SERVER_ROW = 'mcp-server-row';
+export const TID_SUBAGENT_ROW = 'subagent-row';

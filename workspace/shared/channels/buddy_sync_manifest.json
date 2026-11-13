@@ -1,0 +1,53 @@
+{
+  "source_commit": "f80b798d66446ab2d8181735bc82546d66e32698",
+  "source_root": "agent-buddy/src/app/mobile",
+  "adaptations": [
+    "AntNative controls instead of Pro controls",
+    "Chinese host copy",
+    "TinyClaw independent Mock storage",
+    "three device entrypoints",
+    "left aligned platform cards"
+  ],
+  "files": [
+    {
+      "path": "channel_catalog.json",
+      "source_sha256": "ec4e117fee7e34f47eaa536a426735e659e7208b05d2154328a3783cb362d508",
+      "integrated_sha256": "ec4e117fee7e34f47eaa536a426735e659e7208b05d2154328a3783cb362d508"
+    },
+    {
+      "path": "channel_catalog_view.js",
+      "source_sha256": "b6a920c744936845e7d4e04bbba248bb7f5dc378bbfac00e12a83b90ce0d247d",
+      "integrated_sha256": "b6a920c744936845e7d4e04bbba248bb7f5dc378bbfac00e12a83b90ce0d247d"
+    },
+    {
+      "path": "channel_mock_store.js",
+      "source_sha256": "279caa54a3e10fa0b47cab1cc37d689a6b272616ebd4292cd95eae0248bc66c6",
+      "integrated_sha256": "db7019d32b4345feff54a26bcc6dcc5c8fb5e95bcde6e069610e156823d5693b"
+    },
+    {
+      "path": "channel_setup_fields.js",
+      "source_sha256": "2ae6f56cfd87087f552b6af2168fdcb81dc77bef7d3402494a03311d6f3a0a00",
+      "integrated_sha256": "2ae6f56cfd87087f552b6af2168fdcb81dc77bef7d3402494a03311d6f3a0a00"
+    },
+    {
+      "path": "channel_presentation.js",
+      "source_sha256": "772bf398f6c53959d289a55686ed1f6236343e6e05b64a03996ea68741abc1f6",
+      "integrated_sha256": "772bf398f6c53959d289a55686ed1f6236343e6e05b64a03996ea68741abc1f6"
+    },
+    {
+      "path": "ChannelIcon.jsx",
+      "source_sha256": "a269cbae65fbae10f01f5f4e80ad05ec582fecd2305bbc134b6a60c70ad23a84",
+      "integrated_sha256": "a269cbae65fbae10f01f5f4e80ad05ec582fecd2305bbc134b6a60c70ad23a84"
+    },
+    {
+      "path": "ExpandedBotChannels.jsx",
+      "source_sha256": "b79f55735b3785c33d13952175317a6630b513bddc215ddfb398bcd2ed6e1423",
+      "integrated_sha256": "2822d6dbd926b017170c381f646c8211bb8c26756a8217f1009f6286af2cda32"
+    },
+    {
+      "path": "expanded_bot_channels.css",
+      "source_sha256": "084cbd7bb12612636cc7f83f1b5c3fd5ee57544aafb068490d0a91f02ab1bce9",
+      "integrated_sha256": "75c4cce7b2c2b8a024ea4b8b569708462536cdbb9eadc4296b99595c1ae1b8aa"
+    }
+  ]
+}

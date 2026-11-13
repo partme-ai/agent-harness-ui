@@ -8,6 +8,7 @@ import {initialProduct,audit,type ProductState} from './product_state';
 import {useSystemTheme} from './system_theme_provider';
 import {resolveConsoleHost} from './shell_layout';
 import {readSystemBrand,writeSystemBrand,systemBrandKey,type SystemBrand} from './system_brand';
+import {publicModelOptions} from './harness_bridge';
 type NavigationGuard=(proceed:()=>void)=>void;
 type Context=ReturnType<typeof useSystemTheme>&{branding:SystemBrand;brandingError:string;saveBranding:(value:SystemBrand)=>boolean;setNavigationGuard:(guard:NavigationGuard|null)=>void;product:ProductState;setProduct:React.Dispatch<React.SetStateAction<ProductState>>;store:Store;setStore:React.Dispatch<React.SetStateAction<Store>>;page:string;go:(page:string,id?:string)=>void;selected:string;host:Host;setHost:(h:Host)=>void;device:Device;theme:'light'|'dark';setTheme:(t:'light'|'dark')=>void;scenario:string;setScenario:(s:string)=>void;notify:(s:string)=>void;confirm:(title:string,body:string,action:()=>void)=>void};
 const Ctx=createContext<Context|null>(null);
@@ -23,6 +24,7 @@ export function ConsoleProvider({children}:{children:ReactNode}){
  const device=(query.get('device')|| (innerWidth<600?'mobile':innerWidth<1000?'tablet':'desktop')) as Device;
  const [product,setProduct]=useState(initialProduct);
  const [store,setStore]=useState(initialStore),[page,setPage]=useState(()=>location.hash?resolvePage(location.hash.slice(1)):'01');
+ useEffect(()=>{if(query.get('embed')==='1'&&window.parent!==window)window.parent.postMessage({type:'harness-models',models:publicModelOptions(store.connections)},location.origin);},[store.connections]);
  const previousStore=useRef(store);
  useEffect(()=>{const before=previousStore.current;previousStore.current=store;const labels:Partial<Record<keyof Store,string>>={agents:'智能体配置',connections:'模型连接',roleMemories:'智能体记忆',knowledge:'知识库',docs:'知识文档',bots:'设备配置',systemEntries:'系统参数',storage:'存储配置',preferences:'客户端偏好',extensions:'插件与连接'};const changes=(Object.keys(labels) as (keyof Store)[]).filter(key=>before[key]!==store[key]);if(changes.length)setProduct(p=>({...p,audits:[audit('更新'+changes.map(key=>labels[key]).join('、'),'当前工作空间'),...p.audits].slice(0,500)}));},[store]);
  const [host,setHost]=useState<Host>(()=>resolveConsoleHost(query.get('host')));

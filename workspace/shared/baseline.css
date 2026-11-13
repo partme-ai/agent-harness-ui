@@ -1,0 +1,211 @@
+/* Overrides are scoped to this imported baseline, never to the Buddy source checkout. */
+/* 设置继承工作区页面底色；先解除 ZCode 的反向别名，避免变量循环。 */
+#buddy-root .app-shell .zs-center{--bg:inherit;--zc-bg:var(--bg)}
+#buddy-root .app-shell.shell-settings :is(.zs-sidebar,.settings-window-bar){background:var(--bg)}
+html:has(.shell-settings),body:has(.shell-settings),#buddy-root:has(.shell-settings){min-width:0!important}
+#buddy-root .app-shell{min-width:0!important;height:100dvh;min-height:0}
+#buddy-root .workspace,#buddy-root .settings-canvas,#buddy-root .zs-center,#buddy-root .zs-content{min-width:0!important}
+#buddy-root .zs-center{container-type:inline-size}
+#buddy-root .settings-window-bar{display:flex;align-items:center;gap:8px;flex:none;padding:10px 16px;height:56px;min-height:56px}
+#buddy-root .settings-window-bar .surfium-preview-status{margin-right:auto}
+.mobile-settings-selector{display:none}
+#buddy-root .ant-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-weight:500}
+#buddy-root .ant-btn svg{width:16px;height:16px;flex:none}
+#buddy-root .zs-switch.ant-switch,#buddy-root .zc-switch.ant-switch{min-width:36px;width:36px;height:22px;padding:0;border:0;background:var(--surface-3);border-radius:11px}
+#buddy-root .ant-switch.ant-switch-checked{background:#527ff5}
+#buddy-root .ant-switch .ant-switch-handle{position:absolute;top:2px;left:2px;width:18px;height:18px}
+#buddy-root .ant-switch.ant-switch-checked .ant-switch-handle{left:calc(100% - 20px)}
+#buddy-root .ant-select{min-width:0;max-width:100%;height:36px}
+#buddy-root .zs-control .ant-select{width:200px}
+#buddy-root .ant-input{font-size:14px}
+#buddy-root .zs-button.primary{background:#202228;color:white;border-color:#202228}
+#buddy-root .zs-nav-group .ant-btn{justify-content:flex-start;width:100%;white-space:normal}
+#buddy-root .zc-button{height:32px}
+#buddy-root .app-shell[data-style=buddy]{--blue:#278575;--accent-wash:#27857512;--settings-sidebar-width:225px}
+#buddy-root .app-shell[data-style=buddy] .zs-header{border-bottom:1px solid var(--line);padding-bottom:16px}
+#buddy-root .conversation-main{grid-column:1/-1;min-width:0;height:100%;display:flex;flex-direction:column;background:var(--bg);color:var(--text)}
+.conversation-view{flex:1;min-height:0;display:flex;flex-direction:column;max-width:840px;width:100%;margin:0 auto}
+.conversation-scroll{flex:1;overflow:auto;min-height:0;padding:24px}
+.conversation-date{text-align:center;color:var(--text-3);font-size:12px;margin:20px 0}
+.conversation-row{margin-bottom:22px;font-size:14px;line-height:1.75;min-width:0;overflow-wrap:anywhere}
+.conversation-row.userInput{display:flex;flex-direction:column;align-items:flex-end}
+.user-message{max-width:85%;padding:12px 16px;border-radius:18px;background:#202228;color:#fff;white-space:pre-wrap}
+.message-meta{display:flex;align-items:center;font-size:12px;color:var(--text-3);gap:8px;margin-top:4px}
+.tool-summary{font-size:12px;color:var(--text-3)}
+.conversation-row.assistantText p{margin:12px 0}.conversation-row.assistantText ol{padding-left:24px}.conversation-row.assistantText h3{font-size:16px;margin:18px 0 12px}.conversation-row.assistantText pre{overflow:auto}
+.conversation-composer{border:1px solid var(--line);border-radius:18px;background:var(--surface);margin:12px 24px 20px;padding:12px}
+.conversation-composer textarea.ant-input{border:0;box-shadow:none;background:transparent;resize:none;padding:0;min-height:48px}
+.composer-toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px}.composer-toolbar .ant-select{font-size:12px}
+@media(min-width:600px) and (max-width:1100px){#buddy-root .app-shell{grid-template-columns:192px minmax(0,1fr)}#buddy-root .zs-content{padding-inline:20px}}
+@media(max-width:599px){
+ #buddy-root .app-shell{display:flex!important;flex-direction:column;width:100%;overflow:hidden}
+ #buddy-root .zs-sidebar{display:none}
+ #buddy-root .workspace{width:100%;height:100%;display:flex;flex-direction:column;min-height:0}
+ #buddy-root .settings-canvas{flex:1;min-height:0;overflow:auto;padding:0}
+ #buddy-root .zs-center{height:auto;min-height:100%;overflow:visible;padding:0}
+ #buddy-root .zs-content{padding:16px!important;width:100%}
+ #buddy-root .zs-header{margin-bottom:18px}#buddy-root .zs-header h1{font-size:22px}
+ #buddy-root .mobile-settings-selector{display:block;flex:1;min-width:96px}
+ #buddy-root .surfium-preview-status{display:none}
+ #buddy-root .zs-row-main{align-items:flex-start;gap:12px}#buddy-root .zs-row-main>div:first-child{flex:1;min-width:0}
+ #buddy-root .zs-control{max-width:48%;min-width:0}#buddy-root .zs-control .ant-select{width:100%;min-width:100px}
+ #buddy-root .zs-provider-layout{display:flex;flex-direction:column}
+ #buddy-root .zs-provider-list{width:100%;display:flex;gap:8px;overflow:auto}
+ #buddy-root .zs-provider-list button{flex:none}
+ #buddy-root .zs-provider-detail{min-width:0;padding:16px}
+ #buddy-root .zs-model-list>div{flex-wrap:wrap;gap:8px}
+ #buddy-root .zs-toolbar,#buddy-root .zs-resource-toolbar{flex-wrap:wrap}
+ #buddy-root .zs-search{max-width:100%}
+ #buddy-root .zc-resource-toolbar{flex-wrap:wrap}.zc-resource-search{max-width:100%}
+ #buddy-root .zc-editor form>.grid{grid-template-columns:1fr}
+ #buddy-root .zs-modal{max-width:calc(100vw - 24px);max-height:calc(100dvh - 24px)}
+ #buddy-root .buddy-mobile-dialog{max-width:calc(100vw - 24px);width:100%;max-height:calc(100dvh - 24px)}
+ #buddy-root .buddy-mobile-columns{grid-template-columns:1fr;display:grid}
+ #buddy-root .buddy-mobile-panel{min-width:0;width:100%}
+ #buddy-root .buddy-mobile-status-row,#buddy-root .buddy-mobile-link-row{flex-wrap:wrap;gap:8px}
+ #buddy-root .buddy-mobile-qr{max-width:100%;height:auto}
+ #buddy-root .buddy-bots-dialog{width:calc(100vw - 24px);max-width:100%;max-height:calc(100dvh - 24px)}
+ .conversation-scroll{padding:16px}.conversation-composer{margin:8px 12px 12px}.composer-toolbar{flex-wrap:wrap}.composer-toolbar>.ant-space:last-child{margin-left:auto}.user-message{max-width:92%}
+}
+/* Legacy input selectors must never paint over the Ant 6 Select value. */
+#buddy-root .ant-select input.ant-select-input{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;height:100%!important;min-height:0!important;border-radius:0!important;opacity:0!important}
+#buddy-root .settings-window-bar .ant-select{display:flex!important;align-items:center!important}
+#buddy-root .settings-window-bar .ant-select-content{min-width:0;flex:1}
+#buddy-root .ant-switch .ant-switch-handle:before{display:none}
+#buddy-root .ant-switch .ant-switch-handle:after{border-radius:50%}
+@media(max-width:599px){
+ #buddy-root .zs-row-main{display:flex!important;flex-direction:column;align-items:stretch}
+ #buddy-root .zs-row-main>div:first-child{width:100%;flex:auto}
+ #buddy-root .zs-control{max-width:100%;width:100%;display:flex;gap:8px;align-items:center}
+ #buddy-root .zs-control>.ant-input,#buddy-root .zs-control>.ant-input-affix-wrapper{flex:1;min-width:0}
+ #buddy-root .zs-control .ant-select{width:100%}
+ #buddy-root .zs-row-main:has(.ant-switch){flex-direction:row;align-items:flex-start}
+ #buddy-root .zs-row-main:has(.ant-switch)>div:first-child{width:auto;flex:1}
+ #buddy-root .zs-row-main:has(.ant-switch) .zs-control{width:36px;max-width:36px;flex:none}
+ #buddy-root .settings-window-bar .mobile-settings-selector{display:flex!important;min-width:0;max-width:none}
+ #buddy-root .settings-window-bar>.ant-btn{flex:none;padding-inline:6px}
+}
+#buddy-root .ant-modal .buddy-mobile-dialog{width:100%;max-width:none;max-height:none;box-shadow:none;border:0;padding:0;margin:0}
+#buddy-root .ant-modal-container{padding:20px}
+#buddy-root .ant-modal .buddy-mobile-header{padding:16px 0}
+#buddy-root .ant-modal .buddy-mobile-columns{gap:20px}
+#buddy-root .ant-modal .zs-control .ant-select{width:100%}
+#buddy-root .ant-modal .ant-select{min-width:100px}
+#buddy-root .ant-modal .zc-editor .grid{gap:12px}
+@media(max-width:599px){#buddy-root .ant-modal{max-width:calc(100vw - 24px);margin:12px auto;top:12px;padding-bottom:0}#buddy-root .ant-modal .buddy-mobile-dialog{max-height:none;max-width:none}#buddy-root .ant-modal .buddy-mobile-columns{grid-template-columns:1fr}.ant-modal .buddy-bots-grid{grid-template-columns:1fr}}
+
+@media(min-width:600px){#buddy-root .settings-window-bar .mobile-settings-selector{display:none!important}}
+#buddy-root .ant-switch-inner{background:transparent!important;transform:none!important;width:auto!important;height:auto!important}
+
+#buddy-root .ant-modal .buddy-bots-dialog{width:100%;max-width:none;max-height:none;height:min(672px,calc(100dvh - 140px));border:0;box-shadow:none;padding:0;margin:0}
+#buddy-root .buddy-bots-dialog .zc-switch.ant-switch .ant-switch-handle{transform:none!important}
+#buddy-root .buddy-bots-dialog .zc-switch.ant-switch .ant-switch-inner{background:transparent;transform:none}
+@media(max-width:599px){
+ #buddy-root .buddy-bots-dialog>div.flex.min-h-0{flex-direction:column;overflow:auto}
+ #buddy-root .buddy-bots-dialog aside.w-64{width:100%;max-height:140px;flex:none}
+ #buddy-root .buddy-bots-dialog section.flex-1{flex:none;overflow:visible}
+ #buddy-root .settings-window-bar .mobile-settings-selector{flex:1;width:0}
+}
+@media(max-width:599px){#buddy-root .workspace{width:calc(100% - 8px);height:calc(100% - 8px)}}
+@media(max-width:599px){
+ #buddy-root .zs-provider-layout>nav{display:flex;gap:8px;width:100%;overflow-x:auto;padding:8px;border-bottom:1px solid var(--line)}
+ #buddy-root .zs-provider-layout>nav .zs-provider-group{display:contents}
+ #buddy-root .zs-provider-layout>nav h3{display:none}
+ #buddy-root .zs-provider-layout>nav button{width:auto;min-width:max-content;flex:none;height:36px;margin:0;padding:6px 10px}
+}
+#buddy-root .settings-window-bar{justify-content:flex-start;align-items:center}
+#buddy-root .settings-window-bar>button.ant-btn{width:auto;height:32px;padding:4px 10px;border:1px solid var(--line);background:var(--surface);color:var(--text)}
+#buddy-root .settings-window-bar>strong{margin-left:auto;min-width:0;font-size:14px}
+#buddy-root .buddy-bots-dialog .grid>button.ant-btn{height:auto;min-height:76px;padding:12px;white-space:normal;align-items:flex-start;justify-content:flex-start;text-align:left;gap:12px}
+#buddy-root .buddy-bots-dialog aside button:has(img){height:auto;min-height:60px;white-space:normal;justify-content:flex-start;padding:8px}
+#buddy-root .buddy-bots-dialog .grid>button.ant-btn>.min-w-0{min-width:0;flex:1}
+
+#buddy-root .zcode-usage .usage-heatmap-scroll{overflow-x:auto;padding:2px}
+@container usage-body (max-width:660px){#buddy-root .zcode-usage .usage-heatmap-scroll>.grid{min-width:660px}}
+#buddy-root .buddy-mobile-channel.ant-btn{height:auto;min-height:102px;white-space:normal;align-items:flex-start;justify-content:flex-start}
+@container usage-body (max-width:660px){
+ #buddy-root .zcode-usage section.sm\:items-center{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+ #buddy-root .zcode-usage section.sm\:items-center>[aria-hidden]{display:none}
+ #buddy-root .zcode-usage section.sm\:items-center>div:last-child{grid-column:1/-1}
+}
+@media(max-width:599px){#buddy-root .zcode-usage .usage-title h1{font-size:22px;line-height:30px}}
+.buddy-usage-hint .ant-tooltip-container{min-height:0;padding:4px 10px;border:1px solid rgba(13,13,13,.1);border-radius:8px;background:#f0f0f0;color:#0d0d0d;box-shadow:none;font:500 12px/18px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;white-space:pre-line;overflow-wrap:break-word}
+html[data-theme=dark] .buddy-usage-hint .ant-tooltip-container{background:#2b2b2b;color:#f7f7f7;border-color:rgba(255,255,255,.1)}
+#buddy-root .ant-switch .ant-switch-handle,#buddy-root .ant-switch .ant-switch-handle:after{background:#fff!important;border-radius:50%}
+
+.agent-link-scanner{height:180px;border:1px dashed #bac5d5;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:16px 0;overflow:hidden;background:#527ff508}.agent-link-scanner video{width:100%;height:100%;object-fit:cover}
+
+/* Compact settings rhythm; legacy hand-drawn switch classes are removed by the adapter. */
+#buddy-root .zs-general-groups{gap:12px}
+#buddy-root .zs-content{gap:16px}
+#buddy-root .zs-header{margin-bottom:0}
+#buddy-root .zs-header h1{font-size:24px}
+#buddy-root .zs-control .ant-select{width:160px;height:28px}
+#buddy-root .zs-control .ant-input,#buddy-root .zs-control .ant-input-affix-wrapper{min-height:28px;height:28px;padding-block:3px}
+#buddy-root .zs-group-card{border-radius:10px}
+#buddy-root .zs-field-save{width:100%}
+#buddy-root .zs-control .ant-btn{height:28px;min-height:28px}
+#buddy-root .baseline-switch.ant-switch{width:32px;min-width:32px;height:18px;min-height:18px;padding:0;border:0;border-radius:9px;flex:none;background:#b6bec9}
+#buddy-root .baseline-switch.ant-switch-checked{background:#527ff5}
+#buddy-root .baseline-switch.ant-switch .ant-switch-handle{width:14px;height:14px;top:2px;left:2px;transform:none!important}
+#buddy-root .baseline-switch.ant-switch-checked .ant-switch-handle{left:16px}
+#buddy-root .baseline-switch.ant-switch .ant-switch-inner{display:none}
+@media(max-width:599px){
+ #buddy-root .zs-header h1{font-size:22px}
+ #buddy-root .zs-content{gap:12px}
+ #buddy-root .zs-row-main{gap:8px}
+ #buddy-root .zs-control .ant-select{width:176px;max-width:100%;height:28px;min-width:0}
+ #buddy-root .zs-row-main:has(.ant-switch) .zs-control{width:32px;max-width:32px}
+ #buddy-root .settings-window-bar{gap:6px;padding:8px 12px;height:48px;min-height:48px}
+ #buddy-root .settings-window-bar>button.ant-btn{height:28px;padding:3px 8px}
+ #buddy-root .settings-window-bar .ant-select{height:28px}
+}
+
+/* Mobile navigation keeps the same icon identity as the settings sidebar. */
+.settings-navigation-label{display:inline-flex;align-items:center;gap:8px;min-width:0;max-width:100%;vertical-align:middle}
+.settings-navigation-label>svg{width:16px;height:16px;flex:none;color:#7a8494}
+.settings-navigation-label>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* Phone provider navigation uses the same full-width container as its detail. */
+#buddy-root .zs-provider-layout.zs-provider-layout-phone{display:flex;flex-direction:column;min-width:0}
+#buddy-root .zs-provider-layout-phone .zs-provider-picker{padding:12px 16px 0;min-width:0}
+#buddy-root .zs-provider-layout-phone .zs-provider-select{width:100%;height:32px}
+#buddy-root .zs-provider-layout-phone .zs-provider-detail{padding:12px 16px 16px}
+.zs-provider-option{display:flex;align-items:center;gap:8px;min-width:0}
+.zs-provider-option>.zs-provider-mark{display:grid;place-items:center;width:18px;height:18px;flex:none}
+.zs-provider-option>.zs-provider-mark :is(img,svg){width:18px;height:18px;object-fit:contain}
+.zs-provider-option>span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* Imported multi-line plugin rows must not inherit Ant button's fixed height. */
+#buddy-root .zcode-settings [data-testid="plugin-settings-plugin-row"]{align-items:center;padding:12px 16px;gap:8px}
+#buddy-root .zcode-settings [data-testid="plugin-settings-plugin-row"] .tc-plugin-open.ant-btn{height:auto;min-height:60px;padding:0;border:0;background:transparent;box-shadow:none;justify-content:flex-start;align-items:center;text-align:left;white-space:normal;min-width:0;gap:12px}
+#buddy-root .zcode-settings .tc-plugin-copy{flex:1;min-width:0;display:flex;flex-direction:column;align-items:stretch;gap:3px}
+#buddy-root .zcode-settings .tc-plugin-title{display:flex;min-width:0;line-height:20px;gap:6px}
+#buddy-root .zcode-settings .tc-plugin-title>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+#buddy-root .zcode-settings .tc-plugin-description{margin:0;line-height:18px;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+#buddy-root .zcode-settings .tc-plugin-scope{margin:0;line-height:18px;min-height:18px}
+#buddy-root .zcode-settings .tc-plugin-scope [data-settings-scope]{display:inline-flex;align-items:center;gap:4px;line-height:16px;white-space:nowrap;font-size:12px}
+#buddy-root .zcode-settings .zc-menu-content button.ant-btn{height:auto;min-height:32px;justify-content:flex-start;text-align:left;white-space:normal;box-shadow:none;border:0;background:transparent}
+#buddy-root .zcode-settings .zc-menu-content button.ant-btn>span{min-width:0;text-align:left}
+#buddy-root .zcode-settings .zc-menu-content button.ant-btn svg{flex:none}
+#buddy-root .zcode-settings .tc-plugin-title>span:first-child{flex:1}
+#buddy-root .zcode-settings .tc-plugin-title>span:not(:first-child){flex:none;white-space:nowrap;line-height:16px}
+
+/* Desktop workspace and settings share width state and the exact account footer. */
+#buddy-root .shell-device-desktop .zs-sidebar{box-sizing:border-box;width:var(--primary-sidebar-width);min-width:var(--primary-sidebar-width);padding-inline:8px;padding-bottom:0;transition:none}
+#buddy-root .shell-device-desktop .surfium-utility-footer{padding:8px 0;min-height:52px;flex:none}
+#buddy-root .shell-device-desktop .surfium-utility-row{gap:2px;flex-wrap:nowrap}
+#buddy-root .shell-device-desktop .surfium-account-trigger{justify-content:flex-start;overflow:hidden}
+#buddy-root .shell-device-desktop .surfium-account-trigger>span:nth-child(2){overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#buddy-root .shell-device-desktop .zc-account-menu button.ant-btn{justify-content:flex-start}
+#buddy-root .shell-device-desktop>main.workspace{margin:0;width:100%;height:100%;border-radius:12px}
+
+/* Utility controls keep identical geometry in every pointer state. */
+#buddy-root .surfium-utility-row > button{box-sizing:border-box;border:1px solid transparent;transition:background-color .15s,color .15s,border-color .15s}
+#buddy-root .surfium-utility-row > button:not(.surfium-account-trigger){width:32px;min-width:32px;flex:0 0 32px;padding:6px;justify-content:center}
+#buddy-root .surfium-utility-row > button[aria-pressed="true"]{background:var(--surface-3);color:var(--blue)}
+/* Shortcut labels and key chords share a single row, including on phones. */
+#buddy-root .zs-row-main:has(.zs-keybinding){display:flex!important;flex-direction:row;align-items:center;gap:8px}
+#buddy-root .zs-row-main:has(.zs-keybinding)>div:first-child{width:auto;min-width:0;flex:1}
+#buddy-root .zs-row-main:has(.zs-keybinding) .zs-control{width:auto;max-width:none;flex:none}
+#buddy-root .zs-keybinding{flex-wrap:nowrap;white-space:nowrap}

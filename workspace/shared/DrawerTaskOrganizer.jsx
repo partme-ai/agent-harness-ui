@@ -1,0 +1,22 @@
+import React,{useState} from 'react';
+import {Button,Dropdown,Input,Modal,Select} from 'antd';
+import {ExpandOutlined,FolderOutlined,PlusOutlined,SearchOutlined} from '@ant-design/icons';
+import {useMockState} from './mock/use_mock_state.js';
+import './drawer_task_organizer.css';
+
+const initialTasks=[{id:'research',name:'新产品市场调研',project:'产品研究',group:'未分组',created:1,updated:3,archived:false,unread:true},{id:'notes',name:'整理会议纪要',project:'示例工作区',group:'未分组',created:2,updated:2,archived:false},{id:'history',name:'比较三种模型接入方式',project:'示例工作区',group:'未分组',created:3,updated:1,archived:true}];
+export function DrawerTaskOrganizer({onOpen}){
+ const [tasks,setTasks]=useMockState('harnessDesktopTasksV1',()=>initialTasks);
+ const [groups,setGroups]=useMockState('harnessTaskGroupsV1',()=>['未分组']);
+ const [boards]=useMockState('harnessSpaceBoardsV1',()=>({}));
+ const [query,setQuery]=useState(''),[sort,setSort]=useState('updated'),[collapsed,setCollapsed]=useState({}),[create,setCreate]=useState(false),[draft,setDraft]=useState('');
+ const visible=tasks.filter(task=>!task.archived&&task.name.includes(query)).sort((a,b)=>sort==='unread'?Number(!!b.unread)-Number(!!a.unread):sort==='project'?String(a.project).localeCompare(String(b.project),'zh-CN'):sort==='group'?String(a.group).localeCompare(String(b.group),'zh-CN'):b.updated-a.updated);
+ const spaceTasks=Object.entries(boards).flatMap(([key,board])=>(board.tasks||[]).filter(task=>task.name.includes(query)).map(task=>({...task,space:key})));
+ const categories=[['项目',[...visible.filter(task=>!!task.project),...spaceTasks.filter(task=>task.space.startsWith('project:'))]],['工作',spaceTasks.filter(task=>task.space.startsWith('office:'))],['创作',spaceTasks.filter(task=>task.space.startsWith('creative:'))],['任务',visible.filter(task=>!task.project)]];
+ function open(task){setTasks(old=>old.map(item=>item.id===task.id?{...item,unread:false}:item));onOpen(task)}
+ const item=task=><div className="harness-drawer-task-row" key={`${task.space||'conversation'}:${task.id}`}><Button type="text" onClick={()=>open(task)}>{task.unread?'• ':''}{task.name}</Button>{!task.space&&<Dropdown menu={{items:groups.map(name=>({key:name,label:name})),onClick:({key})=>setTasks(old=>old.map(item=>item.id===task.id?{...item,group:key}:item))}}><Button type="text" aria-label={`移动到分组 ${task.name}`} title="移动到分组" icon={<FolderOutlined/>}/></Dropdown>}</div>;
+ function createGroup(){const value=draft.trim();if(!value||groups.includes(value))return;setGroups(old=>[...old,value]);setDraft('');setCreate(false)}
+ return <section className="harness-drawer-tasks" aria-label="任务列表"><header><strong>任务列表</strong><Button type="text" aria-label="展开全部分组" icon={<ExpandOutlined/>} onClick={()=>setCollapsed({})}/><Button type="text" aria-label="新建分组" icon={<PlusOutlined/>} onClick={()=>setCreate(true)}/></header><Input aria-label="搜索任务" prefix={<SearchOutlined/>} allowClear placeholder="搜索对话和任务" value={query} onChange={event=>setQuery(event.target.value)}/><Select aria-label="任务排序" value={sort} onChange={setSort} options={[['updated','最近更新'],['project','按项目'],['group','按分组'],['unread','按未读']].map(([value,label])=>({value,label}))}/>
+ {sort==='group'?<>{groups.map(name=><section key={name}><Button type="text" aria-label={`展开或收起分组 ${name}`} aria-expanded={!collapsed[name]} onClick={()=>setCollapsed(old=>({...old,[name]:!old[name]}))}><FolderOutlined/> {name}</Button>{!collapsed[name]&&visible.filter(task=>(task.group||'未分组')===name).map(item)}</section>)}{spaceTasks.length>0&&<section><Button type="text" aria-label="展开或收起空间任务" aria-expanded={!collapsed.spaces} onClick={()=>setCollapsed(old=>({...old,spaces:!old.spaces}))}><FolderOutlined/> 空间任务</Button>{!collapsed.spaces&&spaceTasks.map(item)}</section>}</>:categories.map(([name,items])=>items.length>0&&<section key={name}><Button type="text" aria-label={`展开或收起${name}`} aria-expanded={!collapsed[name]} onClick={()=>setCollapsed(old=>({...old,[name]:!old[name]}))}><FolderOutlined/> {name}</Button>{!collapsed[name]&&items.map(item)}</section>)}
+ {!visible.length&&!spaceTasks.length&&<small>暂无匹配任务</small>}<Modal title="新建分组" open={create} onCancel={()=>setCreate(false)} onOk={createGroup} okText="创建" okButtonProps={{disabled:!draft.trim()||groups.includes(draft.trim())}}><Input aria-label="分组名称" value={draft} onChange={event=>setDraft(event.target.value)} onPressEnter={createGroup}/></Modal></section>;
+}

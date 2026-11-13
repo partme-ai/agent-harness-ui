@@ -1,0 +1,21 @@
+/* WorkBuddy 信息组织，延续 TinyClaw 的 ZCode 中性色与 Ant 控件。 */
+.tc-projects-page,.tc-library{color:var(--text);min-width:0}
+.tc-project-hero{padding:12px 0 32px}.tc-project-hero h1{font-size:26px;margin:0 0 8px}.tc-project-hero p{color:var(--text-3);margin-bottom:22px}
+.tc-page-tools{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:16px 0}.tc-page-tools .ant-input-search{max-width:320px}.tc-page-tools h2{white-space:nowrap;margin:0}
+.tc-projects-page h2,.tc-library h2{font-size:16px;margin-top:24px}
+.tc-project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:16px 0 32px}
+#buddy-root .tc-project-tile.ant-btn{height:auto;min-height:96px;padding:20px;justify-content:flex-start;text-align:left;white-space:normal;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:none;gap:14px}
+.tc-project-tile>span:last-child{display:flex;flex-direction:column;align-items:flex-start;min-width:0}.tc-project-tile strong{font-size:14px}.tc-project-tile small{font-size:12px;color:var(--text-3);margin-top:7px}.tc-project-tile .anticon{font-size:22px}
+.tc-library{display:grid;grid-template-columns:180px minmax(0,1fr);gap:24px;min-height:65vh}.tc-library-sidebar{border-right:1px solid var(--line);padding-right:16px;display:flex;flex-direction:column;gap:8px}.tc-library-sidebar h2{margin:0 0 16px}.tc-library-sidebar small{color:var(--text-3);margin-top:auto}
+#buddy-root .tc-library-sidebar button{justify-content:flex-start;text-align:left}.tc-library-sidebar .selected,.tc-desktop-primary [aria-current=page]{background:var(--surface-2,#eef1f5)}
+.tc-library-main{min-width:0}.tc-library-main h1{font-size:24px;margin-top:0}.tc-library-table{margin:24px 0;min-width:0}.tc-library-head{color:var(--text-3);font-size:12px}
+.tc-library-head,#buddy-root .tc-library-row.ant-btn{display:grid;grid-template-columns:minmax(120px,2fr) 1fr 1fr 1fr;gap:12px;padding:14px 8px;text-align:left;width:100%;height:auto;min-height:48px;border-bottom:1px solid var(--line);border-radius:0;font-weight:400}
+.tc-library-row>span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tc-library-row>span:first-child{font-weight:500}
+.tc-home-modes{display:flex;justify-content:center;flex-wrap:wrap;gap:4px;margin:20px 0 38px}.tc-home-shortcuts{display:flex;justify-content:center;flex-wrap:wrap;gap:8px}.tc-task-home h1{font-size:28px}.tc-task-home{width:100%;max-width:900px}
+@media(max-width:900px){.tc-library{grid-template-columns:1fr}.tc-library-sidebar{border-right:0;flex-direction:row;flex-wrap:wrap;padding:0}.tc-library-sidebar h2{width:100%;margin-bottom:0}.tc-library-sidebar small{display:none}.tc-library-head,#buddy-root .tc-library-row.ant-btn{grid-template-columns:minmax(130px,2fr) 1fr}.tc-library-row>span:nth-child(2),.tc-library-row>span:nth-child(4),.tc-library-head>span:nth-child(2),.tc-library-head>span:nth-child(4){display:none}}
+@media(max-width:600px){.tc-project-grid{grid-template-columns:1fr}.tc-page-tools{flex-wrap:wrap}.tc-page-tools .ant-input-search{max-width:none}.tc-task-home h1{font-size:22px}.tc-home-modes{margin-bottom:20px}.tc-library .ant-segmented{max-width:100%;font-size:12px}}
+/* 默认任务主页将引导和输入视作一个整体，已开始的会话仍使用底部输入。 */
+@media(min-width:700px){.conversation-view:has(.tc-task-home){justify-content:center}.conversation-view:has(.tc-task-home)>.conversation-scroll{flex:0 1 auto;overflow:auto;padding-bottom:12px}.conversation-view:has(.tc-task-home) .tc-chat-welcome{margin:0 auto;padding-bottom:12px}.conversation-view:has(.tc-task-home)>.conversation-dock{width:100%;max-width:1000px;align-self:center;margin-bottom:12vh}}
+.tc-phone .tc-header>strong{min-width:0;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;font-size:14px}
+
+.tc-task-home .tc-work-home-scope{font-size:12px;color:var(--text-3);margin:12px 0 0;line-height:1.6}

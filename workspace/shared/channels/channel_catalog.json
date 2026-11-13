@@ -1,0 +1,2113 @@
+{
+  "projects": [
+    {
+      "id": "nullclaw",
+      "revision": "55907af88e51ff37cc114dcb6eb3ca438e5b0c2b"
+    },
+    {
+      "id": "nanoclaw",
+      "revision": "4c1eabd3ddd74cc3d71b1871da857391a9411c8d"
+    },
+    {
+      "id": "nanobot",
+      "revision": "e2b89d45bfbe1b61667f178b2c054577a08b3318"
+    },
+    {
+      "id": "microclaw",
+      "revision": "4cc62c8061953e3530846514217824a4c32f5330"
+    },
+    {
+      "id": "openclaw",
+      "revision": "ecbe1861efd51fd1987315baf7b4cff797181a7c"
+    },
+    {
+      "id": "picoclaw",
+      "revision": "bbf6893ca7afad27f1d00a0f5a45982a549c6ed6"
+    },
+    {
+      "id": "zeroclaw",
+      "revision": "f0ae8c8bd800ad0363a907e2001503072fdefdf5"
+    },
+    {
+      "id": "hermes-agent",
+      "revision": "bd740f203b44237dbc5c27a2de4d86ef32af4dde"
+    }
+  ],
+  "channels": [
+    {
+      "id": "a2a",
+      "sources": [
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "bundled-plugin"
+        }
+      ],
+      "name": "A2A",
+      "category": "transport",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "acp",
+      "sources": [
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "ACP",
+      "category": "transport",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "amqp",
+      "sources": [
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "AMQP",
+      "category": "transport",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "api-server",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        }
+      ],
+      "name": "API Server",
+      "category": "transport",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "bluebubbles",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        }
+      ],
+      "name": "Bluebubbles",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "bluesky",
+      "sources": [
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Bluesky",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "buzz",
+      "sources": [
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        }
+      ],
+      "name": "Buzz",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "clawdtalk",
+      "sources": [
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Clawdtalk",
+      "category": "transport",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "cli",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        },
+        {
+          "project": "nanoclaw",
+          "path": "src/channels/cli.ts",
+          "kind": "adapter"
+        },
+        {
+          "project": "nullclaw",
+          "path": "src/channels/cli.zig",
+          "kind": "adapter"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/cli.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "CLI",
+      "category": "transport",
+      "setup": "local",
+      "fields": [
+        "identity",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "clickclack",
+      "sources": [
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        }
+      ],
+      "name": "Clickclack",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "custom-plugin",
+      "sources": [
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Custom Plugin",
+      "category": "transport",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "deltachat",
+      "sources": [
+        {
+          "project": "nanoclaw",
+          "path": ".claude/skills/add-deltachat/SKILL.md",
+          "kind": "skill-extension"
+        },
+        {
+          "project": "picoclaw",
+          "path": "pkg/channels/deltachat/init.go",
+          "kind": "adapter"
+        }
+      ],
+      "name": "Deltachat",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "dingtalk",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        },
+        {
+          "project": "hermes-agent",
+          "path": "plugins/platforms/dingtalk/adapter.py",
+          "kind": "plugin"
+        },
+        {
+          "project": "microclaw",
+          "path": "src/channels/dingtalk.rs",
+          "kind": "adapter"
+        },
+        {
+          "project": "nanobot",
+          "path": "nanobot/channels/dingtalk/manifest.py",
+          "kind": "adapter"
+        },
+        {
+          "project": "nullclaw",
+          "path": "src/channels/dingtalk.zig",
+          "kind": "adapter"
+        },
+        {
+          "project": "picoclaw",
+          "path": "pkg/channels/dingtalk/init.go",
+          "kind": "adapter"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "钉钉",
+      "category": "work",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "discord",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        },
+        {
+          "project": "hermes-agent",
+          "path": "plugins/platforms/discord/adapter.py",
+          "kind": "plugin"
+        },
+        {
+          "project": "microclaw",
+          "path": "src/channels/discord.rs",
+          "kind": "adapter"
+        },
+        {
+          "project": "nanobot",
+          "path": "nanobot/channels/discord/manifest.py",
+          "kind": "adapter"
+        },
+        {
+          "project": "nanoclaw",
+          "path": ".claude/skills/add-discord/SKILL.md",
+          "kind": "skill-extension"
+        },
+        {
+          "project": "nullclaw",
+          "path": "src/channels/discord.zig",
+          "kind": "adapter"
+        },
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        },
+        {
+          "project": "picoclaw",
+          "path": "pkg/channels/discord/init.go",
+          "kind": "adapter"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Discord",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "email",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        },
+        {
+          "project": "hermes-agent",
+          "path": "plugins/platforms/email/adapter.py",
+          "kind": "plugin"
+        },
+        {
+          "project": "microclaw",
+          "path": "src/channels/email.rs",
+          "kind": "adapter"
+        },
+        {
+          "project": "nanobot",
+          "path": "nanobot/channels/email/manifest.py",
+          "kind": "adapter"
+        },
+        {
+          "project": "nullclaw",
+          "path": "src/channels/email.zig",
+          "kind": "adapter"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Email",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "external-adapter",
+      "sources": [
+        {
+          "project": "nullclaw",
+          "path": "src/channels/external.zig",
+          "kind": "adapter"
+        }
+      ],
+      "name": "External Adapter",
+      "category": "transport",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "feishu",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        },
+        {
+          "project": "hermes-agent",
+          "path": "plugins/platforms/feishu/adapter.py",
+          "kind": "plugin"
+        },
+        {
+          "project": "microclaw",
+          "path": "src/channels/feishu.rs",
+          "kind": "adapter"
+        },
+        {
+          "project": "nanobot",
+          "path": "nanobot/channels/feishu/manifest.py",
+          "kind": "adapter"
+        },
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        },
+        {
+          "project": "picoclaw",
+          "path": "pkg/channels/feishu/init.go",
+          "kind": "adapter"
+        }
+      ],
+      "name": "飞书",
+      "category": "work",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "filesystem",
+      "sources": [
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Filesystem",
+      "category": "transport",
+      "setup": "local",
+      "fields": [
+        "identity",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "git",
+      "sources": [
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Git",
+      "category": "transport",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "gmail-push",
+      "sources": [
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Gmail Push",
+      "category": "transport",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "googlechat",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "plugins/platforms/google_chat/adapter.py",
+          "kind": "plugin"
+        },
+        {
+          "project": "nanoclaw",
+          "path": ".claude/skills/add-gchat/SKILL.md",
+          "kind": "skill-extension"
+        },
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        }
+      ],
+      "name": "Google Chat",
+      "category": "work",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "homeassistant",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        },
+        {
+          "project": "hermes-agent",
+          "path": "plugins/platforms/homeassistant/adapter.py",
+          "kind": "plugin"
+        }
+      ],
+      "name": "Home Assistant",
+      "category": "work",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "imessage",
+      "sources": [
+        {
+          "project": "microclaw",
+          "path": "src/channels/imessage.rs",
+          "kind": "adapter"
+        },
+        {
+          "project": "nanoclaw",
+          "path": ".claude/skills/add-imessage/SKILL.md",
+          "kind": "skill-extension"
+        },
+        {
+          "project": "nullclaw",
+          "path": "src/channels/imessage.zig",
+          "kind": "adapter"
+        },
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "iMessage",
+      "category": "chat",
+      "setup": "local",
+      "fields": [
+        "identity",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "irc",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "plugins/platforms/irc/adapter.py",
+          "kind": "plugin"
+        },
+        {
+          "project": "microclaw",
+          "path": "src/channels/irc.rs",
+          "kind": "adapter"
+        },
+        {
+          "project": "nullclaw",
+          "path": "src/channels/irc.zig",
+          "kind": "adapter"
+        },
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        },
+        {
+          "project": "picoclaw",
+          "path": "pkg/channels/irc/init.go",
+          "kind": "adapter"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "IRC",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "lark",
+      "sources": [
+        {
+          "project": "nullclaw",
+          "path": "src/channels/lark.zig",
+          "kind": "adapter"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Lark",
+      "category": "work",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "line",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "plugins/platforms/line/adapter.py",
+          "kind": "plugin"
+        },
+        {
+          "project": "nullclaw",
+          "path": "src/channels/line.zig",
+          "kind": "adapter"
+        },
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        },
+        {
+          "project": "picoclaw",
+          "path": "pkg/channels/line/init.go",
+          "kind": "adapter"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Line",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "linear",
+      "sources": [
+        {
+          "project": "nanobot",
+          "path": "nanobot/channels/linear/manifest.py",
+          "kind": "adapter"
+        }
+      ],
+      "name": "Linear",
+      "category": "work",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "linq",
+      "sources": [
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Linq",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "maixcam",
+      "sources": [
+        {
+          "project": "nullclaw",
+          "path": "src/channels/maixcam.zig",
+          "kind": "adapter"
+        },
+        {
+          "project": "picoclaw",
+          "path": "pkg/channels/maixcam/init.go",
+          "kind": "adapter"
+        }
+      ],
+      "name": "MaixCAM",
+      "category": "transport",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "matrix",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        },
+        {
+          "project": "hermes-agent",
+          "path": "plugins/platforms/matrix/adapter.py",
+          "kind": "plugin"
+        },
+        {
+          "project": "microclaw",
+          "path": "src/channels/matrix.rs",
+          "kind": "adapter"
+        },
+        {
+          "project": "nanobot",
+          "path": "nanobot/channels/matrix/manifest.py",
+          "kind": "adapter"
+        },
+        {
+          "project": "nanoclaw",
+          "path": ".claude/skills/add-matrix/SKILL.md",
+          "kind": "skill-extension"
+        },
+        {
+          "project": "nullclaw",
+          "path": "src/channels/matrix.zig",
+          "kind": "adapter"
+        },
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        },
+        {
+          "project": "picoclaw",
+          "path": "pkg/channels/matrix/init.go",
+          "kind": "adapter"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Matrix",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "mattermost",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        },
+        {
+          "project": "hermes-agent",
+          "path": "plugins/platforms/mattermost/adapter.py",
+          "kind": "plugin"
+        },
+        {
+          "project": "nanobot",
+          "path": "nanobot/channels/mattermost/manifest.py",
+          "kind": "adapter"
+        },
+        {
+          "project": "nanoclaw",
+          "path": ".claude/skills/add-mattermost/SKILL.md",
+          "kind": "skill-extension"
+        },
+        {
+          "project": "nullclaw",
+          "path": "src/channels/mattermost.zig",
+          "kind": "adapter"
+        },
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Mattermost",
+      "category": "work",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "max",
+      "sources": [
+        {
+          "project": "nullclaw",
+          "path": "src/channels/max.zig",
+          "kind": "adapter"
+        }
+      ],
+      "name": "MAX",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "mochat",
+      "sources": [
+        {
+          "project": "nanobot",
+          "path": "nanobot/channels/mochat/manifest.py",
+          "kind": "adapter"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Mochat",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "mqtt",
+      "sources": [
+        {
+          "project": "picoclaw",
+          "path": "pkg/channels/mqtt/init.go",
+          "kind": "adapter"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "MQTT",
+      "category": "transport",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "msgraph-webhook",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        }
+      ],
+      "name": "Microsoft Graph",
+      "category": "transport",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "msteams",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "plugins/platforms/teams/adapter.py",
+          "kind": "plugin"
+        },
+        {
+          "project": "nanobot",
+          "path": "nanobot/channels/msteams/manifest.py",
+          "kind": "adapter"
+        },
+        {
+          "project": "nanoclaw",
+          "path": ".claude/skills/add-teams/SKILL.md",
+          "kind": "skill-extension"
+        },
+        {
+          "project": "nullclaw",
+          "path": "src/channels/teams.zig",
+          "kind": "adapter"
+        },
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        }
+      ],
+      "name": "Microsoft Teams",
+      "category": "work",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "napcat",
+      "sources": [
+        {
+          "project": "nanobot",
+          "path": "nanobot/channels/napcat/manifest.py",
+          "kind": "adapter"
+        }
+      ],
+      "name": "NapCat",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "nextcloud-talk",
+      "sources": [
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Nextcloud Talk",
+      "category": "work",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "nostr",
+      "sources": [
+        {
+          "project": "microclaw",
+          "path": "src/channels/nostr.rs",
+          "kind": "adapter"
+        },
+        {
+          "project": "nullclaw",
+          "path": "src/channels/nostr.zig",
+          "kind": "adapter"
+        },
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Nostr",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "notion",
+      "sources": [
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/notion.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Notion",
+      "category": "work",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "ntfy",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "plugins/platforms/ntfy/adapter.py",
+          "kind": "plugin"
+        }
+      ],
+      "name": "ntfy",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "onebot",
+      "sources": [
+        {
+          "project": "nullclaw",
+          "path": "src/channels/onebot.zig",
+          "kind": "adapter"
+        },
+        {
+          "project": "picoclaw",
+          "path": "pkg/channels/onebot/init.go",
+          "kind": "adapter"
+        }
+      ],
+      "name": "Onebot",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "photon",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "plugins/platforms/photon/adapter.py",
+          "kind": "plugin"
+        }
+      ],
+      "name": "Photon",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "pico",
+      "sources": [
+        {
+          "project": "picoclaw",
+          "path": "pkg/channels/pico/init.go",
+          "kind": "adapter"
+        }
+      ],
+      "name": "Pico",
+      "category": "transport",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "qq",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        },
+        {
+          "project": "microclaw",
+          "path": "src/channels/qq.rs",
+          "kind": "adapter"
+        },
+        {
+          "project": "nanobot",
+          "path": "nanobot/channels/qq/manifest.py",
+          "kind": "adapter"
+        },
+        {
+          "project": "nullclaw",
+          "path": "src/channels/qq.zig",
+          "kind": "adapter"
+        },
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        },
+        {
+          "project": "picoclaw",
+          "path": "pkg/channels/qq/init.go",
+          "kind": "adapter"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "QQ Bot",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "raft",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "plugins/platforms/raft/adapter.py",
+          "kind": "plugin"
+        },
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        }
+      ],
+      "name": "Raft",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "reddit",
+      "sources": [
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Reddit",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "reef",
+      "sources": [
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "bundled-plugin"
+        }
+      ],
+      "name": "Reef",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "relay",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        }
+      ],
+      "name": "Relay",
+      "category": "transport",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "signal",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        },
+        {
+          "project": "microclaw",
+          "path": "src/channels/signal.rs",
+          "kind": "adapter"
+        },
+        {
+          "project": "nanobot",
+          "path": "nanobot/channels/signal/manifest.py",
+          "kind": "adapter"
+        },
+        {
+          "project": "nanoclaw",
+          "path": ".claude/skills/add-signal/SKILL.md",
+          "kind": "skill-extension"
+        },
+        {
+          "project": "nullclaw",
+          "path": "src/channels/signal.zig",
+          "kind": "adapter"
+        },
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Signal",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "simplex",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "plugins/platforms/simplex/adapter.py",
+          "kind": "plugin"
+        }
+      ],
+      "name": "Simplex",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "slack",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        },
+        {
+          "project": "hermes-agent",
+          "path": "plugins/platforms/slack/adapter.py",
+          "kind": "plugin"
+        },
+        {
+          "project": "microclaw",
+          "path": "src/channels/slack.rs",
+          "kind": "adapter"
+        },
+        {
+          "project": "nanobot",
+          "path": "nanobot/channels/slack/manifest.py",
+          "kind": "adapter"
+        },
+        {
+          "project": "nanoclaw",
+          "path": ".claude/skills/add-slack/SKILL.md",
+          "kind": "skill-extension"
+        },
+        {
+          "project": "nullclaw",
+          "path": "src/channels/slack.zig",
+          "kind": "adapter"
+        },
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        },
+        {
+          "project": "picoclaw",
+          "path": "pkg/channels/slack/init.go",
+          "kind": "adapter"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Slack",
+      "category": "work",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "slack-webhook",
+      "sources": [
+        {
+          "project": "picoclaw",
+          "path": "pkg/channels/slack_webhook/init.go",
+          "kind": "adapter"
+        }
+      ],
+      "name": "Slack Webhook",
+      "category": "work",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "sms",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        },
+        {
+          "project": "hermes-agent",
+          "path": "plugins/platforms/sms/adapter.py",
+          "kind": "plugin"
+        },
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        }
+      ],
+      "name": "SMS",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "synology-chat",
+      "sources": [
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        }
+      ],
+      "name": "Synology Chat",
+      "category": "work",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "teams-webhook",
+      "sources": [
+        {
+          "project": "picoclaw",
+          "path": "pkg/channels/teams_webhook/init.go",
+          "kind": "adapter"
+        }
+      ],
+      "name": "Teams Webhook",
+      "category": "work",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "telegram",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        },
+        {
+          "project": "hermes-agent",
+          "path": "plugins/platforms/telegram/adapter.py",
+          "kind": "plugin"
+        },
+        {
+          "project": "microclaw",
+          "path": "src/channels/telegram.rs",
+          "kind": "adapter"
+        },
+        {
+          "project": "nanobot",
+          "path": "nanobot/channels/telegram/manifest.py",
+          "kind": "adapter"
+        },
+        {
+          "project": "nanoclaw",
+          "path": ".claude/skills/add-telegram/SKILL.md",
+          "kind": "skill-extension"
+        },
+        {
+          "project": "nullclaw",
+          "path": "src/channels/telegram.zig",
+          "kind": "adapter"
+        },
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "bundled-plugin"
+        },
+        {
+          "project": "picoclaw",
+          "path": "pkg/channels/telegram/init.go",
+          "kind": "adapter"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Telegram",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "tlon",
+      "sources": [
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        }
+      ],
+      "name": "Tlon",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "twitch",
+      "sources": [
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Twitch",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "twitter",
+      "sources": [
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "X / Twitter",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "vk",
+      "sources": [
+        {
+          "project": "picoclaw",
+          "path": "pkg/channels/vk/init.go",
+          "kind": "adapter"
+        }
+      ],
+      "name": "Vk",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "voice",
+      "sources": [
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/voice.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Voice",
+      "category": "transport",
+      "setup": "local",
+      "fields": [
+        "identity",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "voice-call",
+      "sources": [
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Voice Call",
+      "category": "transport",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "voice-wake",
+      "sources": [
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "VoiceWake",
+      "category": "transport",
+      "setup": "local",
+      "fields": [
+        "identity",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "webchat",
+      "sources": [
+        {
+          "project": "nullclaw",
+          "path": "src/channels/web.zig",
+          "kind": "adapter"
+        },
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "included-core"
+        }
+      ],
+      "name": "WebChat",
+      "category": "transport",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "webex",
+      "sources": [
+        {
+          "project": "nanoclaw",
+          "path": ".claude/skills/add-webex/SKILL.md",
+          "kind": "skill-extension"
+        }
+      ],
+      "name": "Webex",
+      "category": "work",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "webhook",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "Webhook",
+      "category": "transport",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "websocket",
+      "sources": [
+        {
+          "project": "nanobot",
+          "path": "nanobot/channels/websocket/manifest.py",
+          "kind": "adapter"
+        }
+      ],
+      "name": "Websocket",
+      "category": "transport",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "wechat-official",
+      "sources": [
+        {
+          "project": "nanoclaw",
+          "path": ".claude/skills/add-wechat/SKILL.md",
+          "kind": "skill-extension"
+        },
+        {
+          "project": "nullclaw",
+          "path": "src/channels/wechat.zig",
+          "kind": "adapter"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "微信公众号",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "wecom",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        },
+        {
+          "project": "hermes-agent",
+          "path": "plugins/platforms/wecom/adapter.py",
+          "kind": "plugin"
+        },
+        {
+          "project": "nanobot",
+          "path": "nanobot/channels/wecom/manifest.py",
+          "kind": "adapter"
+        },
+        {
+          "project": "nullclaw",
+          "path": "src/channels/wecom.zig",
+          "kind": "adapter"
+        },
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "external-plugin"
+        },
+        {
+          "project": "picoclaw",
+          "path": "pkg/channels/wecom/init.go",
+          "kind": "adapter"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "企业微信",
+      "category": "work",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "wecom-callback",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        }
+      ],
+      "name": "企业微信 Callback",
+      "category": "work",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "wecom-ws",
+      "sources": [
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "企业微信 WebSocket",
+      "category": "work",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "weixin",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        },
+        {
+          "project": "microclaw",
+          "path": "src/channels/weixin.rs",
+          "kind": "adapter"
+        },
+        {
+          "project": "nanobot",
+          "path": "nanobot/channels/weixin/manifest.py",
+          "kind": "adapter"
+        },
+        {
+          "project": "nullclaw",
+          "path": "src/channels/weixin.zig",
+          "kind": "adapter"
+        },
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "external-plugin"
+        }
+      ],
+      "name": "微信（个人账号）",
+      "category": "chat",
+      "setup": "pairing",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "whatsapp",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        },
+        {
+          "project": "hermes-agent",
+          "path": "plugins/platforms/whatsapp/adapter.py",
+          "kind": "plugin"
+        },
+        {
+          "project": "microclaw",
+          "path": "src/channels/whatsapp.rs",
+          "kind": "adapter"
+        },
+        {
+          "project": "nanobot",
+          "path": "nanobot/channels/whatsapp/manifest.py",
+          "kind": "adapter"
+        },
+        {
+          "project": "nanoclaw",
+          "path": ".claude/skills/add-whatsapp/SKILL.md",
+          "kind": "skill-extension"
+        },
+        {
+          "project": "nullclaw",
+          "path": "src/channels/whatsapp.zig",
+          "kind": "adapter"
+        },
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        },
+        {
+          "project": "picoclaw",
+          "path": "pkg/channels/whatsapp/init.go",
+          "kind": "adapter"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "WhatsApp",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "whatsapp-cloud",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        },
+        {
+          "project": "nanoclaw",
+          "path": ".claude/skills/add-whatsapp-cloud/SKILL.md",
+          "kind": "skill-extension"
+        }
+      ],
+      "name": "WhatsApp Cloud",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "whatsapp-web",
+      "sources": [
+        {
+          "project": "picoclaw",
+          "path": "pkg/channels/whatsapp_native/init.go",
+          "kind": "adapter"
+        },
+        {
+          "project": "zeroclaw",
+          "path": "crates/zeroclaw-channels/src/listing.rs",
+          "kind": "feature-gated"
+        }
+      ],
+      "name": "WhatsApp Web",
+      "category": "chat",
+      "setup": "pairing",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "yuanbao",
+      "sources": [
+        {
+          "project": "hermes-agent",
+          "path": "gateway/config.py",
+          "kind": "registry"
+        },
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "external-plugin"
+        }
+      ],
+      "name": "Yuanbao",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "zalo",
+      "sources": [
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        }
+      ],
+      "name": "Zalo",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "zaloclawbot",
+      "sources": [
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "external-plugin"
+        }
+      ],
+      "name": "Zalo ClawBot",
+      "category": "chat",
+      "setup": "credential",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    },
+    {
+      "id": "zalouser",
+      "sources": [
+        {
+          "project": "openclaw",
+          "path": "docs/channels/index.md",
+          "kind": "official-plugin"
+        }
+      ],
+      "name": "Zalo Personal",
+      "category": "chat",
+      "setup": "pairing",
+      "fields": [
+        "identity",
+        "credential",
+        "endpoint"
+      ]
+    }
+  ]
+}

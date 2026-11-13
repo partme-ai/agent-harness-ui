@@ -1,0 +1,32 @@
+{
+  "kind": "ant-design-composer-adaptation",
+  "files": [
+    {
+      "source": "packages/ui/src/v4/composer/V4ComposerModeControls.tsx",
+      "source_sha256": "f5289c79b4798f97a4ced83cfa44fdf148741a11ccfaada84b7806b4ec67a328",
+      "use": "interaction and dimensions reference"
+    },
+    {
+      "source": "packages/ui/src/v4/composer/V4ComposerToolbar.tsx",
+      "source_sha256": "fb0e3863fd51487d43e8201c19407b16ead3d53731d5eac7a1697412cfacacbf",
+      "use": "interaction and dimensions reference"
+    },
+    {
+      "source": "packages/ui/src/ModelConfigSelect.tsx",
+      "source_sha256": "79557fc002b05d9540617ae0b586cf20ffda40725b6ce95e947972bbbe750282",
+      "use": "interaction and dimensions reference"
+    },
+    {
+      "source": "packages/ui/src/LexicalChatInput.tsx",
+      "source_sha256": "61d12ac6cfa638d8236ae1561daf50c45e24dcd019ffb174421b893d68224c74",
+      "use": "interaction and dimensions reference"
+    },
+    {
+      "source": "packages/ui/src/lib/pickerFocus.ts",
+      "source_sha256": "8ca53b06eddd75661b910f9253748d12712210ad2b2c67705e78d4808c002263",
+      "use": "verbatim copy"
+    }
+  ],
+  "verbatim_target": "shared/pickerFocus.ts",
+  "boundary": "UI draft controls and local attachment metadata only; Lexical editor, host execution, streaming cancellation, authoritative queue ACK and real file upload are not migrated."
+}

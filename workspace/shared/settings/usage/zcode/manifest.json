@@ -1,0 +1,155 @@
+{
+  "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "files": [
+    {
+      "source": "settings/usage-stats/AppUsageDailyModelTrendChart.tsx",
+      "output": "AppUsageDailyModelTrendChart.jsx",
+      "sourceSha256": "640f9359d5901af46d2e6f90aeb73d3c70fb9f5fe94dd11f362b8e87721884de",
+      "outputSha256": "0b090d60745c5a0d71393bff32e2a87b9991a0c0a0e1b92ae3d2e93ff98f0fee"
+    },
+    {
+      "source": "settings/usage-stats/AppUsageModelUsagePieChart.tsx",
+      "output": "AppUsageModelUsagePieChart.jsx",
+      "sourceSha256": "6c7af4eebbcaeba55e9ca647199dad0fd098bf100e6e867c7a364ad2c86eda7e",
+      "outputSha256": "ed817df92f82a2f25de250c94214c2a792a0d5c29e45bbc437100aafea6641eb"
+    },
+    {
+      "source": "settings/usage-stats/AppUsagePanel.tsx",
+      "output": "AppUsagePanel.jsx",
+      "sourceSha256": "88d102c410bc44a357e5b12819b17f452a29d690ab0223d5bda737ecc3139f8b",
+      "outputSha256": "8a9713c6c5074074717285e85163c5bb0696e9126c6b4f9e803518d2429c9904"
+    },
+    {
+      "source": "settings/usage-stats/CodingPlanUsageBarChart.tsx",
+      "output": "CodingPlanUsageBarChart.jsx",
+      "sourceSha256": "a5724c6a3e0286f2f5ebbfc67312fa57a1e97c217a90ba3c0d536bee1867c0a8",
+      "outputSha256": "eec9d9cadc166ac8ec3740d811e253f72fc263d5d4cb2127fe09a741c7262d50"
+    },
+    {
+      "source": "settings/usage-stats/CodingPlanUsageLineChart.tsx",
+      "output": "CodingPlanUsageLineChart.jsx",
+      "sourceSha256": "8462e454eb12980fac3867452cd0b3551ce0bdee7a649c5b498b245b08c4e50f",
+      "outputSha256": "8c945e2970f84b6896eeca80584931243669f77a22720702c46ba1bc6f1a62a6"
+    },
+    {
+      "source": "settings/usage-stats/CodingPlanUsagePanel.tsx",
+      "output": "CodingPlanUsagePanel.jsx",
+      "sourceSha256": "f1db78a952d13d9b49c8b872143a2be73bf5ed94e9f89a0b826a14db77f9bf98",
+      "outputSha256": "a99559ebe5b875c314b6c994a93c1c27863e0717790f640963296825cb56d0a7"
+    },
+    {
+      "source": "settings/usage-stats/UsageChartLoadBoundary.tsx",
+      "output": "UsageChartLoadBoundary.jsx",
+      "sourceSha256": "bc08459b89353d9fc43873c9e965e78ede7cfa7fa1ed90ebbc5d9ab64527cc79",
+      "outputSha256": "e18ab22344ca61fc21e0980cfac3e55ac3339095240ec7cee1146e917f1d486a"
+    },
+    {
+      "source": "settings/usage-stats/UsageHeatmap.tsx",
+      "output": "UsageHeatmap.jsx",
+      "sourceSha256": "ca6b4e1a3a29f634491a330805cd6349b1649d1375830520a9ce7df6713847c8",
+      "outputSha256": "9493898c17940ba7502f695857787375d4bcbe872746eb598baf4c179b75f526"
+    },
+    {
+      "source": "settings/usage-stats/UsageHeatmapCells.tsx",
+      "output": "UsageHeatmapCells.jsx",
+      "sourceSha256": "51eaa959daf9948881337ce0ef134452d0683cf0d8b83d41a2f889e927cc95cd",
+      "outputSha256": "ce41d87c7d46b449d0c8d6f7c4caefee4258c4c02e9a55aed489c2d84f615dc6"
+    },
+    {
+      "source": "settings/usage-stats/UsageStatsErrorNotice.tsx",
+      "output": "UsageStatsErrorNotice.jsx",
+      "sourceSha256": "b3aa01c9faee78a8294a93d163f89b4dc63ad7f35559c2112132383de57734a5",
+      "outputSha256": "1afa813ee71b6928f5a153151cd0c286e74968cfe17ea3ea3462ddfbb039cb4d"
+    },
+    {
+      "source": "settings/usage-stats/appUsageChartPalette.ts",
+      "output": "appUsageChartPalette.jsx",
+      "sourceSha256": "bb69174f03c08bc28df7ff89faaa9cba9349b65eb573eca2ea575b9a20cfef87",
+      "outputSha256": "1ddb5caf132f709534008b2f70d043e01a725c2abd729bd4346ab46919b2aeb0"
+    },
+    {
+      "source": "settings/usage-stats/appUsageModelPieChartViewModel.ts",
+      "output": "appUsageModelPieChartViewModel.jsx",
+      "sourceSha256": "8268b12ea8a7f2e03f37c9eda1613935aa129788e1c237008dcdc30dad0f8dfe",
+      "outputSha256": "d35bb067e10953b40b8e39c2d1ceebabefb76293fc8e832d278b126c1123983a"
+    },
+    {
+      "source": "settings/usage-stats/codingPlanUsageChartSeries.ts",
+      "output": "codingPlanUsageChartSeries.jsx",
+      "sourceSha256": "10098b75990b34f12abaa007948767b985968f63445a2b47c39d251c667c6ffd",
+      "outputSha256": "1e4bc71f865d911ae4603eb82d7cb56e93d815ce79cb925a81729ae16660c373"
+    },
+    {
+      "source": "settings/usage-stats/usageStatsUiParts.tsx",
+      "output": "usageStatsUiParts.jsx",
+      "sourceSha256": "77837e46a0cb3f1e0f886398f17b464f7691466076916cabee340da22cd92738",
+      "outputSha256": "b8d94642b415883234fa8b10dd46bc27a5b071c53b580b31a663189093014353"
+    },
+    {
+      "source": "lib/tokenNumberFormat.ts",
+      "output": "tokenNumberFormat.jsx",
+      "sourceSha256": "70fdf6bd5aeba8fc4bfe8f22029b00e040988bba6e91c3cfce1cab19d7081dfa",
+      "outputSha256": "10f708cfe98f5d1b04df4360133facfb52966a9fa9e682bd5c468a226781a55c"
+    },
+    {
+      "source": "components/coding-plan-quota-reset/CodingPlanQuotaResetDialog.tsx",
+      "output": "CodingPlanQuotaResetDialog.jsx",
+      "sourceSha256": "a2d7b064e48116726624a9bb9dd74c8e9dabc6b9edbd9113d4a4190d6537e2d0",
+      "outputSha256": "d8cb4fc0ec08171ad33f9aa690f6e99603f44176c0eb4fadd3c8d83f67e0acb9"
+    },
+    {
+      "source": "lib/codingPlanQuotaResetConfetti.ts",
+      "output": "codingPlanQuotaResetConfetti.jsx",
+      "sourceSha256": "58aac2d8c27073cf75ee5c05faaeda8f789af5363d037987f44703688105c21a",
+      "outputSha256": "76cca4e252231c99e73babdcfaaca0e6a0ea9759b30177f4dd157aa2ac3b41f4"
+    },
+    {
+      "source": "chat-input-toolbar/contextQuotaMeterGrid.ts",
+      "output": "contextQuotaMeterGrid.jsx",
+      "sourceSha256": "33941464d2ad1437b35932b93e6e02de82bf05d2ba124cd93cf6aab7978fb02a",
+      "outputSha256": "1742c33d6da616aca50129b1ab63feb466e18cc5b7d13adfc084e971580d7435"
+    },
+    {
+      "source": "lib/codingPlanQuotaPresentation.ts",
+      "output": "codingPlanQuotaPresentation.jsx",
+      "sourceSha256": "89424b629443648cee2dc803b83923ccea1db1190b751f0f8a19f3d506c52b18",
+      "outputSha256": "ea609cf190f8e6af40f68b5efac5b2352446c695d67cf91457288550e7ace52c"
+    },
+    {
+      "source": "lib/codingPlanQuotaResetUi.ts",
+      "output": "codingPlanQuotaResetUi.jsx",
+      "sourceSha256": "d7fe85d79a2b8ebac6e40c40190f4fe473acd3dc018d50f949a377384e1a4e75",
+      "outputSha256": "62d8923d02758ddf680c39c0ff1eba9a4faad1067a6b1a4200532aa66caf9b86"
+    },
+    {
+      "source": "components/coding-plan-quota-reset/CodingPlanQuotaResetAction.tsx",
+      "output": "CodingPlanQuotaResetAction.jsx",
+      "sourceSha256": "a2df73d414bc72bb8655f21fd791541fdfcc4e4ec7b988d835bc66b625f2f7c9",
+      "outputSha256": "7bac6cbee913b8582d16f7a862fefea0e3acb7d36275aadf3d6a463ed294313b"
+    },
+    {
+      "source": "components/coding-plan-quota-reset/CodingPlanQuotaResetOpportunity.tsx",
+      "output": "CodingPlanQuotaResetOpportunity.jsx",
+      "sourceSha256": "bb570df1221fb81bfccb0999293cb3940f072870b5703f416dc6fb2cea4f2478",
+      "outputSha256": "d7aee32fda0084a44bb19355b215614c710bf671b7e38a1603008a29b830f489"
+    },
+    {
+      "source": "components/coding-plan-quota-reset/buildCodingPlanQuotaResetDialogConfig.ts",
+      "output": "buildCodingPlanQuotaResetDialogConfig.jsx",
+      "sourceSha256": "b8b3dca1b7a3d7170d438d658d9fd44b1423695844737c8c1b7a16f2d2f39bef",
+      "outputSha256": "d42b719974228efa75b75a83a652e4631c8486042f02357a5240542b4d7a43a0"
+    },
+    {
+      "source": "settings/UsageStatsSection.tsx",
+      "output": "UsageStatsSection.jsx",
+      "sourceSha256": "5025e047a65ba79f1a452d0ffe5d5298dd3cdb902624b0bdee7ab94d8277e1e0",
+      "outputSha256": "c56aacf4d05da9d6bfa51ec3fc9f97eb6a9f5c9c22681731dc4d430fd0d3b8e2"
+    },
+    {
+      "source": "components/ui/chart.tsx",
+      "output": "chart.jsx",
+      "sourceSha256": "272efec5aa60d34665104b45341d9f2b8cad4480070bca91e9d5409713b6fecd",
+      "outputSha256": "4ef426a3d02cbf1e879f2b2a41abf62b92c88c5f1ff02b9f08ad4d58e7273dc2"
+    }
+  ]
+}

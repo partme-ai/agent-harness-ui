@@ -1,0 +1,8 @@
+@import "tailwindcss/theme.css";
+@import "./theme.css";
+@tailwind utilities;
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+@custom-variant data-open (&[data-state="open"]);
+@custom-variant data-closed (&[data-state="closed"]);
+@custom-variant data-selected (&[data-selected="true"]);
+@custom-variant data-disabled (&[data-disabled]);

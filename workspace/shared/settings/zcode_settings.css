@@ -1,0 +1,429 @@
+/* ZCode 29628c9 的设置尺寸与中性色；作用域限定为设置内容。 */
+html[data-theme] .app-shell .zs-center { --zc-bg:#f8f8f8; --zc-card:#fff; --zc-surface:rgba(13,13,13,.03); --zc-hover:rgba(13,13,13,.05); --zc-line:rgba(13,13,13,.1); --zc-text:#262626; --zc-subtle:#808080; --zc-muted:#a3a3a3; --zc-primary:#000; --zc-on-primary:#fff; background:var(--zc-bg); color:var(--zc-text); }
+html[data-theme="dark"] .app-shell .zs-center { --zc-bg:#161616; --zc-card:#202020; --zc-surface:rgba(255,255,255,.05); --zc-hover:rgba(255,255,255,.08); --zc-line:rgba(255,255,255,.1); --zc-text:#eee; --zc-subtle:#aaa; --zc-muted:#777; --zc-primary:#fff; --zc-on-primary:#000; }
+html[data-theme] .app-shell .zs-content:has(.zc-editor) > .zs-header { display:none; }
+html[data-theme] .app-shell .settings-window-bar { position:relative; }
+html[data-theme] .app-shell.shell-settings .settings-window-bar { background:#f8f8f8; }
+html[data-theme="dark"] .app-shell.shell-settings .settings-window-bar { background:#161616; }
+html[data-theme] .app-shell .zc-breadcrumb { display:flex; align-items:center; gap:12px; position:absolute; left:20px; top:0; height:48px; max-width:calc(100% - 80px); font-size:14px; color:var(--text); }
+html[data-theme] .app-shell .zc-breadcrumb button { border:0; padding:0; color:var(--text-2); background:none; white-space:nowrap; }
+html[data-theme] .app-shell .zc-breadcrumb svg { width:12px; height:12px; color:var(--text-3); flex:none; }
+html[data-theme] .app-shell .zc-breadcrumb span { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+html[data-theme] .app-shell .zs-center .zcode-settings { --ui-font-size:14px; font:var(--ui-font-size)/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color:var(--zc-text); min-width:0; }
+html[data-theme] .app-shell .zs-center .zcode-settings * { box-sizing:border-box; }
+html[data-theme] .app-shell .zs-center .zcode-settings :is(h1,h2,h3,h4,p,pre) { margin:0; font-size:inherit; color:inherit; }
+html[data-theme] .app-shell .zs-center .zcode-settings :is(button,input,textarea,select) { font:inherit; letter-spacing:normal; }
+html[data-theme] .app-shell .zs-center .zcode-settings button { cursor:pointer; border:0; background:transparent; color:inherit; padding:0; min-width:0; min-height:0; line-height:1.5; }
+html[data-theme] .app-shell .zs-center .zcode-settings button:disabled { cursor:not-allowed; opacity:.5; }
+html[data-theme] .app-shell .zs-center .zcode-settings svg { width:16px; height:16px; flex-shrink:0; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-button { display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; height:28px; gap:4px; padding:0 8px; border:1px solid transparent; border-radius:6px; white-space:nowrap; font-size:14px; line-height:20px; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-button[data-variant="default"] { background:var(--zc-primary); color:var(--zc-on-primary); }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-button[data-variant="outline"] { border-color:var(--zc-line); background:transparent; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-button[data-variant="secondary"], html[data-theme] .app-shell .zs-center .zcode-settings .zc-button:hover:not(:disabled) { background:var(--zc-hover); }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-button[data-variant="default"]:hover:not(:disabled) { opacity:.85; background:var(--zc-primary); }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-button[data-size="lg"] { height:32px; padding:0 10px; border-radius:8px; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-button[data-size="sm"] { height:24px; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-button[data-size="icon-md"] { width:28px; height:28px; padding:0; border-radius:8px; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-button[data-size="icon-sm"] { width:24px; height:24px; padding:0; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-input, html[data-theme] .app-shell .zs-center .zcode-settings .zc-select, html[data-theme] .app-shell .zs-center .zcode-settings .zc-textarea { width:100%; min-width:0; min-height:0; height:28px; padding:2px 8px; border:1px solid var(--zc-line); border-radius:6px; color:var(--zc-text); background:var(--zc-card); font-size:14px; line-height:20px; outline:none; box-shadow:none; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-input[data-size="lg"], html[data-theme] .app-shell .zs-center .zcode-settings .zc-select { height:32px; border-radius:8px; padding:4px 12px; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-input::placeholder, html[data-theme] .app-shell .zs-center .zcode-settings .zc-textarea::placeholder { color:var(--zc-muted); }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-select { width:auto; max-width:100%; padding-right:24px; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-textarea { height:auto; min-height:64px; padding:8px; resize:vertical; line-height:1.65; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-switch { position:relative; display:inline-flex; flex:none; align-items:center; width:32px; height:18px; padding:1px; border:0; border-radius:999px; background:color-mix(in srgb,var(--zc-primary) 30%,transparent); }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-switch[aria-checked="true"] { background:var(--zc-primary); }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-switch > span { width:16px; height:16px; border-radius:50%; background:var(--zc-on-primary); transform:translateX(0); }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-switch[aria-checked="true"] > span { transform:translateX(14px); }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-badge { display:inline-flex; align-items:center; gap:4px; padding:0 6px; border:1px solid var(--zc-line); border-radius:5px; font-size:12px; line-height:18px; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-avatar { display:inline-flex; align-items:center; justify-content:center; flex:none; border-radius:12px; color:var(--zc-subtle); overflow:hidden; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-avatar img { width:100%; height:100%; object-fit:contain; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-avatar > span { font-size:11px; font-weight:600; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-resource-search { margin-left:auto; flex:none; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-resource-tabs { display:flex; align-items:center; gap:4px; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-resource-tabs button { display:flex; align-items:center; gap:6px; height:28px; padding:0 12px; color:var(--zc-subtle); border-radius:999px; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-resource-tabs button[aria-selected="true"] { background:var(--zc-hover); color:var(--zc-text); }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-resource-tabs small { font-size:12px; color:var(--zc-subtle); }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-preview-note { color:var(--zc-muted); margin-top:24px; font-size:11px; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-inline-message { display:flex; justify-content:space-between; align-items:center; gap:8px; font-size:12px; color:var(--zc-subtle); }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-menu { position:relative; display:inline-flex; vertical-align:middle; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-menu-content { display:flex; flex-direction:column; position:absolute; left:0; top:calc(100% + 4px); padding:4px; min-width:180px; width:max-content; max-width:320px; background:var(--zc-card); border:1px solid var(--zc-line); border-radius:8px; z-index:50; box-shadow:0 4px 12px #0002; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-menu-end { left:auto; right:0; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-menu-content button { display:flex; align-items:center; gap:8px; padding:6px 8px; text-align:left; border-radius:4px; font-size:14px; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-menu-content button:hover, html[data-theme] .app-shell .zs-center .zcode-settings .zc-menu-content button:focus-visible { background:var(--zc-hover); }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-menu-content button > svg:last-child:not(:first-child) { margin-left:auto; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-menu-label { font-size:12px; padding:4px 8px; color:var(--zc-subtle); }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-menu-separator { height:1px; margin:4px -4px; background:var(--zc-line); }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-tooltip { display:inline-flex; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-reasoning { position:relative; display:inline-flex; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-reasoning > svg { position:absolute; left:8px; top:8px; color:var(--zc-subtle); }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-reasoning select { padding-left:28px; color:var(--zc-subtle); }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-markdown-icon { color:#42a5ff; font-size:10px; font-weight:700; white-space:nowrap; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-file-actions { display:inline-flex; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-file-actions .zc-button { height:28px; padding:0 4px; background:var(--zc-card); }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-file-actions > .zc-button { border-right:0; border-radius:6px 0 0 6px; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-file-actions > .zc-menu > .zc-button { border-radius:0 6px 6px 0; border-left:0; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-file-actions img { width:16px; height:16px; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-file-actions svg { width:12px; height:12px; color:var(--zc-muted); }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-segmented { display:flex; gap:8px; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-dialog-backdrop { position:fixed; inset:0; z-index:180; background:#0005; display:flex; align-items:center; justify-content:center; padding:24px; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-dialog { width:600px; max-width:100%; max-height:85vh; display:flex; flex-direction:column; background:var(--zc-card); border:1px solid var(--zc-line); border-radius:12px; overflow:hidden; box-shadow:0 12px 36px #0003; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-dialog header { display:flex; justify-content:space-between; align-items:center; padding:16px; border-bottom:1px solid var(--zc-line); }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-dialog h2 { font-size:16px; font-weight:600; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-dialog-body { padding:20px; overflow:auto; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-dialog footer { display:flex; justify-content:flex-end; gap:8px; padding:16px; border-top:1px solid var(--zc-line); }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-content-preview { white-space:pre-wrap; font:13px/1.7 ui-monospace,monospace; margin-top:16px; }
+html[data-theme] .app-shell .zs-center .zcode-settings :is(button,input,select,textarea):focus-visible { outline:2px solid #777; outline-offset:2px; }
+
+html[data-theme] .app-shell .zs-center .zcode-settings .flex {display:flex;}
+html[data-theme] .app-shell .zs-center .zcode-settings .inline-flex {display:inline-flex;}
+html[data-theme] .app-shell .zs-center .zcode-settings .block {display:block;}
+html[data-theme] .app-shell .zs-center .zcode-settings .inline {display:inline;}
+html[data-theme] .app-shell .zs-center .zcode-settings .grid {display:grid;}
+html[data-theme] .app-shell .zs-center .zcode-settings .inline-grid {display:inline-grid;}
+html[data-theme] .app-shell .zs-center .zcode-settings .hidden {display:none;}
+html[data-theme] .app-shell .zs-center .zcode-settings .relative {position:relative;}
+html[data-theme] .app-shell .zs-center .zcode-settings .absolute {position:absolute;}
+html[data-theme] .app-shell .zs-center .zcode-settings .flex-col {flex-direction:column;}
+html[data-theme] .app-shell .zs-center .zcode-settings .flex-wrap {flex-wrap:wrap;}
+html[data-theme] .app-shell .zs-center .zcode-settings .flex-nowrap {flex-wrap:nowrap;}
+html[data-theme] .app-shell .zs-center .zcode-settings .flex-1 {flex:1 1 0%;}
+html[data-theme] .app-shell .zs-center .zcode-settings .shrink-0 {flex-shrink:0;}
+html[data-theme] .app-shell .zs-center .zcode-settings .items-center {align-items:center;}
+html[data-theme] .app-shell .zs-center .zcode-settings .items-start {align-items:flex-start;}
+html[data-theme] .app-shell .zs-center .zcode-settings .items-end {align-items:flex-end;}
+html[data-theme] .app-shell .zs-center .zcode-settings .items-baseline {align-items:baseline;}
+html[data-theme] .app-shell .zs-center .zcode-settings .justify-between {justify-content:space-between;}
+html[data-theme] .app-shell .zs-center .zcode-settings .justify-center {justify-content:center;}
+html[data-theme] .app-shell .zs-center .zcode-settings .justify-end {justify-content:flex-end;}
+html[data-theme] .app-shell .zs-center .zcode-settings .min-w-0 {min-width:0;}
+html[data-theme] .app-shell .zs-center .zcode-settings .w-full {width:100%;}
+html[data-theme] .app-shell .zs-center .zcode-settings .max-w-full {max-width:100%;}
+html[data-theme] .app-shell .zs-center .zcode-settings .size-full {width:100%;height:100%;}
+html[data-theme] .app-shell .zs-center .zcode-settings .w-fit {width:fit-content;}
+html[data-theme] .app-shell .zs-center .zcode-settings .w-auto {width:auto;}
+html[data-theme] .app-shell .zs-center .zcode-settings .ml-auto {margin-left:auto;}
+html[data-theme] .app-shell .zs-center .zcode-settings .text-left {text-align:left;}
+html[data-theme] .app-shell .zs-center .zcode-settings .text-center {text-align:center;}
+html[data-theme] .app-shell .zs-center .zcode-settings .font-medium {font-weight:500;}
+html[data-theme] .app-shell .zs-center .zcode-settings .font-normal {font-weight:400;}
+html[data-theme] .app-shell .zs-center .zcode-settings .font-semibold {font-weight:600;}
+html[data-theme] .app-shell .zs-center .zcode-settings .font-mono {font-family:ui-monospace,SFMono-Regular,monospace;}
+html[data-theme] .app-shell .zs-center .zcode-settings .truncate {overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+html[data-theme] .app-shell .zs-center .zcode-settings .overflow-hidden {overflow:hidden;}
+html[data-theme] .app-shell .zs-center .zcode-settings .overflow-y-auto {overflow-y:auto;}
+html[data-theme] .app-shell .zs-center .zcode-settings .border {border:1px solid var(--zc-line);}
+html[data-theme] .app-shell .zs-center .zcode-settings .border-t {border-top:1px solid var(--zc-line);}
+html[data-theme] .app-shell .zs-center .zcode-settings .border-t-0 {border-top:0;}
+html[data-theme] .app-shell .zs-center .zcode-settings .border-dashed {border-style:dashed;}
+html[data-theme] .app-shell .zs-center .zcode-settings .border-border {border-color:var(--zc-line);}
+html[data-theme] .app-shell .zs-center .zcode-settings .border-input-border {border-color:var(--zc-line);}
+html[data-theme] .app-shell .zs-center .zcode-settings .border-border-hover {border-color:var(--zc-line);}
+html[data-theme] .app-shell .zs-center .zcode-settings .border-card {border-color:var(--zc-card);}
+html[data-theme] .app-shell .zs-center .zcode-settings .border-primary {border-color:var(--zc-primary);}
+html[data-theme] .app-shell .zs-center .zcode-settings .bg-surface {background:var(--zc-surface);}
+html[data-theme] .app-shell .zs-center .zcode-settings .bg-background {background:var(--zc-bg);}
+html[data-theme] .app-shell .zs-center .zcode-settings .bg-card {background:var(--zc-card);}
+html[data-theme] .app-shell .zs-center .zcode-settings .bg-input {background:var(--zc-card);}
+html[data-theme] .app-shell .zs-center .zcode-settings .bg-hover {background:var(--zc-hover);}
+html[data-theme] .app-shell .zs-center .zcode-settings .bg-surface-hover {background:var(--zc-hover);}
+html[data-theme] .app-shell .zs-center .zcode-settings .bg-border {background:var(--zc-line);}
+html[data-theme] .app-shell .zs-center .zcode-settings .bg-border\/50 {background:color-mix(in srgb,var(--zc-line) 50%,transparent);}
+html[data-theme] .app-shell .zs-center .zcode-settings .bg-primary {background:var(--zc-primary);}
+html[data-theme] .app-shell .zs-center .zcode-settings .bg-transparent {background:transparent;}
+html[data-theme] .app-shell .zs-center .zcode-settings .bg-destructive {background:#ef4444;}
+html[data-theme] .app-shell .zs-center .zcode-settings .text-foreground {color:var(--zc-text);}
+html[data-theme] .app-shell .zs-center .zcode-settings .text-foreground-subtle {color:var(--zc-subtle);}
+html[data-theme] .app-shell .zs-center .zcode-settings .text-foreground-subtlest {color:var(--zc-muted);}
+html[data-theme] .app-shell .zs-center .zcode-settings .text-destructive {color:#ef4444;}
+html[data-theme] .app-shell .zs-center .zcode-settings .text-primary-foreground {color:var(--zc-on-primary);}
+html[data-theme] .app-shell .zs-center .zcode-settings .text-transparent {color:transparent;}
+html[data-theme] .app-shell .zs-center .zcode-settings .text-green-500 {color:#22c55e;}
+html[data-theme] .app-shell .zs-center .zcode-settings .text-yellow-500 {color:#eab308;}
+html[data-theme] .app-shell .zs-center .zcode-settings .text-red-500 {color:#ef4444;}
+html[data-theme] .app-shell .zs-center .zcode-settings .rounded-full {border-radius:999px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .rounded-xl {border-radius:12px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .rounded-lg {border-radius:8px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .rounded-md {border-radius:6px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .rounded-sm {border-radius:2px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .leading-none {line-height:1;}
+html[data-theme] .app-shell .zs-center .zcode-settings .leading-6 {line-height:24px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .shadow-none {box-shadow:none;}
+html[data-theme] .app-shell .zs-center .zcode-settings .shadow-xs {box-shadow:0 1px 2px #0001;}
+html[data-theme] .app-shell .zs-center .zcode-settings .ring-1 {box-shadow:0 0 0 1px var(--zc-line);}
+html[data-theme] .app-shell .zs-center .zcode-settings .ring-border {--zc-ring:var(--zc-line);}
+html[data-theme] .app-shell .zs-center .zcode-settings .pointer-events-none {pointer-events:none;}
+html[data-theme] .app-shell .zs-center .zcode-settings .cursor-default {cursor:default;}
+html[data-theme] .app-shell .zs-center .zcode-settings .cursor-not-allowed {cursor:not-allowed;}
+html[data-theme] .app-shell .zs-center .zcode-settings .outline-none {outline:none;}
+html[data-theme] .app-shell .zs-center .zcode-settings .resize-y {resize:vertical;}
+html[data-theme] .app-shell .zs-center .zcode-settings .fill-current {fill:currentColor;}
+html[data-theme] .app-shell .zs-center .zcode-settings .col-span-2 {grid-column:span 2;}
+html[data-theme] .app-shell .zs-center .zcode-settings .col-span-1 {grid-column:span 1;}
+html[data-theme] .app-shell .zs-center .zcode-settings .col-start-2 {grid-column-start:2;}
+html[data-theme] .app-shell .zs-center .zcode-settings .col-start-auto {grid-column-start:auto;}
+html[data-theme] .app-shell .zs-center .zcode-settings .-translate-y-1\/2 {transform:translateY(-50%);}
+html[data-theme] .app-shell .zs-center .zcode-settings .top-1\/2 {top:50%;}
+html[data-theme] .app-shell .zs-center .zcode-settings .transition-colors {transition:background-color .15s,color .15s;}
+html[data-theme] .app-shell .zs-center .zcode-settings .transition-\[left\] {transition:left .15s;}
+html[data-theme] .app-shell .zs-center .zcode-settings .animate-spin {animation:zc-spin 1s linear infinite;}
+html[data-theme] .app-shell .zs-center .zcode-settings .text-ui-base {font-size:calc(var(--ui-font-size) + 0px);line-height:1.5;}
+html[data-theme] .app-shell .zs-center .zcode-settings .text-ui-base.leading-6 {line-height:24px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .text-ui-sm {font-size:calc(var(--ui-font-size) + -2px);line-height:1.5;}
+html[data-theme] .app-shell .zs-center .zcode-settings .text-ui-xl {font-size:calc(var(--ui-font-size) + 4px);line-height:1.5;}
+html[data-theme] .app-shell .zs-center .zcode-settings .px-0 {padding-inline:0px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .py-0 {padding-block:0px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .mt-0 {margin-top:0px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .w-0 {width:0px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .py-0\.5 {padding-block:2px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .mt-0\.5 {margin-top:2px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .gap-1 {gap:4px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .gap-y-1 {row-gap:4px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .p-1 {padding:4px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .px-1 {padding-inline:4px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .py-1 {padding-block:4px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .pt-1 {padding-top:4px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .pb-1 {padding-bottom:4px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .mt-1 {margin-top:4px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .mb-1 {margin-bottom:4px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .h-1 {height:4px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .min-h-1 {min-height:4px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .top-1 {top:4px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .right-1 {right:4px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .bottom-1 {bottom:4px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .size-1 {width:4px;height:4px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .-right-1 {right:-4px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .-bottom-1 {bottom:-4px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .gap-1\.5 {gap:6px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .p-1\.5 {padding:6px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .px-1\.5 {padding-inline:6px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .py-1\.5 {padding-block:6px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .mb-1\.5 {margin-bottom:6px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .size-1\.5 {width:6px;height:6px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .gap-2 {gap:8px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .p-2 {padding:8px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .px-2 {padding-inline:8px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .py-2 {padding-block:8px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .mt-2 {margin-top:8px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .w-2 {width:8px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .h-2 {height:8px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .min-h-2 {min-height:8px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .size-2 {width:8px;height:8px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .py-2\.5 {padding-block:10px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .size-2\.5 {width:10px;height:10px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .gap-3 {gap:12px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .gap-x-3 {column-gap:12px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .p-3 {padding:12px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .px-3 {padding-inline:12px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .py-3 {padding-block:12px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .pt-3 {padding-top:12px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .mt-3 {margin-top:12px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .mr-3 {margin-right:12px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .left-3 {left:12px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .size-3 {width:12px;height:12px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .size-3\.5 {width:14px;height:14px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .gap-4 {gap:16px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .p-4 {padding:16px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .px-4 {padding-inline:16px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .w-4 {width:16px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .h-4 {height:16px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .max-w-4 {max-width:16px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .size-4 {width:16px;height:16px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .gap-5 {gap:20px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .p-5 {padding:20px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .w-5 {width:20px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .h-5 {height:20px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .min-h-5 {min-height:20px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .max-h-5 {max-height:20px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .w-6 {width:24px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .max-w-6 {max-width:24px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .size-6 {width:24px;height:24px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .h-7 {height:28px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .min-h-7 {min-height:28px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .max-h-7 {max-height:28px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .py-8 {padding-block:32px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .h-8 {height:32px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .pl-9 {padding-left:36px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .pr-9 {padding-right:36px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .h-9 {height:36px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .size-9 {width:36px;height:36px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .py-10 {padding-block:40px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .h-16 {height:64px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .min-h-16 {min-height:64px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .w-28 {width:112px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .h-28 {height:112px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .min-h-28 {min-height:112px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .w-48 {width:192px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .max-w-48 {max-width:192px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .w-56 {width:224px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .h-56 {height:224px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .max-h-56 {max-height:224px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .w-64 {width:256px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .max-w-64 {max-width:256px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .h-72 {height:288px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .max-h-72 {max-height:288px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .grid-cols-1 {grid-template-columns:repeat(1,minmax(0,1fr));}
+html[data-theme] .app-shell .zs-center .zcode-settings .grid-cols-2 {grid-template-columns:repeat(2,minmax(0,1fr));}
+html[data-theme] .app-shell .zs-center .zcode-settings .grid-cols-3 {grid-template-columns:repeat(3,minmax(0,1fr));}
+html[data-theme] .app-shell .zs-center .zcode-settings .grid-cols-8 {grid-template-columns:repeat(8,minmax(0,1fr));}
+html[data-theme] .app-shell .zs-center .zcode-settings .grid-cols-\[auto_minmax\(0\,1fr\)_auto\] {grid-template-columns:auto minmax(0,1fr) auto;}
+html[data-theme] .app-shell .zs-center .zcode-settings .grid-cols-\[auto_minmax\(0\,1fr\)\] {grid-template-columns:auto minmax(0,1fr);}
+html[data-theme] .app-shell .zs-center .zcode-settings .grid-cols-\[minmax\(0\,1fr\)_192px\] {grid-template-columns:minmax(0,1fr) 192px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .grid-cols-\[minmax\(0\,1fr\)_280px\] {grid-template-columns:minmax(0,1fr) 280px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .grid-cols-\[minmax\(12rem\,14rem\)_auto_minmax\(0\,1fr\)\] {grid-template-columns:minmax(192px,224px) auto minmax(0,1fr);}
+html[data-theme] .app-shell .zs-center .zcode-settings .opacity-0 {opacity:0;}
+html[data-theme] .app-shell .zs-center .zcode-settings .opacity-60 {opacity:0.6;}
+html[data-theme] .app-shell .zs-center .zcode-settings .opacity-100 {opacity:1;}
+html[data-theme] .app-shell .zs-center .zcode-settings .z-10 {z-index:10;}
+html[data-theme] .app-shell .zs-center .zcode-settings .line-clamp-1 {display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;overflow:hidden;}
+html[data-theme] .app-shell .zs-center .zcode-settings .line-clamp-2 {display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;}
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-color-yellow {background:#fcd34d;}
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-color-red {background:#fda4af;}
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-color-orange {background:#fdba74;}
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-color-green {background:#6ee7b7;}
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-color-cyan {background:#67e8f9;}
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-color-blue {background:#7dd3fc;}
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-color-purple {background:#c4b5fd;}
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-color-pink {background:#f9a8d4;}
+html[data-theme] .app-shell .zs-center .zcode-settings .p-px {padding:1px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .h-px {height:1px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .w-px {width:1px;}
+@media(min-width:640px){html[data-theme] .app-shell .zs-center .zcode-settings .sm\:flex {display:flex;}
+}
+@media(min-width:640px){html[data-theme] .app-shell .zs-center .zcode-settings .sm\:inline {display:inline;}
+}
+@media(min-width:640px){html[data-theme] .app-shell .zs-center .zcode-settings .sm\:grid {display:grid;}
+}
+@media(min-width:640px){html[data-theme] .app-shell .zs-center .zcode-settings .sm\:shrink-0 {flex-shrink:0;}
+}
+@media(min-width:640px){html[data-theme] .app-shell .zs-center .zcode-settings .sm\:items-center {align-items:center;}
+}
+@media(min-width:640px){html[data-theme] .app-shell .zs-center .zcode-settings .sm\:ml-auto {margin-left:auto;}
+}
+@media(min-width:640px){html[data-theme] .app-shell .zs-center .zcode-settings .sm\:col-span-1 {grid-column:span 1;}
+}
+@media(min-width:640px){html[data-theme] .app-shell .zs-center .zcode-settings .sm\:col-start-auto {grid-column-start:auto;}
+}
+@media(min-width:640px){html[data-theme] .app-shell .zs-center .zcode-settings .sm\:w-6 {width:24px;}
+}
+@media(min-width:640px){html[data-theme] .app-shell .zs-center .zcode-settings .sm\:w-64 {width:256px;}
+}
+@media(min-width:640px){html[data-theme] .app-shell .zs-center .zcode-settings .sm\:grid-cols-2 {grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media(min-width:640px){html[data-theme] .app-shell .zs-center .zcode-settings .sm\:grid-cols-\[auto_minmax\(0\,1fr\)_auto\] {grid-template-columns:auto minmax(0,1fr) auto;}
+}
+@media(min-width:640px){html[data-theme] .app-shell .zs-center .zcode-settings .sm\:grid-cols-\[minmax\(0\,1fr\)_280px\] {grid-template-columns:minmax(0,1fr) 280px;}
+}
+@media(min-width:640px){html[data-theme] .app-shell .zs-center .zcode-settings .sm\:zc-color-yellow {background:#fcd34d;}
+}
+@media(min-width:640px){html[data-theme] .app-shell .zs-center .zcode-settings .sm\:zc-color-red {background:#fda4af;}
+}
+@media(min-width:640px){html[data-theme] .app-shell .zs-center .zcode-settings .sm\:zc-color-orange {background:#fdba74;}
+}
+@media(min-width:640px){html[data-theme] .app-shell .zs-center .zcode-settings .sm\:zc-color-green {background:#6ee7b7;}
+}
+@media(min-width:640px){html[data-theme] .app-shell .zs-center .zcode-settings .sm\:zc-color-cyan {background:#67e8f9;}
+}
+@media(min-width:640px){html[data-theme] .app-shell .zs-center .zcode-settings .sm\:zc-color-blue {background:#7dd3fc;}
+}
+@media(min-width:640px){html[data-theme] .app-shell .zs-center .zcode-settings .sm\:zc-color-purple {background:#c4b5fd;}
+}
+@media(min-width:640px){html[data-theme] .app-shell .zs-center .zcode-settings .sm\:zc-color-pink {background:#f9a8d4;}
+}
+@media(min-width:768px){html[data-theme] .app-shell .zs-center .zcode-settings .md\:grid {display:grid;}
+}
+@media(min-width:768px){html[data-theme] .app-shell .zs-center .zcode-settings .md\:items-start {align-items:flex-start;}
+}
+@media(min-width:768px){html[data-theme] .app-shell .zs-center .zcode-settings .md\:w-auto {width:auto;}
+}
+@media(min-width:768px){html[data-theme] .app-shell .zs-center .zcode-settings .md\:w-4 {width:16px;}
+}
+@media(min-width:768px){html[data-theme] .app-shell .zs-center .zcode-settings .md\:w-48 {width:192px;}
+}
+@media(min-width:768px){html[data-theme] .app-shell .zs-center .zcode-settings .md\:grid-cols-\[minmax\(12rem\,14rem\)_auto_minmax\(0\,1fr\)\] {grid-template-columns:minmax(192px,224px) auto minmax(0,1fr);}
+}
+@media(min-width:768px){html[data-theme] .app-shell .zs-center .zcode-settings .md\:zc-color-yellow {background:#fcd34d;}
+}
+@media(min-width:768px){html[data-theme] .app-shell .zs-center .zcode-settings .md\:zc-color-red {background:#fda4af;}
+}
+@media(min-width:768px){html[data-theme] .app-shell .zs-center .zcode-settings .md\:zc-color-orange {background:#fdba74;}
+}
+@media(min-width:768px){html[data-theme] .app-shell .zs-center .zcode-settings .md\:zc-color-green {background:#6ee7b7;}
+}
+@media(min-width:768px){html[data-theme] .app-shell .zs-center .zcode-settings .md\:zc-color-cyan {background:#67e8f9;}
+}
+@media(min-width:768px){html[data-theme] .app-shell .zs-center .zcode-settings .md\:zc-color-blue {background:#7dd3fc;}
+}
+@media(min-width:768px){html[data-theme] .app-shell .zs-center .zcode-settings .md\:zc-color-purple {background:#c4b5fd;}
+}
+@media(min-width:768px){html[data-theme] .app-shell .zs-center .zcode-settings .md\:zc-color-pink {background:#f9a8d4;}
+}
+@media(min-width:1024px){html[data-theme] .app-shell .zs-center .zcode-settings .lg\:grid {display:grid;}
+}
+@media(min-width:1024px){html[data-theme] .app-shell .zs-center .zcode-settings .lg\:grid-cols-3 {grid-template-columns:repeat(3,minmax(0,1fr));}
+}
+@media(min-width:1024px){html[data-theme] .app-shell .zs-center .zcode-settings .lg\:zc-color-yellow {background:#fcd34d;}
+}
+@media(min-width:1024px){html[data-theme] .app-shell .zs-center .zcode-settings .lg\:zc-color-red {background:#fda4af;}
+}
+@media(min-width:1024px){html[data-theme] .app-shell .zs-center .zcode-settings .lg\:zc-color-orange {background:#fdba74;}
+}
+@media(min-width:1024px){html[data-theme] .app-shell .zs-center .zcode-settings .lg\:zc-color-green {background:#6ee7b7;}
+}
+@media(min-width:1024px){html[data-theme] .app-shell .zs-center .zcode-settings .lg\:zc-color-cyan {background:#67e8f9;}
+}
+@media(min-width:1024px){html[data-theme] .app-shell .zs-center .zcode-settings .lg\:zc-color-blue {background:#7dd3fc;}
+}
+@media(min-width:1024px){html[data-theme] .app-shell .zs-center .zcode-settings .lg\:zc-color-purple {background:#c4b5fd;}
+}
+@media(min-width:1024px){html[data-theme] .app-shell .zs-center .zcode-settings .lg\:zc-color-pink {background:#f9a8d4;}
+}
+html[data-theme] .app-shell .zs-center .zcode-settings .hover\:border:hover {border:1px solid var(--zc-line);}
+html[data-theme] .app-shell .zs-center .zcode-settings .hover\:border-input-border:hover {border-color:var(--zc-line);}
+html[data-theme] .app-shell .zs-center .zcode-settings .hover\:bg-surface:hover {background:var(--zc-surface);}
+html[data-theme] .app-shell .zs-center .zcode-settings .hover\:bg-input:hover {background:var(--zc-card);}
+html[data-theme] .app-shell .zs-center .zcode-settings .hover\:bg-hover:hover {background:var(--zc-hover);}
+html[data-theme] .app-shell .zs-center .zcode-settings .hover\:bg-surface-hover:hover {background:var(--zc-hover);}
+html[data-theme] .app-shell .zs-center .zcode-settings .hover\:bg-destructive:hover {background:#ef4444;}
+html[data-theme] .app-shell .zs-center .zcode-settings .hover\:text-foreground:hover {color:var(--zc-text);}
+html[data-theme] .app-shell .zs-center .zcode-settings .hover\:text-destructive:hover {color:#ef4444;}
+html[data-theme] .app-shell .zs-center .zcode-settings .hover\:zc-color-yellow:hover {background:#fcd34d;}
+html[data-theme] .app-shell .zs-center .zcode-settings .hover\:zc-color-red:hover {background:#fda4af;}
+html[data-theme] .app-shell .zs-center .zcode-settings .hover\:zc-color-orange:hover {background:#fdba74;}
+html[data-theme] .app-shell .zs-center .zcode-settings .hover\:zc-color-green:hover {background:#6ee7b7;}
+html[data-theme] .app-shell .zs-center .zcode-settings .hover\:zc-color-cyan:hover {background:#67e8f9;}
+html[data-theme] .app-shell .zs-center .zcode-settings .hover\:zc-color-blue:hover {background:#7dd3fc;}
+html[data-theme] .app-shell .zs-center .zcode-settings .hover\:zc-color-purple:hover {background:#c4b5fd;}
+html[data-theme] .app-shell .zs-center .zcode-settings .hover\:zc-color-pink:hover {background:#f9a8d4;}
+html[data-theme] .app-shell .zs-center .zcode-settings .first\:border:first-child {border:1px solid var(--zc-line);}
+html[data-theme] .app-shell .zs-center .zcode-settings .first\:border-t:first-child {border-top:1px solid var(--zc-line);}
+html[data-theme] .app-shell .zs-center .zcode-settings .first\:border-t-0:first-child {border-top:0;}
+html[data-theme] .app-shell .zs-center .zcode-settings .first\:zc-color-yellow:first-child {background:#fcd34d;}
+html[data-theme] .app-shell .zs-center .zcode-settings .first\:zc-color-red:first-child {background:#fda4af;}
+html[data-theme] .app-shell .zs-center .zcode-settings .first\:zc-color-orange:first-child {background:#fdba74;}
+html[data-theme] .app-shell .zs-center .zcode-settings .first\:zc-color-green:first-child {background:#6ee7b7;}
+html[data-theme] .app-shell .zs-center .zcode-settings .first\:zc-color-cyan:first-child {background:#67e8f9;}
+html[data-theme] .app-shell .zs-center .zcode-settings .first\:zc-color-blue:first-child {background:#7dd3fc;}
+html[data-theme] .app-shell .zs-center .zcode-settings .first\:zc-color-purple:first-child {background:#c4b5fd;}
+html[data-theme] .app-shell .zs-center .zcode-settings .first\:zc-color-pink:first-child {background:#f9a8d4;}
+html[data-theme] .app-shell .zs-center .zcode-settings .space-y-0 > :not([hidden]) + :not([hidden]) {margin-top:0px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .space-y-1 > :not([hidden]) + :not([hidden]) {margin-top:4px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .space-y-1\.5 > :not([hidden]) + :not([hidden]) {margin-top:6.0px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .space-y-2 > :not([hidden]) + :not([hidden]) {margin-top:8px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .space-y-3 > :not([hidden]) + :not([hidden]) {margin-top:12px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .space-y-4 > :not([hidden]) + :not([hidden]) {margin-top:16px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .space-y-5 > :not([hidden]) + :not([hidden]) {margin-top:20px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .space-y-6 > :not([hidden]) + :not([hidden]) {margin-top:24px;}
+@keyframes zc-spin {to{transform:rotate(360deg)}}
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-input[type="search"] {height:36px;border-radius:12px;padding-left:36px;}
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-input[type="search"]::-webkit-search-cancel-button {appearance:none;}
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-resource-search {width:256px;}
+html[data-theme] .app-shell .zs-center .zcode-settings [class*="group/plugin-row"]:hover .opacity-0 {opacity:1;}
+@media(max-width:1000px){html[data-theme] .app-shell .zs-center .zcode-settings .zc-resource-search {margin-left:0;}}
+@media(max-width:767px){html[data-theme] .app-shell .zs-center .zcode-settings .zc-resource-search {width:100%;} html[data-theme] .app-shell .zs-center .zcode-settings .zc-editor form > .grid {grid-template-columns:1fr;} }
+/* 原表单使用横向尾部操作和按内容增长的文本框。 */
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-editor { padding-top:32px; }
+html[data-theme] .app-shell .zs-center .zcode-settings .zc-textarea { field-sizing:content; }
+@media(min-width:640px) { html[data-theme] .app-shell .zs-center .zcode-settings .sm\:flex-row { flex-direction:row; } }
+html[data-theme] .app-shell .zs-center .zs-header { margin:0; }
+html[data-theme] .app-shell .zs-center .zs-header h1 { line-height:36px; }
+html[data-theme] .app-shell .zs-center { --bg:var(--zc-bg); --surface:var(--zc-card); --surface-2:var(--zc-bg); --surface-3:var(--zc-hover); --text:var(--zc-text); --text-2:var(--zc-subtle); --text-3:var(--zc-muted); --line:var(--zc-line); --accent-strong:var(--zc-primary); }

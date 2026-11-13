@@ -1,0 +1,47 @@
+{
+  "upstream": "https://github.com/zai-org/ZCode.git",
+  "revision": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "license": "MIT",
+  "kind": "layout-and-local-interaction-adaptation",
+  "files": [
+    {
+      "source": "packages/ui/src/app-shell/WorkspaceShellLayout.tsx",
+      "sha256": "57ab98aaf8f6953f7a31575b201546982d9b1d7969c1e426f4b9921b2c4e2210"
+    },
+    {
+      "source": "packages/ui/src/WorkspaceSidebar.tsx",
+      "sha256": "312065bd80ff3a74b498dde96270a9f430f86808933625b02e4a1a6cbd56bf49"
+    },
+    {
+      "source": "packages/ui/src/WorkspaceHeader.tsx",
+      "sha256": "2b3fee1655919699078f494ecb53918a39b78de95be54240a7652f6eb82b2b0d"
+    },
+    {
+      "source": "packages/ui/src/v4/ConversationQueuePanel.tsx",
+      "sha256": "5e9a446f981e895add453b765b379ae09b942d56748b6474b9535a489328b213"
+    },
+    {
+      "source": "packages/ui/src/v4/ConversationStatusPanel.tsx",
+      "sha256": "6d4d0efc27e23b635a59f047c04aadfab7aab73b84d2c3991a6007c174a61da4"
+    },
+    {
+      "source": "packages/ui/src/v4/ConversationDraftEmptyState.tsx",
+      "sha256": "e6e351ade21bb2ef5250ebf6ceabb7c793afe9a120b20393c90c7ed092121933"
+    },
+    {
+      "source": "packages/ui/src/styles.css",
+      "sha256": "22d5b58e44cdebdbe7154c418ee05fef6dde689e384f0dd590d4057739487be7"
+    }
+  ],
+  "targets": [
+    "desktop/DesktopLayout.jsx",
+    "desktop/desktop_layout.css",
+    "shared/Conversation.jsx",
+    "shared/queue_state.js"
+  ],
+  "boundaries": [
+    "No native window controls",
+    "No service queue ACK or stop-current",
+    "No real goal, terminal, or share service"
+  ]
+}

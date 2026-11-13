@@ -1,0 +1,163 @@
+{
+  "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "files": [
+    {
+      "output": "MemorySettingsViewer.jsx",
+      "source": "settings/MemorySettingsViewer.tsx",
+      "sourceSha256": "662c049bd1c4c68f1bbbdf67b19ac2ca6d01f86d6c41c3de2d783c1ec15f2289",
+      "outputSha256": "29044f8059c462ba171832619cd6a37ac30e56d2760389166c0349bd4f3e8c2d"
+    },
+    {
+      "output": "MemorySettingsSection.jsx",
+      "source": "settings/MemorySettingsSection.tsx",
+      "sourceSha256": "5838865b128e7950f8dab1a9eb88f7e4e55a3320ce4fa644d47c4383169707ed",
+      "outputSha256": "d7d7382622757676ee1dc9e998f98f8f08cc2bdafc9916e9770867048b9998bd"
+    },
+    {
+      "output": "SettingsResourceGroup.jsx",
+      "source": "settings/SettingsResourceGroup.tsx",
+      "sourceSha256": "13d3883aac31f69e56a0317340d2c2a61313aaff6eabad9a6fb0ff7ff78c2246",
+      "outputSha256": "cb142486f5553e56a63d94d811d18b6fd5b87db414c35020176ee4820dc5f9c0"
+    },
+    {
+      "output": "SettingsResourceGroupHeader.jsx",
+      "source": "settings/SettingsResourceGroupHeader.tsx",
+      "sourceSha256": "20df4e1eadfaf8b9a4315d4c42b588e5206ca5f39baf19a81020f062cffdf6a0",
+      "outputSha256": "df765fdcf7eb0f7d30ce009930a8d319895df1716cacb82e1f17b56776122d3a"
+    },
+    {
+      "output": "SettingsResourceHeaderActions.jsx",
+      "source": "settings/SettingsResourceHeaderActions.tsx",
+      "sourceSha256": "7adfc9492b72f6801fcecf072089d758880f0f29269b5188b90c88ae4a748b05",
+      "outputSha256": "d70cc55200afbc411e5a903ce1ef330bb27d8c4c4c87df835076ea355fc58f56"
+    },
+    {
+      "output": "SettingsSearchInput.jsx",
+      "source": "settings/SettingsSearchInput.tsx",
+      "sourceSha256": "0667fc8747f934d6ff45fcf71f0ba864f12d6e6e1a50eef5117bc69562c646bd",
+      "outputSha256": "027a8832241717f1f9cca5778f67af8993168a79d8fb547e0a0bfd84c56686c7"
+    },
+    {
+      "output": "PluginInstallEmptyState.jsx",
+      "source": "settings/PluginInstallEmptyState.tsx",
+      "sourceSha256": "08d741d089b0ceb82ab57b9948d4236f81fbe237c487305ba7d8a75fcf387746",
+      "outputSha256": "1aed73b736a559a91104a183695b1a040522f25d4f66b870325c3a2c38ca4d47"
+    },
+    {
+      "output": "SettingsFormActions.jsx",
+      "source": "settings/SettingsFormActions.tsx",
+      "sourceSha256": "6b66c06aefd0dcb65f4c15961e2a150044859cad2af73e4d263f8c869b898773",
+      "outputSha256": "92d7db8d0ed573e5527dadf52b20db4bed7e41a16baede3ddbe30deed682b4d2"
+    },
+    {
+      "output": "SettingsFormTextarea.jsx",
+      "source": "settings/SettingsFormTextarea.tsx",
+      "sourceSha256": "61a74ede85290ea5e90c04fddc89ceb55605ab6b61b059fe0eeb19388b2ae3b6",
+      "outputSha256": "4b124434d4419bd246c4fc6f7a89eae034fb7f2ba952fb7d63271d0c35ba91ba"
+    },
+    {
+      "output": "PluginScopeMenu.jsx",
+      "source": "settings/PluginScopeMenu.tsx",
+      "sourceSha256": "6c0bb084b10f39a96edc417403cd862ed86cfffb4dec72d37dc4047bed2d00fc",
+      "outputSha256": "fd6c83a9f9738beae08ce18f374f1013dd02f76391404a04e36a7db110c58d64"
+    },
+    {
+      "output": "CommandCard.jsx",
+      "source": "settings/CommandCard.tsx",
+      "sourceSha256": "94ce0e2482eb9e9920fe8e15f186c77b61ce2af39f550bec5c47444c588528bb",
+      "outputSha256": "fc6e9d854dae7800d31ba0c03f8bc033c581a9a1a2c5d9f71cef74024ac07b15"
+    },
+    {
+      "output": "CommandForm.jsx",
+      "source": "settings/CommandForm.tsx",
+      "sourceSha256": "0ea8022dad719eb8aec1100299ff954bf9d8f2de70716cf1ca3b083a4eb59561",
+      "outputSha256": "6ab5e97ae76b4a47128dd969e9b23bf62e905e869a14e72326ecba1b263b75de"
+    },
+    {
+      "output": "HookForm.jsx",
+      "source": "settings/HookForm.tsx",
+      "sourceSha256": "325d9aa1a142fe607683feb0815b5e8bd5d94e75a6fec0f1ab9675dd6cabe288",
+      "outputSha256": "24b86aa231f5cc9e0964d74bcca2351c8e6664f8386daac30659c99d32b1b12b"
+    },
+    {
+      "output": "HooksList.jsx",
+      "source": "settings/HooksList.tsx",
+      "sourceSha256": "3ff125270a3e0d76cd05e46adcdbd70f4e1d03f9a7751c0a7779e5db4ddf8acc",
+      "outputSha256": "c68a57bf4338219558f33e9cb57932b3bd50412fb1707f6aaf762094cb363ef9"
+    },
+    {
+      "output": "McpServerForm.jsx",
+      "source": "settings/McpServerForm.tsx",
+      "sourceSha256": "67c9ca3284c69baee8c674542203e12f749fd6675e3da555395857ef75cd2fe8",
+      "outputSha256": "8407461be878b64f993b09af132a10531ec3b0bed9858bedbef938ddfe3dbf6b"
+    },
+    {
+      "output": "McpServerList.jsx",
+      "source": "settings/McpServerList.tsx",
+      "sourceSha256": "b6d995f8b215f1db768abdff486da8e36e9ac5c729ddef225e9966609cd21794",
+      "outputSha256": "a8e917b110657eec252f00846fbd21a52e34c0e804acadb83a70fda8509b455d"
+    },
+    {
+      "output": "SettingsScopeBadge.jsx",
+      "source": "settings/SettingsScopeBadge.tsx",
+      "sourceSha256": "72e029ff8a18c511f917da83b994adba55717607e7121cb877c11cda25c72c84",
+      "outputSha256": "08c4c69cb063038163ed83bf900919225448e6eb0450db1f561439bcb9936639"
+    },
+    {
+      "output": "settingsResourceRowInteraction.js",
+      "source": "settings/settingsResourceRowInteraction.ts",
+      "sourceSha256": "d5dbf507225aee2162ab52f33d5d2b6fe15f2353321abd8c09296a8d181d176f",
+      "outputSha256": "d9e7207beba6dfcea8dfff52fc04ed18b30233bfa6de853a70b67370a2ba085a"
+    },
+    {
+      "output": "mcpSettingsShared.js",
+      "source": "settings/mcpSettingsShared.ts",
+      "sourceSha256": "a4241c93167b087afebe9d669ffe4fa5b5137a4768cb0045d8eeb8a4f220ab98",
+      "outputSha256": "2dfa5141eb9b595d60538a15ce966aa59314dc23f528be0eee98390a9dbdce97"
+    },
+    {
+      "output": "memoryUpdatedAt.js",
+      "source": "settings/memoryUpdatedAt.ts",
+      "sourceSha256": "c9ddf7168f4785c301b7b4721d2a0f48d3cc2677c885d82230b3f8deaf40be39",
+      "outputSha256": "ca579983779aefe55dd74b4f003c238f945061fbdcf9582f09387d923fbaf403"
+    },
+    {
+      "output": "SubagentViews.jsx",
+      "source": "settings/SubagentsSection.tsx",
+      "sourceSha256": "6c20698aac455217b60c291c24479e2965ca4fd581e05a5680f10d0257572183",
+      "outputSha256": "520f01ebe90148809eaa48129be3fa90e76138df260d3e1d6141668d3c95fe35"
+    },
+    {
+      "output": "SkillRow.jsx",
+      "source": "settings/SkillsSection.tsx",
+      "sourceSha256": "08362ed2dd3e492e04d95ba656b07c22c99264be6a74893a5ad46b7fdec5d021",
+      "outputSha256": "e69db7b8ee47dd1547676dbc2f63d3c62f7d1435e5cbe4ff6db11d4c729c8ad7"
+    },
+    {
+      "output": "PluginRows.jsx",
+      "source": "settings/PluginsSection.tsx",
+      "sourceSha256": "65954a8df4701a1aebdd6fba0e88ef370b45d88a739ee601c838acea0a65a5d6",
+      "outputSha256": "46bdf7e422c41c2eea544454244315a16170f308cd0a6b03fd76c20f8ed94f8d"
+    },
+    {
+      "output": "SettingsPageParts.jsx",
+      "source": "settings/SettingsPageParts.tsx",
+      "sourceSha256": "15e03f262fe165692fa3716e496dd61cc2529000edb82e8122ad1e1b8660894b",
+      "outputSha256": "a1781b2f8019cd520533b47886c90f3ca4c24383502ceab964b4a53c933cfe68"
+    }
+  ],
+  "assets": [
+    {
+      "output": "messages.json",
+      "source": "i18n/locales/zh-CN.ts",
+      "sourceSha256": "7fb2202f7179a24fcbb2b1bc6f820da621fa205f7f6faa4ccd53120734ca9fc6",
+      "outputSha256": "b42f60159784431f8a2c5e9fc9f946986bb2f391cb3bf51b6cb81c2384be4169"
+    },
+    {
+      "output": "../provider_icons/finder.png",
+      "source": "onboarding/assets/finder.png",
+      "sourceSha256": "2e3f1680e47ff3e82e40253aa73df10177638e97738692d2b03a8c2e554db845",
+      "outputSha256": "2e3f1680e47ff3e82e40253aa73df10177638e97738692d2b03a8c2e554db845"
+    }
+  ]
+}

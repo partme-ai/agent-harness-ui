@@ -15,7 +15,7 @@ export const systemThemeKey='tinybot.system-theme.v1';
 export type SystemThemePreset={id:string;name:string;description:string;color_id:string;family:string;sidebar_style:SystemThemeCustom['sidebar_style'];color_family?:ColorFamily;palette?:SystemThemeCustom;source?:{label:string;url:string;colors:string[];likes?:number;observed_at?:string;adaptation:string}};
 const legacySystemThemes=[
  {id:'jilan',name:'霁蓝',description:'澄澈蓝意，沉静有序',color_id:'traditional742-695',family:'山水青蓝',sidebar_style:'dark'},
- {id:'default',name:'TinyBot 经典',description:'薄荷映白，清爽如初',color_id:'',family:'经典风格',sidebar_style:'tinted'},
+ {id:'default',name:'Agent Harness 经典',description:'薄荷映白，清爽如初',color_id:'',family:'经典风格',sidebar_style:'tinted'},
  {id:'guanlv',name:'官绿',description:'草木青绿，柔和舒展',color_id:'traditional742-652',family:'草木青绿',sidebar_style:'tinted'},
  {id:'zhusha',name:'朱砂',description:'朱红点睛，暖白留境',color_id:'traditional742-607',family:'东方暖色',sidebar_style:'light'},
  {id:'yuebai',name:'月白',description:'淡雅素净，青灰相映',color_id:'traditional742-424',family:'清雅素色',sidebar_style:'tinted'},

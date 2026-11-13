@@ -1,0 +1,20 @@
+/* TinyClaw 三端壳层共享色板；Radix Portal 在 body 下，token 需要跟随根主题。 */
+:root{--ui-font-size:14px;--color-background:#f8f9fb;--color-background-alt:#f1f2f5;--color-card:#fff;--color-surface:#f1f2f4;--color-selected:#ededf0;--color-popover:#fff;--color-menu:#fff;--color-menu-hover:#ededf0;--color-input:#fff;--color-foreground:#202127;--color-foreground-subtle:#707580;--color-foreground-subtlest:#8b9099;--color-border:#e1e3e7;--color-border-hover:#c6c9cf;--color-popover-border:#e1e3e7;--color-input-border:#e1e3e7;--color-primary:#202127;--color-primary-foreground:#fff;--color-secondary:#eeeef1;--color-hover:#ededf0;--color-tooltip:#222;--color-tooltip-foreground:#fff}
+:root[data-theme="dark"]{--color-background:#151618;--color-background-alt:#1c1e21;--color-card:#202226;--color-surface:#27292d;--color-selected:#303238;--color-popover:#202226;--color-menu:#202226;--color-menu-hover:#303238;--color-input:#1b1d20;--color-foreground:#e8e9eb;--color-foreground-subtle:#a0a4ad;--color-foreground-subtlest:#858b96;--color-border:#383b42;--color-border-hover:#555a65;--color-popover-border:#383b42;--color-input-border:#383b42;--color-primary:#f0f1f2;--color-primary-foreground:#191b1f;--color-secondary:#303238;--color-hover:#303238}
+@layer base {
+ .zcode-surface,.zcode-surface *,[data-slot]{box-sizing:border-box;border-style:solid;border-width:0}
+ .zcode-surface :where(p,h1,h2,h3){margin:0}
+ .zcode-surface :where(button,input),[data-slot="button"],[data-slot="input"]{font-family:inherit}
+ .zcode-surface button,[data-slot="button"]{cursor:pointer}
+ .zcode-surface button:not([data-slot]){background-color:transparent;color:inherit}
+}
+[data-slot="dialog-overlay"]{z-index:1100}
+[data-slot="dialog-content"]{z-index:1101}
+[data-slot="popover-content"],[data-slot="dropdown-menu-content"],[data-slot="select-content"]{z-index:1200}
+.tc-zcode-remote-dialog{display:flex;width:896px;max-width:calc(100vw - 32px);height:min(680px,calc(100dvh - 32px));padding:4px;gap:0}
+.tc-zcode-remote-main{display:flex;flex:1;min-width:0;min-height:0;flex-direction:column;padding:24px;gap:24px}
+.tc-zcode-remote-result{display:flex;flex-direction:column;flex:1;justify-content:space-between;gap:16px}
+.tc-zcode-remote-result footer{display:flex;justify-content:flex-end;gap:8px}
+.tc-zcode-directory{display:flex;flex-direction:column;flex:1;min-height:0;gap:12px}
+.tc-zcode-plugin-directory{width:100%;min-width:0;color:var(--color-foreground)}
+@media(max-width:767px){.tc-zcode-remote-dialog{flex-direction:column;padding:10px;gap:12px}.tc-zcode-remote-main{padding:4px;gap:16px}.tc-zcode-remote-dialog nav>div{scrollbar-width:thin}.tc-zcode-plugin-directory{font-size:14px}}

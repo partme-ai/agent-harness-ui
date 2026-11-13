@@ -1,0 +1,87 @@
+/* ZCode composer: 28px ghost controls, 16px icons, top-aligned exclusive pickers. */
+#buddy-root .tc-composer{container-type:inline-size;padding:12px;border-radius:16px}
+#buddy-root .tc-composer textarea.ant-input{font-size:14px;line-height:20px;min-height:40px;padding:0;border:0;box-shadow:none}
+#buddy-root .tc-composer .composer-toolbar{display:flex;flex-wrap:nowrap;gap:4px;margin-top:12px}
+.tc-composer-left,.tc-composer-right{display:flex;align-items:center;gap:2px;min-width:0}
+.tc-composer-right{margin-left:auto}
+#buddy-root .tc-composer .composer-toolbar .ant-btn{height:28px;min-width:28px;padding:0 6px;border:0;box-shadow:none;border-radius:7px;font-size:13px;gap:5px;color:var(--text-3);background:transparent}
+#buddy-root .tc-composer .composer-toolbar .ant-btn:hover{background:var(--surface-2);color:var(--text)}
+#buddy-root .tc-composer .composer-toolbar .ant-btn .anticon{font-size:16px}
+#buddy-root .tc-composer .composer-toolbar .ant-btn .tc-control-caret{font-size:10px;color:var(--text-3)}
+#buddy-root .tc-composer .tc-model-trigger{max-width:240px;min-width:0}
+#buddy-root .tc-composer .tc-model-trigger>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#buddy-root .tc-composer .composer-toolbar .tc-permission-full{color:#e86b0b}
+#buddy-root .tc-composer .composer-toolbar .tc-send{width:28px;min-width:28px;padding:0;color:var(--surface);background:var(--text)}
+#buddy-root .tc-composer .composer-toolbar .tc-send:disabled{background:var(--surface-2);color:var(--text-3)}
+.tc-composer-popup{max-width:calc(100vw - 24px)}
+.tc-composer-popup-wide{width:256px}
+.tc-composer-popup .ant-dropdown-menu{max-height:min(440px,65dvh);overflow:auto;padding:6px;border-radius:12px}
+.tc-composer-popup .ant-dropdown-menu-item{min-height:32px;font-size:13px;gap:8px}
+.tc-composer-popup .ant-dropdown-menu-item-group-title{font-size:12px;padding:8px 10px}
+.tc-picker-description{display:flex;flex-direction:column;gap:3px;padding:4px 0}
+.tc-picker-description strong{font-size:14px;font-weight:500}
+.tc-picker-description small{font-size:12px;color:var(--text-3)}
+.tc-composer-attachments{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.tc-composer-attachments .ant-tag{max-width:100%;overflow:hidden;text-overflow:ellipsis}
+@container(max-width:420px){
+ #buddy-root .tc-composer .tc-model-trigger{max-width:110px}
+ #buddy-root .tc-composer .tc-thought-label{display:none}
+}
+@container(max-width:300px){
+ #buddy-root .tc-composer .tc-permission-label{display:none}
+ #buddy-root .tc-composer .tc-model-trigger{max-width:110px}
+ #buddy-root .tc-composer .tc-control-caret{display:none}
+}
+
+/* Codex surface density with ZCode's independent Plan semantics. */
+#buddy-root .tc-composer .composer-toolbar .tc-permission-trigger{background:var(--surface-2);color:var(--text);border-radius:8px}
+#buddy-root .tc-composer .composer-toolbar .tc-permission-trigger.tc-permission-full{color:#ed6a08}
+#buddy-root .tc-composer .composer-toolbar .tc-send{border-radius:50%}
+.tc-permission-popup .ant-dropdown-menu{padding:6px 4px;border:1px solid var(--line);box-shadow:0 4px 14px #00000018}
+.tc-permission-popup .ant-dropdown-menu-item{color:var(--text);min-height:54px;border-radius:6px;padding:8px 12px;gap:12px}
+.tc-permission-popup .ant-dropdown-menu-item .anticon-check{color:var(--text-3)}
+.tc-permission-popup .ant-dropdown-menu-item:hover{background:var(--surface-2)}
+.tc-permission-popup .ant-dropdown-menu-item-divider{margin:6px -4px}
+.tc-image-attachment{position:relative;width:96px;height:96px;flex:none;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface-2)}
+.tc-image-attachment .ant-image-img{object-fit:cover}
+#buddy-root .tc-image-attachment>.ant-btn{position:absolute;right:3px;top:3px;width:22px;height:22px;min-width:22px;padding:0;border-radius:50%;background:var(--surface);color:var(--text);box-shadow:0 1px 4px #0002}
+.tc-composer-attachments{gap:8px;margin-bottom:12px;align-items:center}
+@container(max-width:420px){.tc-image-attachment{width:76px;height:76px}.tc-image-attachment .ant-image{width:76px!important;height:76px!important}}
+.tc-context-popup{width:560px;max-width:calc(100vw - 24px);background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 5px 18px #0002;overflow:hidden}
+.tc-context-panel{display:flex;flex-direction:column;padding:10px;gap:8px;min-width:0}
+.tc-context-results{max-height:360px;overflow:auto;overscroll-behavior:contain}
+.tc-context-results .ant-menu{border:0!important;background:transparent}
+.tc-context-results .ant-menu-item-group-title{font-size:12px;padding:8px 12px;color:var(--text-3)}
+.tc-context-results .ant-menu-item{height:auto;min-height:36px;line-height:20px;padding-block:6px;margin:2px 0;width:100%;border-radius:7px}
+.tc-context-results .ant-menu-title-content{min-width:0}
+.tc-context-option{display:flex;align-items:center;gap:8px;min-width:0}
+.tc-context-option strong{font-size:13px;font-weight:500;max-width:50%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tc-context-option small{font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text-3)}
+.tc-context-hint{font-size:11px;color:var(--text-3);border-top:1px solid var(--line);padding:8px 4px 0}
+.tc-context-drawer .ant-drawer-body{padding:0;overflow:hidden}
+.tc-context-drawer .tc-context-panel{height:100%}
+.tc-context-drawer .tc-context-results{max-height:none;flex:1;min-height:0}
+.tc-context-drawer .tc-context-option{flex-direction:column;align-items:flex-start;gap:2px}
+.tc-context-drawer .tc-context-option strong{max-width:100%}
+.tc-context-references{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px}
+#buddy-root .tc-context-references .ant-tag{display:inline-flex;align-items:center;margin:0;max-width:100%;background:var(--surface-2);color:var(--text)}
+#buddy-root .tc-context-references .ant-btn{height:24px;padding:0 4px;color:inherit;max-width:220px;overflow:hidden;text-overflow:ellipsis}
+.tc-context-detail{position:relative;border:1px solid var(--line);border-radius:8px;padding:10px 32px 10px 10px;margin-bottom:8px;font-size:13px}
+.tc-context-detail p{margin:4px 0}.tc-context-detail small{color:var(--text-3)}
+.tc-context-detail>.ant-btn{position:absolute;right:3px;top:3px}
+.tc-sent-references{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px}.tc-sent-references .ant-tag{margin:0}
+.tc-context-scope{font-size:10px;color:var(--text-3);flex:none;padding:0 4px;border:1px solid var(--line);border-radius:4px}
+.tc-context-drawer .tc-context-scope{line-height:14px}
+.tc-context-results .ant-menu-item{display:flex;align-items:center;gap:8px}
+.tc-context-results .ant-menu-item>.ant-menu-item-icon{flex:none;width:16px}
+.tc-context-results .ant-menu-title-content{flex:1;margin-inline-start:0!important}
+.tc-context-drawer .tc-context-option{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:2px 8px}
+.tc-context-drawer .tc-context-option small{grid-column:1/-1}
+#buddy-root .tc-composer .composer-toolbar .tc-plan-trigger{border-left:1px solid var(--line);border-radius:0;color:var(--text-3)}
+.tc-file-attachment{display:flex;align-items:center;gap:8px;width:220px;max-width:100%;padding:8px;border:1px solid var(--line);border-radius:10px;background:var(--surface-2)}
+.tc-file-attachment>.anticon{font-size:22px;flex:none;color:var(--text-3)}
+.tc-file-attachment>span:not(.anticon){display:flex;flex-direction:column;min-width:0;flex:1;gap:3px}
+.tc-file-attachment strong{font-size:12px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tc-file-attachment small{font-size:11px;color:var(--text-3)}
+#buddy-root .tc-file-attachment>.ant-btn{flex:none;width:22px;height:22px;padding:0}
+@container(max-width:420px){.tc-plan-label{display:none}}

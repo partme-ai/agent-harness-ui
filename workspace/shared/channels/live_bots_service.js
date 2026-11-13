@@ -1,0 +1,3 @@
+// 本地宿主代理 ZCode 的官方注册接口，浏览器不保存真实密钥。
+async function call(action,params){const response=await fetch(`/__buddy_channels/${action}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(params??null)});let data;try{data=await response.json()}catch{throw new Error('真实渠道服务未启动，请使用本地 dev/preview 服务')}if(!response.ok)throw new Error(data.error||'渠道请求失败');return data.result}
+export const liveBotsService=Object.fromEntries(['getConfig','getStatus','listWorkspaceRefs','getBotStates','saveBot','deleteBot','resetBotState','removeBotSecret','createBindCode','beginFeishuRegistration','pollFeishuRegistration','beginWeixinRegistration','pollWeixinRegistration'].map(action=>[action,params=>call(action,params)]));

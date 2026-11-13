@@ -1,0 +1,7 @@
+html[data-harness-embedded] .sidebar,
+html[data-harness-embedded] .desktop-sidebar-toggle,
+html[data-harness-embedded] .topbar,
+html[data-harness-embedded] .bottom-nav{display:none!important}
+html[data-harness-embedded] .app-shell{border:0;border-radius:0;height:100dvh}
+html[data-harness-embedded] .main-shell{margin:0!important;width:100%;min-width:0;height:100%}
+html[data-harness-embedded] .main-scroll{height:100%!important;overflow:auto}

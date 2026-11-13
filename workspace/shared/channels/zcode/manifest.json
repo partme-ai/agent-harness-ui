@@ -1,0 +1,41 @@
+{
+  "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "files": [
+    {
+      "source": "BotsDialog/BotSummaryCard.tsx",
+      "output": "BotSummaryCard.jsx",
+      "sourceSha256": "8cf8a13e08ca0afb6fd5f068429aaa132963b03857502c94e07393d2427a26e6",
+      "outputSha256": "da0de37e9f80e02ae20ae55707393836eccbf430abfc5b3e55f43e6e05d241a2"
+    },
+    {
+      "source": "BotsDialog/ProviderSettingsCard.tsx",
+      "output": "ProviderSettingsCard.jsx",
+      "sourceSha256": "1a6a756dccc89776cbbf9dd27cb3589b81b58c92c6f7f8df6dffd3aa8984b6b6",
+      "outputSha256": "f3c9b12969f25011daa71210fac30e0c49fd90cfe55a55c9da787ac00feac52d"
+    },
+    {
+      "source": "BotsDialog/WorkspaceAccessCard.tsx",
+      "output": "WorkspaceAccessCard.jsx",
+      "sourceSha256": "7801fdd7ef73bd51cd91ca23802fa7495aceaa6f355373b3e07e45844cad5a1c",
+      "outputSha256": "50a659e223a5929900766dbcebf6ccc0ab0b310c8c32622277d3ac0ca012d7b6"
+    },
+    {
+      "source": "BotsDialog/shared.tsx",
+      "output": "shared.jsx",
+      "sourceSha256": "0ee100346a8d7b4570fab3e1e4f65c17d02c217f66b85be53eba4813c724bd14",
+      "outputSha256": "576ca2f39fcdc6d88604bb38e4406bf9486f908989aeb7b9460f691b6b2f298f"
+    },
+    {
+      "source": "botsUi.ts",
+      "output": "botsUi.jsx",
+      "sourceSha256": "738b96dffe9e472b33c21d81e3e5654e318b4b23893fce0868a2c307bfae2882",
+      "outputSha256": "09d2a5f039e5456dbdb93964dc5257102aec9290f32d1e4d059dd4e0ed38e95a"
+    },
+    {
+      "source": "BotsDialog.tsx",
+      "output": "BotsDialog.jsx",
+      "sourceSha256": "05ada2dc897488329b9fb1265b13be92414ba7621790616664c27731a8f75086",
+      "outputSha256": "5d88d2ee02deb93b3c76fec23ec5c28e3749e302f52a1f69b38516192cf84bdd"
+    }
+  ]
+}

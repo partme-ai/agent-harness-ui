@@ -1,0 +1,49 @@
+import {usePluginResources,pluginOperation,refreshPluginRuntime} from './plugin_runtime.js';
+import React,{useEffect,useState} from 'react';
+import {Alert,Badge,Button,Checkbox,Drawer,Empty,Input,Modal,Segmented,Select,Tag,Popover,Dropdown} from 'antd';
+import {DesktopOutlined,MobileOutlined,TabletOutlined,LinkOutlined,HistoryOutlined,PlusOutlined,ArrowLeftOutlined,DownOutlined,MessageOutlined,AppstoreOutlined,CheckOutlined} from '@ant-design/icons';
+import {mockServices} from './mock/services.js';
+import {useMockState} from './mock/use_mock_state.js';
+import {createCatalogSamples} from './settings/resource_catalog.js';
+import {initialDeviceWorkspace,deviceNames,visibleSessions,capabilityKey,planCapabilities,bindDevice} from './device_workspace.js';
+import './reference_workspace.css';
+const labels={plugin:'插件',mcp:'MCP',skill:'技能',command:'命令'};
+export function DeviceIcon({role}){const Icon={phone:MobileOutlined,tablet:TabletOutlined,desktop:DesktopOutlined}[role]||DesktopOutlined;return <Icon/>;}
+export function useDeviceWorkspace(role){const [state,update,error]=useMockState('deviceWorkspaceV1',initialDeviceWorkspace);const [kind,setKind]=useState('chat'),[target,setTarget]=useState(role),[session,setSession]=useState('default-chat'),[open,setOpen]=useState(false),[history,setHistory]=useState(false),[bindingRequest,setBindingRequest]=useState(null),[feedback,setFeedback]=useState('');return {state,update,error,role,kind,setKind,target,setTarget,session,setSession,open,setOpen,history,setHistory,bindingRequest,setBindingRequest,feedback,setFeedback};}
+export function SessionModeSwitch({workspace:w,phone=false,onNavigate}){
+ const change=kind=>{w.setKind(kind);w.setSession(kind==='chat'?'default-chat':`work-${w.role}`);if(onNavigate)onNavigate();};
+ const options=[{value:'chat',label:'聊天'},{value:'work',label:'工作'}];
+ return phone?<Segmented className="tc-mode-switch" aria-label="会话模式" value={w.kind} onChange={change} options={options}/>:<Dropdown trigger={['click']} popupRender={menu=><div className="tc-mode-menu">{menu}</div>} menu={{selectedKeys:[w.kind],items:[{key:'chat',label:<span className="tc-mode-menu-label"><span>聊天</span>{w.kind==='chat'&&<CheckOutlined/>}<small className="tc-mode-description">全部绑定设备可见</small></span>},{key:'work',label:<span className="tc-mode-menu-label"><span>工作</span>{w.kind==='work'&&<CheckOutlined/>}<small className="tc-mode-description">仅本机可见</small></span>}],onClick:({key})=>change(key)}}><Button className="tc-mode-switch tc-mode-dropdown" aria-label="会话模式" icon={w.kind==='chat'?<MessageOutlined/>:<AppstoreOutlined/>}><span className="tc-mode-name">{w.kind==='chat'?'聊天':'工作'}</span><DownOutlined className="tc-mode-chevron"/></Button></Dropdown>;
+
+}
+export function DeviceConversationBar({workspace:w}){const [expanded,setExpanded]=useState(false);return <Popover open={expanded} onOpenChange={setExpanded} trigger="click" placement="topLeft" title="对话设备" content={<div className="tc-device-menu"><p>{w.kind==='chat'?'Chat · 全设备可见':'Work · 仅本机可见'}</p><Select virtual={false} aria-label="对话目标设备" value={w.kind==='work'?w.role:w.target} disabled={w.kind==='work'} onChange={id=>{w.setTarget(id);w.setFeedback(`对话目标已切换为${w.state.devices.find(d=>d.id===id)?.name}，下一条消息使用此目标`)}} options={w.state.devices.filter(d=>d.bound).map(d=>({value:d.id,disabled:!d.online,label:<span className="tc-device-option"><DeviceIcon role={d.role}/>{d.name}<Badge status={d.online?'success':'default'}/></span>}))}/><Button type="text" aria-label="查看会话历史" onClick={()=>{setExpanded(false);w.setHistory(true)}} icon={<HistoryOutlined/>}>查看会话历史</Button><Button type="text" aria-label="设备互联" onClick={()=>{setExpanded(false);w.setOpen(true)}} icon={<LinkOutlined/>}>设备互联</Button><div role="status" aria-label="设备操作反馈">{w.feedback}</div></div>}><Button type="text" aria-label="选择对话设备" title={w.kind==='work'?'仅本机可见':w.state.devices.find(d=>d.id===w.target)?.name} icon={<DeviceIcon role={w.kind==='work'?w.role:w.target}/>}/></Popover>;}
+export function DeviceWorkspacePanels({workspace:w}){
+ const [catalog]=usePluginResources(),[binding,setBinding]=useState(null),[excluded,setExcluded]=useState([]),[query,setQuery]=useState(''),[bindingError,setBindingError]=useState(''),[completed,setCompleted]=useState(null);
+ // 设备菜单关闭与面板打开同帧发生时，焦点可能仍在输入区；Escape 仍应关闭最上层设备面板。
+ useEffect(()=>{const dismiss=e=>{if(e.key!=='Escape')return;if(binding){setBinding(null);w.setBindingRequest(null)}else if(w.history)w.setHistory(false);else if(w.open)w.setOpen(false)};window.addEventListener('keydown',dismiss);return()=>window.removeEventListener('keydown',dismiss)},[binding,w.history,w.open]);
+ const startChat=d=>{w.setKind('chat');w.setTarget(d.id);w.setOpen(false);w.setFeedback(`对话目标已切换为${d.name}，下一条消息使用此目标`)};
+ const completedPlan=w.state.syncResults.find(r=>r.deviceId===completed);
+ const completedDevice=w.state.devices.find(d=>d.id===completed);
+ useEffect(()=>{if(w.bindingRequest){setBinding(w.bindingRequest.deviceId);setExcluded([]);setBindingError('')}},[w.bindingRequest]);
+ const all=Object.entries(labels).flatMap(([type])=>(catalog[{plugin:'plugins',mcp:'mcp',skill:'skills',command:'commands'}[type]]||[]).filter(r=>r.enabled!==false&&(!r.pluginId||catalog.plugins.some(parent=>parent.id===r.pluginId&&parent.scope===r.scope&&parent.enabled!==false))).map(r=>({id:r.id,name:r.name,scope:r.scope,type,roles:type==='mcp'&&r.config?.type==='stdio'?['desktop']:undefined})));
+ const plan=planCapabilities(all,w.role,excluded);
+ const device=w.state.devices.find(d=>d.id===binding);
+ const history=visibleSessions(w.state.sessions,w.role).filter(s=>s.kind===w.kind&&s.title.toLowerCase().includes(query.toLowerCase()));
+ return <>
+ <Modal open={w.open} title="设备互联" onCancel={()=>w.setOpen(false)} footer={null} width={640} styles={{body:{maxHeight:'72dvh',overflow:'auto'}}}>
+ <Alert type="info" title="设备与在线状态为本地演示，可在三端预览中联动" showIcon/>
+ {completedDevice&&completedPlan&&<div className="tc-binding-feedback"><Alert type="success" showIcon title={`已绑定${completedDevice.name}`} description={`能力检查已完成：${completedPlan.items.filter(r=>r.sync).length} 项选入计划，${completedPlan.items.filter(r=>!r.compatible).length} 项不适用，${completedPlan.items.filter(r=>r.reason==='手动排除').length} 项手动排除。安装与传输尚未执行。`}/><p className="tc-muted">本次方向：{completedDevice.name} → {deviceNames[w.role]}。可展开下方能力检查结果逐项复查。</p></div>}
+ <div className="tc-device-list">{w.state.devices.map(d=><article key={d.id} className="tc-device-card"><span className="tc-market-icon"><DeviceIcon role={d.role}/></span><div><strong>{d.name}{d.id===w.role?' · 本机':''}</strong><small>{d.bound?'已绑定':'待绑定'} · {d.online?'在线':'离线'}</small></div>{d.bound?<div className="tc-device-actions"><Button disabled={!d.online} aria-label={`开始对话 ${d.name}`} onClick={()=>startChat(d)}>开始对话</Button><Button aria-label={`${d.online?'模拟离线':'模拟上线'} ${d.name}`} size="small" onClick={()=>w.update(s=>({...s,devices:s.devices.map(v=>v.id===d.id?{...v,online:!v.online}:v)}))}>{d.online?'模拟离线':'模拟上线'}</Button></div>:<Button onClick={()=>{w.setBindingRequest(null);setBinding(d.id);setExcluded([]);setBindingError('')}}>绑定设备</Button>}</article>)}</div>
+ <p className="tc-muted">绑定后相互可见；Chat 可选择在线设备，Work 保留在本机。</p>
+ {w.state.syncResults.map((result,index)=><details key={index} className="tc-sync-result"><summary>{w.state.devices.find(d=>d.id===result.deviceId)?.name} · 能力检查结果</summary>{result.items.map(r=><div key={capabilityKey(r)}>{labels[r.type]} · {r.name} <Tag color={r.sync?'green':undefined}>{r.sync?'已选入同步计划':r.reason}</Tag></div>)}<small>仅记录演示计划，未执行安装或传输。</small></details>)}
+ {w.error&&<Alert type="error" title={w.error}/>}</Modal>
+ <Modal open={!!binding} title="绑定与能力同步" onCancel={()=>{setBinding(null);w.setBindingRequest(null)}} width={620} styles={{body:{maxHeight:'66dvh',overflow:'auto'}}} footer={<Button type="primary" onClick={()=>{try{if(w.bindingRequest){mockServices.confirmPhoneCapabilities(w.bindingRequest.token,bindDevice(w.state,binding,all,w.role,excluded));w.setBindingRequest(null);setCompleted(binding);w.setOpen(true);setBinding(null)}else if(w.update(s=>bindDevice(s,binding,all,w.role,excluded))){setCompleted(binding);w.setOpen(true);setBinding(null)}}catch(e){setBindingError(e.message)}}}>确认绑定与同步计划</Button>}>
+ {bindingError&&<Alert type="error" title={bindingError}/>}<p>{device?.name} → {deviceNames[w.role]} · 本次演示同步方向</p><p className="tc-muted">兼容项默认同步，可手动排除。适用性是样例元数据，真实检测与方向策略仍待接入确认。</p><Tag>{plan.filter(r=>r.sync).length} 项选入计划</Tag><Tag>{plan.filter(r=>!r.compatible).length} 项不适用</Tag><Tag>{plan.filter(r=>r.reason==='手动排除').length} 项手动排除</Tag>
+ {plan.map(r=><div className="tc-sync-item" key={capabilityKey(r)}><Checkbox checked={r.sync} disabled={!r.compatible} onChange={e=>setExcluded(items=>e.target.checked?items.filter(id=>id!==capabilityKey(r)):[...items,capabilityKey(r)])}>{labels[r.type]} · {r.name}</Checkbox><small>{r.reason}</small></div>)}
+ </Modal>
+ <Drawer title={`${w.kind==='chat'?'Chat · 全设备可见':'Work · 仅本机可见'}`} placement="left" width={320} open={w.history} onClose={()=>w.setHistory(false)}>
+ <Input.Search aria-label="搜索会话历史" placeholder="搜索会话" value={query} onChange={e=>setQuery(e.target.value)}/><Button block className="tc-history-new" icon={<PlusOutlined/>} onClick={()=>{w.setSession(`${w.kind}-${crypto.randomUUID()}`);w.setHistory(false)}}>新建{w.kind==='chat'?' Chat':' Work'}</Button>
+ {history.length?history.map(s=><Button block type="text" className="tc-history-row" key={s.id} onClick={()=>{w.setSession(s.id);if(s.kind==='chat')w.setTarget(s.target);w.setHistory(false)}}><strong>{s.title}</strong><small>{s.kind==='chat'?'全设备可见':deviceNames[s.owner]+' · 仅本机'} · {s.rows.length} 条记录</small></Button>):<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="暂无匹配会话"/>}
+ <small className="tc-muted">同源浏览器样本共享，真实设备同步尚未接入。</small></Drawer>
+ </>;
+}

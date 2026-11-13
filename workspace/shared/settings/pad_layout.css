@@ -1,0 +1,33 @@
+/* 电脑与 Pad 设置外壳：取消 1180px 桌面下限，保留完整导航。 */
+html:has(.shell-settings),body:has(.shell-settings),#root:has(.shell-settings) { min-width:768px; }
+html[data-theme] .shell-settings :is(.workspace,.settings-canvas,.zs-center,.zs-content) { min-width:0; }
+html[data-theme] .shell-settings .zs-center { container-type:inline-size; }
+html[data-theme] .shell-settings .zcode-usage { container:usage-body / inline-size; }
+/* 额度为完整的四项信息组：宽正文四列，Pad 窄正文两列，避免四行占满首屏。 */
+html[data-theme] .app-shell .zs-center .zcode-usage .flex.flex-col.gap-3.lg\:flex-row { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
+@container usage-body (min-width:660px) {
+  html[data-theme] .app-shell .zs-center .zcode-usage .flex.flex-col.gap-3.lg\:flex-row { grid-template-columns:repeat(4,minmax(0,1fr)); }
+}
+@container usage-body (max-width:740px) {
+  html[data-theme] .app-shell .zs-center .zcode-usage .flex.flex-col.gap-3.lg\:flex-row > div { padding:12px; }
+  html[data-theme] .app-shell .zs-center .zcode-usage .flex.flex-col.gap-3.lg\:flex-row .items-baseline { gap:4px; }
+  html[data-theme] .app-shell .zs-center .zcode-usage .flex.flex-col.gap-3.lg\:flex-row .items-baseline > .truncate { font-size:12px; }
+}
+@media (min-width:768px) and (max-width:1100px) {
+  html[data-theme] .app-shell.shell-settings { --settings-sidebar-width:192px; }
+  html[data-theme] .shell-settings .zs-sidebar { width:100%; }
+  html[data-theme] .shell-settings .zs-content { padding-inline:24px; }
+}
+/* 根据正文宽度调整工具栏和表单，而非按整窗宽度套桌面列数。 */
+@container (max-width:660px) {
+  html[data-theme] .app-shell .zs-center .zcode-settings .zc-resource-search { width:100%; margin-left:0; }
+  html[data-theme] .app-shell .zs-center .zcode-settings .zc-resource-toolbar { row-gap:12px; }
+  html[data-theme] .app-shell .zs-center .zcode-settings .zc-editor form > .grid { grid-template-columns:1fr; }
+  html[data-theme] .app-shell .zs-center .zcode-settings [data-testid^="subagent-row"] > .min-w-0 .truncate { width:100%; max-width:100%; }
+  html[data-theme] .app-shell .zs-provider-layout { grid-template-columns:160px minmax(0,1fr); }
+  html[data-theme] .app-shell .zs-provider-detail { padding:16px; }
+  html[data-theme] .app-shell .zs-toolbar { flex-wrap:wrap; }
+  html[data-theme] .app-shell .zs-resource-toolbar { flex-wrap:wrap; }
+  html[data-theme] .app-shell .zs-resource-toolbar .zs-search { flex-basis:100%; width:100%; }
+  html[data-theme] .app-shell .zs-model-list > div { flex-wrap:wrap; }
+}

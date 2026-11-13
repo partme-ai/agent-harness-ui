@@ -1,0 +1,359 @@
+{
+  "upstream": "https://github.com/zai-org/ZCode",
+  "revision": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "license": "MIT",
+  "files": [
+    {
+      "source": "packages/ui/src/RemoteConnectionWizardChrome.tsx",
+      "target": "shared/zcode/ui/RemoteConnectionWizardChrome.tsx",
+      "source_sha256": "1d9ff2139c9d46c18e47fec0c32a270498777e3e7914d37e29c1d3fb925b3381",
+      "integrated_sha256": "1d9ff2139c9d46c18e47fec0c32a270498777e3e7914d37e29c1d3fb925b3381",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/RemoteConnectionFields.tsx",
+      "target": "shared/zcode/ui/RemoteConnectionFields.tsx",
+      "source_sha256": "8390ef7854ac154d9d7a0b5a9a2f5ccb77bad4ce7f093290d72efb9d84cc75e3",
+      "integrated_sha256": "8390ef7854ac154d9d7a0b5a9a2f5ccb77bad4ce7f093290d72efb9d84cc75e3",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/DirectoryBrowser.tsx",
+      "target": "shared/zcode/ui/DirectoryBrowser.tsx",
+      "source_sha256": "a2ff0d9ab5ac81802055d1bf7a7658454e1b2e6228fb6ea4d5bd2e06c2450854",
+      "integrated_sha256": "a2ff0d9ab5ac81802055d1bf7a7658454e1b2e6228fb6ea4d5bd2e06c2450854",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/hooks/useRemoteConnectionForm.ts",
+      "target": "shared/zcode/ui/hooks/useRemoteConnectionForm.ts",
+      "source_sha256": "f88350de7f1bf39e602fba6b6199120b635f85a24d97b86a307de7441aabe4e4",
+      "integrated_sha256": "f88350de7f1bf39e602fba6b6199120b635f85a24d97b86a307de7441aabe4e4",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/lib/remoteConnectionDockerOptions.ts",
+      "target": "shared/zcode/ui/lib/remoteConnectionDockerOptions.ts",
+      "source_sha256": "68c357849a58d38387805cc760dc4b5ba297c61e9d45aaa2de254190f4ead961",
+      "integrated_sha256": "68c357849a58d38387805cc760dc4b5ba297c61e9d45aaa2de254190f4ead961",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/lib/remoteConnectionWizard.ts",
+      "target": "shared/zcode/ui/lib/remoteConnectionWizard.ts",
+      "source_sha256": "d1c94836c8055de80536921cabc6ef0e5a63b9513f29647b5b054f4aba4c4462",
+      "integrated_sha256": "d1c94836c8055de80536921cabc6ef0e5a63b9513f29647b5b054f4aba4c4462",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/lib/remoteConnectionDialogState.ts",
+      "target": "shared/zcode/ui/lib/remoteConnectionDialogState.ts",
+      "source_sha256": "af4f6489733989d4b1700a306c0ffaaef410de833f129edabf49841bd2e526f3",
+      "integrated_sha256": "af4f6489733989d4b1700a306c0ffaaef410de833f129edabf49841bd2e526f3",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/remote-connection/RemoteConnectionHistoryInput.tsx",
+      "target": "shared/zcode/ui/remote-connection/RemoteConnectionHistoryInput.tsx",
+      "source_sha256": "03585f46daa7480bff58fea082253ad072c6e30376736a71b6a92f13a85edbb6",
+      "integrated_sha256": "03585f46daa7480bff58fea082253ad072c6e30376736a71b6a92f13a85edbb6",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/remote-connection/remoteConnectionHistoryPopover.ts",
+      "target": "shared/zcode/ui/remote-connection/remoteConnectionHistoryPopover.ts",
+      "source_sha256": "30663aa026d87f4d6a52f841f655f409b5faf6b3923048c81b98c6456cbdd0b6",
+      "integrated_sha256": "30663aa026d87f4d6a52f841f655f409b5faf6b3923048c81b98c6456cbdd0b6",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/remote-connection/sshHistorySuggestions.ts",
+      "target": "shared/zcode/ui/remote-connection/sshHistorySuggestions.ts",
+      "source_sha256": "4d2710b698d382da9022717a337e23179514fab5304189c4e47a82c3cfa56932",
+      "integrated_sha256": "4d2710b698d382da9022717a337e23179514fab5304189c4e47a82c3cfa56932",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/settings/PluginStoreListView.tsx",
+      "target": "shared/zcode/ui/settings/PluginStoreListView.tsx",
+      "source_sha256": "2b8f7dfda949729c6c6c3eaa2f64b3239318e8e7832a3ca80e1ac6011d986850",
+      "integrated_sha256": "2b8f7dfda949729c6c6c3eaa2f64b3239318e8e7832a3ca80e1ac6011d986850",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/settings/PluginStoreCard.tsx",
+      "target": "shared/zcode/ui/settings/PluginStoreCard.tsx",
+      "source_sha256": "aad8f08f60f2df6d47afced3cb3633af0ab7e21494ab17f285eb424d5f213dce",
+      "integrated_sha256": "aad8f08f60f2df6d47afced3cb3633af0ab7e21494ab17f285eb424d5f213dce",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/settings/PluginStoreAvatar.tsx",
+      "target": "shared/zcode/ui/settings/PluginStoreAvatar.tsx",
+      "source_sha256": "b193a3bb4e3f12f88269a6f0d4a2f911389eb1b9ad251e817394ce86269157ea",
+      "integrated_sha256": "b193a3bb4e3f12f88269a6f0d4a2f911389eb1b9ad251e817394ce86269157ea",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/settings/SettingsSearchInput.tsx",
+      "target": "shared/zcode/ui/settings/SettingsSearchInput.tsx",
+      "source_sha256": "0667fc8747f934d6ff45fcf71f0ba864f12d6e6e1a50eef5117bc69562c646bd",
+      "integrated_sha256": "0667fc8747f934d6ff45fcf71f0ba864f12d6e6e1a50eef5117bc69562c646bd",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/settings/pluginStoreListing.ts",
+      "target": "shared/zcode/ui/settings/pluginStoreListing.ts",
+      "source_sha256": "f63b9b51c17766f7d6bf9b46d700eaaf502063b26b5ea2b6a345b65900071511",
+      "integrated_sha256": "f63b9b51c17766f7d6bf9b46d700eaaf502063b26b5ea2b6a345b65900071511",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/settings/pluginSourceLabel.ts",
+      "target": "shared/zcode/ui/settings/pluginSourceLabel.ts",
+      "source_sha256": "0951d82571db6ca120ad10a9d9c041bc80b3bca702ba8c3601350355bdf9ac9d",
+      "integrated_sha256": "0951d82571db6ca120ad10a9d9c041bc80b3bca702ba8c3601350355bdf9ac9d",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/settings/pluginSearch.ts",
+      "target": "shared/zcode/ui/settings/pluginSearch.ts",
+      "source_sha256": "4ef74e48683e533be9425cffbd34763b1cdd95972b82d6c3dbae116e33698e72",
+      "integrated_sha256": "4ef74e48683e533be9425cffbd34763b1cdd95972b82d6c3dbae116e33698e72",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/components/PluginIcon.tsx",
+      "target": "shared/zcode/ui/components/PluginIcon.tsx",
+      "source_sha256": "4bdb6a78e9839770411c765fb6ea95691fdb2ce3d69ac52d467ba7ebfc08d604",
+      "integrated_sha256": "4bdb6a78e9839770411c765fb6ea95691fdb2ce3d69ac52d467ba7ebfc08d604",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/lib/pluginIconSource.ts",
+      "target": "shared/zcode/ui/lib/pluginIconSource.ts",
+      "source_sha256": "0c2067d3ce5326a3d9c778cea189e4534127a4e469388b0c94e10c2b0c6cdd5d",
+      "integrated_sha256": "0c2067d3ce5326a3d9c778cea189e4534127a4e469388b0c94e10c2b0c6cdd5d",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/lib/trustedImageUrl.ts",
+      "target": "shared/zcode/ui/lib/trustedImageUrl.ts",
+      "source_sha256": "5a5c197bdc58ba41f6786c0538703a00c2831d840088f2a90342522c773f4a4c",
+      "integrated_sha256": "5a5c197bdc58ba41f6786c0538703a00c2831d840088f2a90342522c773f4a4c",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/ControlHintTooltip.tsx",
+      "target": "shared/zcode/ui/ControlHintTooltip.tsx",
+      "source_sha256": "2da7e41f22f9eed6cda1259e403618f1f8cca5f4350665aeee8008e10a8753bd",
+      "integrated_sha256": "2da7e41f22f9eed6cda1259e403618f1f8cca5f4350665aeee8008e10a8753bd",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/lib/keyboardShortcuts.ts",
+      "target": "shared/zcode/ui/lib/keyboardShortcuts.ts",
+      "source_sha256": "659f8cc892c92a411e81842282f6620c15701fec11e6937cd9b19e5a1494ec73",
+      "integrated_sha256": "659f8cc892c92a411e81842282f6620c15701fec11e6937cd9b19e5a1494ec73",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/components/lib/utils.ts",
+      "target": "shared/zcode/ui/components/lib/utils.ts",
+      "source_sha256": "b083c2359de5f521e00ead8c39b8c8b68934d0e052b1c83384660614198b810d",
+      "integrated_sha256": "b083c2359de5f521e00ead8c39b8c8b68934d0e052b1c83384660614198b810d",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/i18n/locales/zh-CN.ts",
+      "target": "shared/zcode/ui/i18n/locales/zh-CN.ts",
+      "source_sha256": "7fb2202f7179a24fcbb2b1bc6f820da621fa205f7f6faa4ccd53120734ca9fc6",
+      "integrated_sha256": "7fb2202f7179a24fcbb2b1bc6f820da621fa205f7f6faa4ccd53120734ca9fc6",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/components/ui/button.tsx",
+      "target": "shared/zcode/ui/components/ui/button.tsx",
+      "source_sha256": "3bf0b1573c940999f875a1dd5e67a32e7d9bcb3e320774fa8277f5c00748b32b",
+      "integrated_sha256": "3bf0b1573c940999f875a1dd5e67a32e7d9bcb3e320774fa8277f5c00748b32b",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/components/ui/input.tsx",
+      "target": "shared/zcode/ui/components/ui/input.tsx",
+      "source_sha256": "946d37bdf07c81e70ad13242b904c27618d5d09f7c17a74f6b6c8cb613fa93dc",
+      "integrated_sha256": "946d37bdf07c81e70ad13242b904c27618d5d09f7c17a74f6b6c8cb613fa93dc",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/components/ui/textarea.tsx",
+      "target": "shared/zcode/ui/components/ui/textarea.tsx",
+      "source_sha256": "a839574ce1301fbaa9ba917fdb980900eb9118bffa7c6c4e469f3293b122ed30",
+      "integrated_sha256": "a839574ce1301fbaa9ba917fdb980900eb9118bffa7c6c4e469f3293b122ed30",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/components/ui/input-group.tsx",
+      "target": "shared/zcode/ui/components/ui/input-group.tsx",
+      "source_sha256": "72e8c0775e55525efe49dfa42ecba7b9244836a78c31be0dd576d52640d4c3c9",
+      "integrated_sha256": "72e8c0775e55525efe49dfa42ecba7b9244836a78c31be0dd576d52640d4c3c9",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/components/ui/popover.tsx",
+      "target": "shared/zcode/ui/components/ui/popover.tsx",
+      "source_sha256": "e23c9238865ba7e85965ebed89e7328cfbdbbdcc2264156c775d51e9e264b484",
+      "integrated_sha256": "e23c9238865ba7e85965ebed89e7328cfbdbbdcc2264156c775d51e9e264b484",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/components/ui/command.tsx",
+      "target": "shared/zcode/ui/components/ui/command.tsx",
+      "source_sha256": "7c754bc80704163ce505d08d961a5a4b3e57107e7d53ea319483a896d448cbdb",
+      "integrated_sha256": "7c754bc80704163ce505d08d961a5a4b3e57107e7d53ea319483a896d448cbdb",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/components/ui/select.tsx",
+      "target": "shared/zcode/ui/components/ui/select.tsx",
+      "source_sha256": "e6d73ae0bf6916256fd86005d8a94e3dfb004c8107f51882cfd2d52e7751ca09",
+      "integrated_sha256": "e6d73ae0bf6916256fd86005d8a94e3dfb004c8107f51882cfd2d52e7751ca09",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/components/ui/dropdown-menu.tsx",
+      "target": "shared/zcode/ui/components/ui/dropdown-menu.tsx",
+      "source_sha256": "34c5b79489756aa3467ec26d2b44587f3d47eafcb2cb16402686aac15e4debdb",
+      "integrated_sha256": "34c5b79489756aa3467ec26d2b44587f3d47eafcb2cb16402686aac15e4debdb",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/components/ui/dialog.tsx",
+      "target": "shared/zcode/ui/components/ui/dialog.tsx",
+      "source_sha256": "53dc10761bd894a5e86278d9354aac47920c81b4aab8b414b840af095f7c0b31",
+      "integrated_sha256": "53dc10761bd894a5e86278d9354aac47920c81b4aab8b414b840af095f7c0b31",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/components/ui/tooltip.tsx",
+      "target": "shared/zcode/ui/components/ui/tooltip.tsx",
+      "source_sha256": "301dbf3a6f8b1bc496f9bdc6fbc5fe6202ed373182897f39cd1ecd19b00fdfbe",
+      "integrated_sha256": "301dbf3a6f8b1bc496f9bdc6fbc5fe6202ed373182897f39cd1ecd19b00fdfbe",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/assets/plugin-icons/documents.png",
+      "target": "shared/zcode/ui/assets/plugin-icons/documents.png",
+      "source_sha256": "22b8fd67bf63938812be30c057f1296f886359995a4446a2cdfb7ac58da06014",
+      "integrated_sha256": "22b8fd67bf63938812be30c057f1296f886359995a4446a2cdfb7ac58da06014",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/assets/plugin-icons/image-search.png",
+      "target": "shared/zcode/ui/assets/plugin-icons/image-search.png",
+      "source_sha256": "c5684dbcadb05ad6b2fc4399366dcab994fda0c8012331e6424ce00599be51d7",
+      "integrated_sha256": "c5684dbcadb05ad6b2fc4399366dcab994fda0c8012331e6424ce00599be51d7",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/assets/plugin-icons/pdf.png",
+      "target": "shared/zcode/ui/assets/plugin-icons/pdf.png",
+      "source_sha256": "75f9555701a440bc181f1561ac110d7d5b2a554cc573acdfe6f1ff63ad915b03",
+      "integrated_sha256": "75f9555701a440bc181f1561ac110d7d5b2a554cc573acdfe6f1ff63ad915b03",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/assets/plugin-icons/plugin-creator.png",
+      "target": "shared/zcode/ui/assets/plugin-icons/plugin-creator.png",
+      "source_sha256": "72ad20d0bcdc0c3e51dd551206fca016e8e30aaecd5dcd8b1b6002180c3fc2b8",
+      "integrated_sha256": "72ad20d0bcdc0c3e51dd551206fca016e8e30aaecd5dcd8b1b6002180c3fc2b8",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/assets/plugin-icons/presentations.png",
+      "target": "shared/zcode/ui/assets/plugin-icons/presentations.png",
+      "source_sha256": "9d8eab53924c393ffa02ae14466006c773ad98e47e4f261abf021fc7e53c3c96",
+      "integrated_sha256": "9d8eab53924c393ffa02ae14466006c773ad98e47e4f261abf021fc7e53c3c96",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/assets/plugin-icons/spreadsheets.png",
+      "target": "shared/zcode/ui/assets/plugin-icons/spreadsheets.png",
+      "source_sha256": "9932bad05d4bf1aeb5fce23059936d9d3223f337e95cccdd7ea989b4a502b0b0",
+      "integrated_sha256": "9932bad05d4bf1aeb5fce23059936d9d3223f337e95cccdd7ea989b4a502b0b0",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/shared/src/pluginStoreOrdering.ts",
+      "target": "shared/zcode/shared/pluginStoreOrdering.ts",
+      "source_sha256": "a1ac0bd3b3835edc370e7c949450cb48ecb3b0d450fd04468639d9742007b962",
+      "integrated_sha256": "a1ac0bd3b3835edc370e7c949450cb48ecb3b0d450fd04468639d9742007b962",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/shared/src/plugin-display-name.ts",
+      "target": "shared/zcode/shared/plugin-display-name.ts",
+      "source_sha256": "5d1204c6b14758ba452d459634ef104e9bbdc68eb1bb56bb4c6b80c313026ca9",
+      "integrated_sha256": "5d1204c6b14758ba452d459634ef104e9bbdc68eb1bb56bb4c6b80c313026ca9",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/shared/src/plugin-marketplaces.ts",
+      "target": "shared/zcode/shared/plugin-marketplaces.ts",
+      "source_sha256": "e4e42c6122c1f732928a403b7f67b6941927de361daa39dd52e21d74ea7c04db",
+      "integrated_sha256": "e4e42c6122c1f732928a403b7f67b6941927de361daa39dd52e21d74ea7c04db",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/shared/src/pluginStoreOrder.ts",
+      "target": "shared/zcode/shared/pluginStoreOrder.ts",
+      "source_sha256": "b5368ef5f36d5cff6f395fe257ec45ce326f72f0e6521f2b2e0884ae18a62942",
+      "integrated_sha256": "b5368ef5f36d5cff6f395fe257ec45ce326f72f0e6521f2b2e0884ae18a62942",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/shared/src/wslUserValidation.ts",
+      "target": "shared/zcode/shared/wslUserValidation.ts",
+      "source_sha256": "96c18113f6273cc80bae560e04353cf3e991f4607ab6eb29d088954a8eec167c",
+      "integrated_sha256": "96c18113f6273cc80bae560e04353cf3e991f4607ab6eb29d088954a8eec167c",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/shared/src/remoteResourcePackages.ts",
+      "target": "shared/zcode/shared/remoteResourcePackages.ts",
+      "source_sha256": "8041390aafed41e42d272215b4c2485d027c00f9812df8307bf40d906b526e1f",
+      "integrated_sha256": "8041390aafed41e42d272215b4c2485d027c00f9812df8307bf40d906b526e1f",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/shared/src/remoteAssetInstallMode.ts",
+      "target": "shared/zcode/shared/remoteAssetInstallMode.ts",
+      "source_sha256": "918dcc8a86921af3185e5af96d2b9a189899e58a0e86fb20de44c47934f6ff8c",
+      "integrated_sha256": "918dcc8a86921af3185e5af96d2b9a189899e58a0e86fb20de44c47934f6ff8c",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/shared/src/test-ids.ts",
+      "target": "shared/zcode/shared/test-ids.ts",
+      "source_sha256": "6f632a0c4bdea6044e9265184d00985f19afa1e0eba86d1873165795db1deb59",
+      "integrated_sha256": "6f632a0c4bdea6044e9265184d00985f19afa1e0eba86d1873165795db1deb59",
+      "mode": "verbatim"
+    },
+    {
+      "source": "packages/ui/src/RemoteConnectionDialogContent.tsx",
+      "target": "shared/zcode/ui/RemoteConnectionDialogContent.tsx",
+      "source_sha256": "1fe7a83e59952fb29358ca1b8bfd39d1df65a164544772b04f5f85a3f0da70a6",
+      "integrated_sha256": "5149f280102dd3b5cf6b99f3da5909a66663bfd492eca155662514ba6223deab",
+      "mode": "excerpt",
+      "adaptation": "保留 KindStep / SettingsStep 原始函数体；目录浏览单独使用原版 DirectoryBrowser；未引入宿主资源同步面板。"
+    },
+    {
+      "source": "packages/ui/src/styles.css",
+      "target": "shared/zcode/theme.css",
+      "source_sha256": "22d5b58e44cdebdbe7154c418ee05fef6dde689e384f0dd590d4057739487be7",
+      "integrated_sha256": "7505893e83b013f0f7ca1fd31c62152ee9c85d25b0b4ee89e8fc957c14c6e981",
+      "mode": "excerpt",
+      "adaptation": "完整抽取上游 @theme 块；未复制会覆盖 TinyClaw 既有页面的全局 reset。"
+    }
+  ]
+}
