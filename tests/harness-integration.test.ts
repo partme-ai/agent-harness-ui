@@ -1,14 +1,28 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {pages} from '../src/catalog.ts';
-import {workspaceNavigation} from '../workspace/shared/workspace_navigation.js';
-import {HARNESS_SETTINGS_GROUPS,CONSOLE_SECTIONS,consolePath} from '../workspace/shared/settings/harness_sections.js';
+import {workspaceNavigation,workspaceNavigationForMode,modeForSpace,spaceForMode} from '../workspace/shared/workspace_navigation.js';
+import {taskHomeScenes} from '../workspace/shared/task_home.js';
+import {HARNESS_SETTINGS_GROUPS,CONSOLE_SECTIONS,consolePath,modelSettingsParent,modelSettingsTabs,modelSettingsActiveTab} from '../workspace/shared/settings/harness_sections.js';
 import {publicModelOptions} from '../src/harness_bridge.ts';
 import {listSessionSecrets,saveSessionSecret} from '../workspace/shared/settings/secret_memory.js';
 
 test('工作台主菜单覆盖任务、资料库和三类协作空间',()=>{
  assert.deepEqual(workspaceNavigation.map(item=>item.label),['新建任务','定时任务','插件市场','资料库','项目空间','工作空间','创作空间']);
  assert.equal(new Set(workspaceNavigation.map(item=>item.id)).size,workspaceNavigation.length);
+});
+
+test('办公、编程、创作模式各只显示自己的空间入口',()=>{
+ assert.deepEqual(Object.keys(taskHomeScenes.chat),['办公','编程','创作']);
+ assert.deepEqual(workspaceNavigationForMode('办公').map(item=>item.id),['home','tasks','plugins','knowledge','office']);
+ assert.deepEqual(workspaceNavigationForMode('编程').map(item=>item.id),['home','tasks','plugins','knowledge','project']);
+ assert.deepEqual(workspaceNavigationForMode('创作').map(item=>item.id),['home','tasks','plugins','knowledge','creative']);
+ assert.equal(modeForSpace('project'),'编程');
+ assert.equal(modeForSpace('office'),'办公');
+ assert.equal(modeForSpace('creative'),'创作');
+ assert.equal(spaceForMode('办公'),'office');
+ assert.equal(spaceForMode('编程'),'project');
+ assert.equal(spaceForMode('创作'),'creative');
 });
 
 test('配置模型同步到工作台时不传递凭据',()=>{
@@ -38,4 +52,17 @@ test('配置菜单中的现有功能都指向实际页面，且菜单键不重�
   assert.equal(consolePath(item.id),`#/w/demo/${item.page}${item.item?`?item=${encodeURIComponent(item.item)}`:''}`);
  }
  for(const name of ['账户设置','基础设置','模型设置','知识库','智能体','内置工具','资源管理','数据与扩展'])assert.ok(HARNESS_SETTINGS_GROUPS.some(group=>group.title===name));
+});
+
+test('本地模型与模型网关在侧栏各占一个入口，原配置页由内部页签访问',()=>{
+ const modelGroup=HARNESS_SETTINGS_GROUPS.find(group=>group.title==='模型设置');
+ assert.deepEqual(modelGroup?.items.map(item=>item.id),['model-services','local-model','model-gateway','model-stats']);
+ assert.deepEqual(modelSettingsTabs('local-model')?.map(item=>item.label),['运行环境','模型列表']);
+ assert.deepEqual(modelSettingsTabs('model-gateway')?.map(item=>item.label),['默认模型','模型 API','模型负载','模型降级','模型限流','模型熔断']);
+ assert.equal(modelSettingsParent('local-catalog'),'local-model');
+ assert.equal(modelSettingsParent('model-breaker'),'model-gateway');
+ assert.equal(modelSettingsActiveTab('local-model'),'local-runtime');
+ assert.equal(modelSettingsActiveTab('model-gateway'),'model-defaults');
+ assert.equal(consolePath('local-catalog'),'#/w/demo/models/local/catalog');
+ assert.equal(consolePath('model-breaker'),'#/w/demo/models/gateway/breaker');
 });

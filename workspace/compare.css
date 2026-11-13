@@ -27,3 +27,25 @@
 
 /* 浅色画布与颜色模式切换控件使用相同的中性灰底色。 */
 .comparison:not(.dark) .comparison-canvas{background-image:linear-gradient(#0000000a 1px,transparent 1px),linear-gradient(90deg,#0000000a 1px,transparent 1px)}
+
+/* 对比控制区与各设备工具栏保持紧凑，预览内容从工具栏下方直接开始。 */
+.comparison>header{min-height:48px;padding:7px 16px;gap:8px 12px}
+.comparison-brand{flex:none}
+.comparison-brand strong{font-size:15px;line-height:18px}
+.comparison-brand small{font-size:10px;line-height:14px}
+.comparison-controls{flex:1;min-width:0}
+.comparison-controls .ant-select{min-width:90px}
+.comparison-toggle{gap:4px;font-size:12px}
+.comparison-device-switches{gap:8px;padding-left:8px}
+.comparison-devices{padding-top:10px;padding-bottom:10px}
+.device-toolbar{display:flex;align-items:center;gap:4px;min-height:26px;margin-bottom:4px;white-space:nowrap}
+.device-toolbar strong{flex:none;font-size:12px}
+.device-toolbar .device-preset{flex:1;width:0;min-width:0;margin:0}
+.comparison-device{position:relative}
+.comparison-device .phone-preset-popup{left:0!important;width:min(240px,100%)!important}
+.phone-preset-popup .ant-select-item-option-content{white-space:normal}
+.device-toolbar .device-actions{flex:none;gap:3px;margin:0}
+.device-toolbar .ant-btn{height:24px;padding-inline:4px;font-size:11px}
+.device-toolbar .ant-btn-icon-only{width:24px;padding:0}
+@media(max-width:900px){.comparison>header{padding:6px 10px;gap:4px 8px}.comparison-brand{width:auto}.comparison-device-switches{width:auto}}
+@media(max-width:700px){.comparison>header{flex-direction:column;align-items:stretch}.comparison-brand{width:100%}.comparison-brand strong{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.comparison>header .comparison-brand small{display:none}.comparison-controls{flex:none;width:100%}}

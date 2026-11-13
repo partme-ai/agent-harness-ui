@@ -11,8 +11,7 @@ import {contextIdentity,contextTypeNames} from './composer_context.js';
 import {sampleConversation} from './conversation_state.js';
 import {DeviceConversationBar} from './DeviceWorkspace.jsx';
 import {resolveTurnTarget,deviceNames,visibleSessions} from './device_workspace.js';
-export function Conversation({empty=false,initialDraft="",homeContent=null,desktop=false,onSettings,workspace,consoleModels}){
- const [homeMode,setHomeMode]=useState('日常办公');
+export function Conversation({empty=false,initialDraft="",homeContent=null,desktop=false,onSettings,workspace,consoleModels,homeMode='办公'}){
  const [rows,setRows]=useState(empty?[]:sampleConversation.rows),[draft,setDraft]=useState(initialDraft),[copied,setCopied]=useState(false);
  const [sendError,setSendError]=useState('');
  const draftCache=useRef({}),previousScope=useRef(null);
@@ -42,7 +41,7 @@ export function Conversation({empty=false,initialDraft="",homeContent=null,deskt
 
  {sendError&&<Alert className="tc-session-error" closable onClose={()=>setSendError('')} type="error" title={sendError}/>}
  <div className={"conversation-scroll"+(shownRows.length===0?" tc-empty-scroll":"")} ref={scroll} onScroll={e=>{following.current=e.currentTarget.scrollHeight-e.currentTarget.scrollTop-e.currentTarget.clientHeight<48}}>
- {shownRows.length===0&&(homeContent||<div className="tc-chat-welcome tc-task-home" aria-label="新建任务主页"><h1>{workspace?.kind==='work'?'Agent Harness UI，今天在本地完成什么？':'Agent Harness UI，今天帮你做什么？'}</h1>{workspace?.kind==='work'&&<p className="tc-work-home-scope">围绕本地文件、项目与资料开展工作 · 记录仅在本机可见</p>}<div className="tc-home-modes">{Object.keys(taskHomeScenes.chat).map(mode=><Button key={mode} type={homeMode===mode?'primary':'text'} aria-pressed={homeMode===mode} onClick={()=>setHomeMode(mode)}>{mode}</Button>)}</div><div className="tc-home-shortcuts">{taskHomeScenes[workspace?.kind==='work'?'work':'chat'][homeMode].map(title=><Button key={title} onClick={()=>{setDraft(taskHomePrompt(workspace?.kind,title));requestAnimationFrame(()=>scroll.current?.closest('.conversation-view')?.querySelector('textarea')?.focus())}}>{title}</Button>)}</div></div>)}
+ {shownRows.length===0&&(homeContent||<div className="tc-chat-welcome tc-task-home" aria-label="新建任务主页"><h1>{workspace?.kind==='work'?'Agent Harness UI，今天在本地完成什么？':'Agent Harness UI，今天帮你做什么？'}</h1>{workspace?.kind==='work'&&<p className="tc-work-home-scope">围绕本地文件、项目与资料开展工作 · 记录仅在本机可见</p>}<div className="tc-home-shortcuts">{taskHomeScenes[workspace?.kind==='work'?'work':'chat'][homeMode].map(title=><Button key={title} onClick={()=>{setDraft(taskHomePrompt(workspace?.kind,title));requestAnimationFrame(()=>scroll.current?.closest('.conversation-view')?.querySelector('textarea')?.focus())}}>{title}</Button>)}</div></div>)}
  {shownRows.length>0&&<><Alert title={stored?'本地预览记录 · 尚未连接真实执行服务':'演示会话 · 工具过程为固定示例，尚未连接真实执行服务'} type="info" showIcon />
  <div className="conversation-date">{stored?'本地预览记录':'示例会话'}</div></>}
  {shownRows.map(row=><div className={'conversation-row '+row.kind} key={row.rowId}>
