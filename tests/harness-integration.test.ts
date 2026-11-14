@@ -54,9 +54,14 @@ test('配置菜单中的现有功能都指向实际页面，且菜单键不重�
  for(const name of ['账户设置','基础设置','模型设置','知识库','智能体','内置工具','资源管理','数据与扩展'])assert.ok(HARNESS_SETTINGS_GROUPS.some(group=>group.title===name));
 });
 
-test('本地模型与模型网关在侧栏各占一个入口，原配置页由内部页签访问',()=>{
+test('模型服务、本地模型与模型网关在侧栏各占一个入口，分类由内部页签访问',()=>{
  const modelGroup=HARNESS_SETTINGS_GROUPS.find(group=>group.title==='模型设置');
  assert.deepEqual(modelGroup?.items.map(item=>item.id),['model-services','local-model','model-gateway','model-stats']);
+ assert.deepEqual(modelSettingsTabs('model-services')?.map(item=>item.label),['文本生成','图片生成','视频生成','语音合成','语音识别']);
+ assert.deepEqual(modelSettingsTabs('model-services')?.map(item=>item.item),['text','image','video','tts','asr']);
+ assert.equal(modelSettingsParent('model-service-asr'),'model-services');
+ assert.equal(modelSettingsActiveTab('model-services'),'model-service-text');
+ assert.equal(consolePath('model-service-asr'),'#/w/demo/models?item=asr');
  assert.deepEqual(modelSettingsTabs('local-model')?.map(item=>item.label),['运行环境','模型列表']);
  assert.deepEqual(modelSettingsTabs('model-gateway')?.map(item=>item.label),['默认模型','模型 API','模型负载','模型降级','模型限流','模型熔断']);
  assert.equal(modelSettingsParent('local-catalog'),'local-model');
