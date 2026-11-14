@@ -9,6 +9,13 @@ test('移除重复远程控制后的主入口顺序一致，所有深层叶子�
  const keys=shellEntries().map(x=>x.key);assert.equal(new Set(keys).size,keys.length);
  for(const scope of ['models','agents','devices'])for(const view of ['usage','analysis','cost'])assert.ok(keys.includes(`${scope}/${scope}-reports/${view}`));
 });
+test('模型服务五分类各有独立路由，旧模型服务链接仍进入文本生成',()=>{
+ for(const item of ['text','image','video','tts','asr']){
+  assert.equal(shellTarget(`models/model-settings/${item}`)?.item,item);
+  assert.equal(shellSelection('06',item,'models'),`models/model-settings/${item}`);
+ }
+ assert.equal(shellSelection('06','','models'),'models/model-settings/text');
+});
 test('旧角色、设备、形象、主题链接继续恢复；主题归系统',()=>{
  assert.equal(pathFor('04','a2'),'/w/demo/agents/a2/edit');assert.equal(shellOwner('04','agents'),'agents');
  assert.equal(shellOwner('13','devices'),'devices');assert.equal(shellOwner('02','chat'),'agents');
