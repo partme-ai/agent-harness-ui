@@ -21,6 +21,14 @@
 .device-mobile .product-two-columns{grid-template-columns:1fr}.device-mobile .product-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.device-mobile .product-filter-bar>.ant-select,.device-mobile .product-filter-bar>.ant-input{flex:1 1 140px;min-width:0}.device-mobile .product-filter-bar .ant-select{max-width:100%}.device-mobile .product-form-grid{grid-template-columns:1fr}.device-mobile .product-link-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.device-mobile .robot-trial-config{grid-template-columns:1fr 1fr!important}.device-mobile .robot-trial-config label{width:auto!important}.device-mobile .product-stats strong{font-size:18px}.device-mobile .product-owner{line-height:1.5}
 /* Antd 由 table-content 处理横向滚动，避免旧外层规则引入 1px 高差的常驻竖条。 */
 .product-table .ant-table{overflow:visible}
+/* 五列保留可读宽度；仅在容器放不下这些内容时由表格自身滚动。 */
+.gateway-rules-table .ant-table-cell:nth-child(1){min-width:6em;overflow-wrap:anywhere}
+.gateway-rules-table .ant-table-cell:nth-child(2){min-width:6.5em}
+.gateway-rules-table .ant-table-cell:nth-child(3){min-width:7em}
+.gateway-rules-table .ant-table-cell:nth-child(n+4){width:1%;white-space:nowrap}
+.gateway-rules-table .ant-tag{white-space:normal;overflow-wrap:anywhere}
+.gateway-rules-table .ant-space-item{min-width:0}
+
 .product-workbench-links{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .signed-out-layout{height:100dvh;overflow:auto;background:var(--bg);padding:24px}
 .product-stats>.section-card,.product-two-columns>.section-card{margin:0!important}

@@ -12,7 +12,7 @@ import { SourceResources, SourceMemory } from './SourceSettings.jsx'
 import { createCatalogSamples } from './resource_catalog.js'
 import { createProviderSamples } from './settings_samples.js'
 import { isValidElement, useEffect, useRef, useState } from "react"
-import { SlidersHorizontal, Palette, Cube, Globe, Keyboard, Brain, Robot, PuzzlePiece, Plug, Sparkle, Terminal, Anchor, ChartBar, ArrowLeft, ArrowRight, MagnifyingGlass, X, Plus, Check, CaretRight, ArrowCounterClockwise, Sun, Moon, Monitor, FileText, Folder, Info, Rocket, Question, PencilSimple, ShieldCheck } from "@phosphor-icons/react"
+import { SlidersHorizontal, Layout, Palette, Cube, Globe, Keyboard, Brain, Robot, PuzzlePiece, Plug, Sparkle, Terminal, Anchor, ChartBar, ArrowLeft, ArrowRight, MagnifyingGlass, X, Plus, Check, CaretRight, ArrowCounterClockwise, Sun, Moon, Monitor, FileText, Folder, Info, Rocket, Question, PencilSimple, ShieldCheck } from "@phosphor-icons/react"
 import { SETTINGS_GROUPS, SETTINGS_LABELS, GENERAL_GROUPS, GENERAL_DEFAULTS, RESOURCE_CONFIG, PROVIDERS, SHORTCUTS } from "./settings_config.js"
 import { PREFERENCES_KEY, normalizePreferences, validateEndpoint, recordShortcut } from "./settings_state.js"
 import providerLogo0 from "./provider_icons/logo-bigmodel.svg"
@@ -22,7 +22,7 @@ import providerLogo3 from "./provider_icons/model-provider-anthropic.png"
 import providerLogo4 from "./provider_icons/model-provider-deepseek.png"
 import "./settings.css"
 
-const ICONS = { SlidersHorizontal, Palette, Cube, Globe, Keyboard, Brain, Robot, PuzzlePiece, Plug, Sparkle, Terminal, Anchor, ChartBar, Monitor, ShieldCheck }
+const ICONS = { SlidersHorizontal, Layout, Palette, Cube, Globe, Keyboard, Brain, Robot, PuzzlePiece, Plug, Sparkle, Terminal, Anchor, ChartBar, Monitor, ShieldCheck }
 export function SettingsNavigationIcon({name}) {
   const Icon=ICONS[name] || SlidersHorizontal
   return <Icon size={16} aria-hidden="true" />

@@ -25,7 +25,7 @@ export function SidebarAccountMenu({ menuRef, themeMode, onThemeChange, preferen
   return <div ref={menuRef} id="sidebar-account-popover" className="zc-account-menu" role="menu" aria-label="账号菜单" onKeyDown={focusSibling}>
     <AntNativeButton type="button" data-handled="true" role="menuitem" onClick={() => choose(() => onOpenSettings('account-profile'))}><UserCircle /><span>演示账户 · ID local-demo</span></AntNativeButton>
     <AntNativeButton type="button" data-handled="true" role="menuitem" onClick={() => choose(() => onOpenSettings('account-profile'))}><UserCircle /><span>基础信息</span></AntNativeButton>
-    <AntNativeButton type="button" data-handled="true" role="menuitem" onClick={() => choose(() => onOpenSettings('system-theme'))}><PaintBrush /><span>系统主题</span><small>查看当前主题</small></AntNativeButton>
+    <AntNativeButton type="button" data-handled="true" role="menuitem" onClick={() => choose(() => onOpenSettings('system-theme'))}><PaintBrush /><span>主题</span><small>查看当前主题</small></AntNativeButton>
     <hr role="separator" />
     {groups.map(({id,label,Icon,value,options}) => <div className="zc-menu-sub" key={id} onMouseEnter={() => setSubmenu(id)}>
       <AntNativeButton type="button" data-handled="true" role="menuitem" aria-haspopup="menu" aria-expanded={submenu===id} ref={node => { triggers.current[id]=node }} onClick={() => setSubmenu(id)} onKeyDown={event => { if(event.key==="ArrowRight") { event.preventDefault(); setSubmenu(id); requestAnimationFrame(() => menuRef.current?.querySelector(`[data-submenu="${id}"] button`)?.focus()) } }}><Icon /><span>{label}</span><CaretRight /></AntNativeButton>
