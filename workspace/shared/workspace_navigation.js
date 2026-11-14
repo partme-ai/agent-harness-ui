@@ -1,6 +1,7 @@
 // 三端共享产品导航；账户与设备控制不占用业务栏目。
 export const workspaceNavigation=[
  {id:'home',label:'新建任务',icon:'new'},
+ {id:'work',label:'任务总览',icon:'overview'},
  {id:'tasks',label:'定时任务',icon:'tasks'},
  {id:'plugins',label:'插件市场',icon:'plugins'},
  {id:'knowledge',label:'资料库',icon:'library'},

@@ -8,15 +8,15 @@ import {publicModelOptions} from '../src/harness_bridge.ts';
 import {listSessionSecrets,saveSessionSecret} from '../workspace/shared/settings/secret_memory.js';
 
 test('工作台主菜单覆盖任务、资料库和三类协作空间',()=>{
- assert.deepEqual(workspaceNavigation.map(item=>item.label),['新建任务','定时任务','插件市场','资料库','项目空间','工作空间','创作空间']);
+ assert.deepEqual(workspaceNavigation.map(item=>item.label),['新建任务','任务总览','定时任务','插件市场','资料库','项目空间','工作空间','创作空间']);
  assert.equal(new Set(workspaceNavigation.map(item=>item.id)).size,workspaceNavigation.length);
 });
 
 test('办公、编程、创作模式各只显示自己的空间入口',()=>{
  assert.deepEqual(Object.keys(taskHomeScenes.chat),['办公','编程','创作']);
- assert.deepEqual(workspaceNavigationForMode('办公').map(item=>item.id),['home','tasks','plugins','knowledge','office']);
- assert.deepEqual(workspaceNavigationForMode('编程').map(item=>item.id),['home','tasks','plugins','knowledge','project']);
- assert.deepEqual(workspaceNavigationForMode('创作').map(item=>item.id),['home','tasks','plugins','knowledge','creative']);
+ assert.deepEqual(workspaceNavigationForMode('办公').map(item=>item.id),['home','work','tasks','plugins','knowledge','office']);
+ assert.deepEqual(workspaceNavigationForMode('编程').map(item=>item.id),['home','work','tasks','plugins','knowledge','project']);
+ assert.deepEqual(workspaceNavigationForMode('创作').map(item=>item.id),['home','work','tasks','plugins','knowledge','creative']);
  assert.equal(modeForSpace('project'),'编程');
  assert.equal(modeForSpace('office'),'办公');
  assert.equal(modeForSpace('creative'),'创作');
