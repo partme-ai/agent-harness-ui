@@ -5,7 +5,7 @@ import {workspaceNavigation} from './shared/workspace_navigation.js';
 export const COMPARE_STATE_KEY='tinyclawCompareControlsV1';
 const deviceIds=Object.keys(DEVICE_PRESETS);
 const sections=new Set(SETTINGS_GROUPS.flatMap(group=>group.items.map(([id])=>id)));
-const surfaces=new Set(['home','work','settings','conversation','mobile','search','new',...workspaceNavigation.map(item=>item.id)]);
+const surfaces=new Set(['home','work','work-chat','settings','conversation','mobile','search','new',...workspaceNavigation.map(item=>item.id)]);
 const scales=new Set([.5,.65,.75,.85,1]);
 const defaults={section:'general',dark:false,style:'zcode',surface:'home',sync:true,scale:.65,landscape:{},presets:{},enabled:Object.fromEntries(deviceIds.map(id=>[id,true]))};
 
