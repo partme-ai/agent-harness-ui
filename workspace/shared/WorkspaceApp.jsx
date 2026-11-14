@@ -43,7 +43,7 @@ function WorkspaceApp(){
  useEffect(()=>{const receive=event=>{if(event.origin===location.origin&&event.source===adminRef.current?.contentWindow&&event.data?.type==='harness-models'&&Array.isArray(event.data.models))setConsoleModels(event.data.models)};addEventListener('message',receive);return()=>removeEventListener('message',receive)},[]);
  useLayoutEffect(()=>{if(!settings||!canvasRef.current)return;const canvas=canvasRef.current;const update=()=>{const {left,top,width,height}=canvas.getBoundingClientRect();setAdminRect({left,top,width,height})};update();const observer=new ResizeObserver(update);observer.observe(canvas);return()=>observer.disconnect();},[settings,section,sidebarWidth,viewportWidth]);
  const deviceWorkspace=useDeviceWorkspace(settingsDevice);
- useEffect(()=>{if(entrySurface==='work'){deviceWorkspace.setKind('work');deviceWorkspace.setSession(`work-${settingsDevice}`)}},[]);
+ useEffect(()=>{if(['work','work-chat'].includes(entrySurface)){deviceWorkspace.setKind('work');deviceWorkspace.setSession(`work-${settingsDevice}`)}},[]);
  function reviewBinding(token,session){setMobile(false);setPair(null);window.SURFIUM_PAIR=null;deviceWorkspace.setBindingRequest({token,deviceId:session.ownerRole||'desktop'})}
  const linkLabel=isPhone?'扫码连接 Pad／桌面':'手机联动';
  const linkIcon=isPhone?<ScanOutlined/>:<DeviceMobile/>;
@@ -64,7 +64,7 @@ function WorkspaceApp(){
     const value=event.data;if(value.draft!==undefined)setSharedDraft(value.draft);if(value.section)setSection(value.section);if(value.style)setViewStyle(value.style);
     if(value.surface==='settings'){setSettings(true);setMobile(false)}
     else if(value.surface==='mobile'){setMobile(true)}
-    else if(value.surface){if(value.surface==='work'){deviceWorkspace.setKind('work');deviceWorkspace.setSession(`work-${settingsDevice}`)}setPage(value.surface);setSettings(false);setMobile(false)}
+    else if(value.surface){if(['work','work-chat'].includes(value.surface)){deviceWorkspace.setKind('work');deviceWorkspace.setSession(`work-${settingsDevice}`)}setPage(value.surface);setSettings(false);setMobile(false)}
     if((value.dark?'dark':'light')!==document.documentElement.dataset.theme)setThemeMode(value.dark?'dark':'light');
    }
    function pairing(event){const anchor=event.target.closest('a');if(!anchor)return;let params;try{params=new URL(anchor.href).searchParams;}catch{return;}if(!params.get('mockPair'))return;event.preventDefault();window.SURFIUM_PAIR=params;setPair(params.toString());}
