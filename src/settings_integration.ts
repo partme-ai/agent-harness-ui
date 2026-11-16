@@ -2,7 +2,7 @@ import type {Connection} from './state.ts';
 import type {RoleMemory} from './role_profile.ts';
 import {connectionMatchesCategory} from './model_categories.ts';
 /** 默认引用集中保存；具体智能体和知识库中的显式配置优先。 */
-export const defaultSlots=[{key:'chat',label:'对话模型',category:'LLM'},{key:'utility',label:'轻量任务模型',category:'SLM'},{key:'embedding',label:'嵌入模型',category:'Embedding'},{key:'rerank',label:'重排序模型',category:'Rerank'},{key:'vision',label:'视觉模型',category:'VLLM'},{key:'asr',label:'语音识别模型',category:'ASR'},{key:'tts',label:'语音合成模型',category:'TTS'},{key:'vad',label:'语音活动检测',category:'VAD'},{key:'intent',label:'意图识别模型',category:'意图'},{key:'memory',label:'外部记忆服务',category:'记忆'}] as const;
+export const defaultSlots=[{key:'chat',label:'对话模型',category:'LLM'},{key:'utility',label:'轻量任务模型',category:'SLM'},{key:'embedding',label:'嵌入模型',category:'Embedding'},{key:'rerank',label:'重排序模型',category:'Rerank'},{key:'vision',label:'视觉模型',category:'VLLM'},{key:'asr',label:'语音识别模型',category:'ASR'},{key:'image',label:'图片生成模型',category:'IMAGE'},{key:'video',label:'视频生成模型',category:'VIDEO'},{key:'tts',label:'语音合成模型',category:'TTS'},{key:'vad',label:'语音活动检测',category:'VAD'},{key:'intent',label:'意图识别模型',category:'意图'},{key:'memory',label:'外部记忆服务',category:'记忆'}] as const;
 export type DefaultSlot=typeof defaultSlots[number]['key'];
 export type ModelDefaults=Partial<Record<DefaultSlot,string>>;
 export type MemoryStatus='active'|'pending'|'tracking'|'documents'|'superseded'|'archived';

@@ -4,7 +4,7 @@ import {cloneAgentRuntime} from './feature_state.ts';
 import type {Agent,AgentVersion,Connection} from './state.ts';
 import {reviseAgent} from './state.ts';
 export const modelRoles=modelCategories.map(c=>c.value);
-export const roleLabel:Record<string,string>={VAD:'语音活动检测',ASR:'语音识别',LLM:'语言生成',SLM:'小参数模型',VLLM:'视觉理解',意图:'意图与工具路由',TTS:'语音合成',记忆:'记忆适配',RAG:'外部知识检索',Embedding:'向量化',Rerank:'重排序'};
+export const roleLabel:Record<string,string>={IMAGE:'图片生成',VIDEO:'视频生成',VAD:'语音活动检测',ASR:'语音识别',LLM:'语言生成',SLM:'小参数模型',VLLM:'视觉理解',意图:'意图与工具路由',TTS:'语音合成',记忆:'记忆适配',RAG:'外部知识检索',Embedding:'向量化',Rerank:'重排序'};
 export const externalPlatforms=[
  {name:'Dify',color:'#5270df',object:'应用 / 工作流 ID',desc:'连接已有对话应用或工作流。'},
  {name:'Coze',color:'#7860c5',object:'Bot / Workflow ID',desc:'把已发布的外部智能体接入工作空间。'},

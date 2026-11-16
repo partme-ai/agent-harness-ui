@@ -1,9 +1,11 @@
+import {ModelServiceIcon,isModelServiceIcon} from './ModelServiceIcon';
 import {OnboardingPageTip} from './GuidanceUI';
 import type {ReactNode} from 'react';
 import {Button,Card,Tag,Input,Empty,Space} from 'antd';
 import {GlobalOutlined,FileImageOutlined,AppstoreOutlined,MessageOutlined,RobotOutlined,ApiOutlined,BookOutlined,DesktopOutlined,CheckSquareOutlined,HistoryOutlined,AppstoreAddOutlined,AudioOutlined,SettingOutlined,SearchOutlined,BulbOutlined,StarOutlined,ThunderboltOutlined,FileTextOutlined,LinkOutlined,ToolOutlined} from '@ant-design/icons';
 import {ClusterOutlined,ApartmentOutlined,SwapOutlined,DashboardOutlined,SafetyCertificateOutlined,ShopOutlined,BugOutlined,CloudUploadOutlined,InfoCircleOutlined,DatabaseOutlined,SkinOutlined,TeamOutlined,UserOutlined,LoginOutlined,ControlOutlined,CodeOutlined,PieChartOutlined,BarChartOutlined,LineChartOutlined,DollarOutlined} from '@ant-design/icons';
 export function Icon({name,className}:{name:string;className?:string}){
+ if(isModelServiceIcon(name))return <ModelServiceIcon name={name} className={className}/>;
  const icons:Record<string,typeof AppstoreOutlined>={search:SearchOutlined,browser:GlobalOutlined,image:FileImageOutlined,home:AppstoreOutlined,chat:MessageOutlined,agents:RobotOutlined,models:ApiOutlined,knowledge:BookOutlined,devices:DesktopOutlined,tasks:CheckSquareOutlined,runs:HistoryOutlined,extensions:AppstoreAddOutlined,voices:AudioOutlined,settings:SettingOutlined,book:BookOutlined,robot:RobotOutlined,star:StarOutlined,spark:BulbOutlined,bolt:ThunderboltOutlined,file:FileTextOutlined,link:LinkOutlined,tool:ToolOutlined,gateway:ClusterOutlined,balance:ApartmentOutlined,fallback:SwapOutlined,rate:DashboardOutlined,safety:SafetyCertificateOutlined,market:ShopOutlined,debug:BugOutlined,upgrade:CloudUploadOutlined,info:InfoCircleOutlined,storage:DatabaseOutlined,theme:SkinOutlined,roles:TeamOutlined,users:UserOutlined,login:LoginOutlined,controls:ControlOutlined,code:CodeOutlined,reports:PieChartOutlined,usage:BarChartOutlined,analysis:LineChartOutlined,cost:DollarOutlined};const C=icons[name]||AppstoreOutlined;return <C className={className}/>;
 }
 /** 页面标题统一横排；旧页面传入的装饰英文与返回参数仅保留类型兼容，不再显示。 */

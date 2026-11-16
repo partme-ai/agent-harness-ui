@@ -12,6 +12,8 @@ Agent Harness UI 是一套 React 三端智能体工作台，提供独立设置�
   ↛ 模型、知识库、工具、设备或持久化服务
 ```
 
+macOS 可运行 `npm run desktop:macos` 构建本地工作台，使用系统浏览器授权。[桌面授权配置](docs/desktop-authorization.md)
+
 ## 快速开始
 
 需要 Node.js 24（用于当前 TypeScript 测试运行方式）、npm，以及提供静态预览的 Python 3。编写本文档时本机版本为 Node.js 24.18.0、npm 12.2.0、Python 3.14.8；这是实测环境，不代表已验证的兼容版本范围。

@@ -12,6 +12,8 @@ Browser (desktop / tablet / mobile)
   ↛ model, knowledge, tool, device, or persistence services
 ```
 
+On macOS, run `npm run desktop:macos` to build the native workspace with system-browser authorization. [Desktop authorization setup](docs/desktop-authorization.md)
+
 ## Quick start
 
 Requirements: Node.js 24 for the current TypeScript test runner, npm, and Python 3 for the static preview. Versions observed while writing this documentation: Node.js 24.18.0, npm 12.2.0, Python 3.14.8. These are observed versions, not a tested compatibility range.

@@ -35,7 +35,7 @@ test('配置校验仅接受已知风格、模式和安全HEX，空白名称及�
 test('主题保存读回只访问独立键，不读取、覆盖或清除机器人形象；损坏数据保留',()=>{
  const robot='[{"id":"mine","config":{"color":"traditional742-742","expression":33}}]',map=new Map([[characterPresetKey,robot]]),access:string[]=[];
  const storage={getItem:(k:string)=>{access.push(k);return map.get(k)||null;},setItem:(k:string,v:string)=>{access.push(k);map.set(k,v);}};
- assert.equal(readSystemTheme(storage).settings.preset_id,'jilan');
+ assert.equal(readSystemTheme(storage).settings.preset_id,'interface-modern-minimal');
  const s={...defaultSystemTheme(),preset_id:'jilan',mode:'system' as const};writeSystemTheme(storage,s);assert.deepEqual(readSystemTheme(storage).settings,s);
  assert.equal(map.get(characterPresetKey),robot);assert.ok(access.every(k=>k===systemThemeKey));
  map.set(systemThemeKey,'broken');assert.ok(readSystemTheme(storage).error);assert.equal(map.get(systemThemeKey),'broken');
@@ -62,11 +62,11 @@ test('真实形象配置保存后切换所有主题，JSON字节、颜色ID、�
  assert.equal(restored.color,'traditional742-742');assert.equal(restored.expression,33);assert.deepEqual(restored,config);assert.equal(sceneSvg(restored,0,{reduce:true}),svg);
 });
 
-test('系统默认与空存储回退均为霁蓝，已有主题选择继续原样读取',()=>{
- assert.equal(defaultSystemTheme().preset_id,'jilan');
- assert.equal(readSystemTheme({getItem:()=>null}).settings.preset_id,'jilan');
+test('系统默认与空存储回退均为晴空，已有主题选择继续原样读取',()=>{
+ assert.equal(defaultSystemTheme().preset_id,'interface-modern-minimal');
+ assert.equal(readSystemTheme({getItem:()=>null}).settings.preset_id,'interface-modern-minimal');
  const explicitClassic={schema_version:1,preset_id:'default',mode:'dark'},custom={schema_version:1,preset_id:'custom',mode:'system',custom:{name:'我的主题',primary:'#16806A',background:'#F7F8FA',sidebar:'#1E5A8F',sidebar_style:'dark'}};
- for(const saved of [explicitClassic,custom])assert.deepEqual(readSystemTheme({getItem:()=>JSON.stringify(saved)}).settings,saved);
+ for(const saved of [explicitClassic,{...explicitClassic,preset_id:"jilan"},custom])assert.deepEqual(readSystemTheme({getItem:()=>JSON.stringify(saved)}).settings,saved);
 });
 
 test('内置主题覆盖十个色系，每套均可直接预览和保存',async()=>{

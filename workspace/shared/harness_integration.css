@@ -1,9 +1,13 @@
-.harness-admin-frame{min-height:0;border:0;background:var(--zs-bg,#fff)}
+.harness-admin-frame{min-height:0;border:0;background:var(--surface)}
 .harness-persistent-admin{position:absolute;z-index:20}
 .harness-console-canvas{display:flex;flex-direction:column;min-height:0}
 .harness-console-anchor{flex:1;min-height:0;min-width:0}
-.harness-model-tabs{display:flex;flex:none;gap:4px;align-items:center;min-height:42px;padding:5px 12px;overflow-x:auto;scrollbar-width:thin;border-bottom:1px solid var(--zs-border,#e5e7eb);background:var(--zs-bg,#fff)}
+.harness-model-tabs{display:flex;flex:none;gap:4px;align-items:center;min-height:42px;padding:5px 12px;overflow-x:auto;scrollbar-width:thin;border-bottom:1px solid var(--line);background:var(--surface)}
 .harness-model-tabs button{flex:none;min-height:30px;padding:4px 10px;border:0;border-radius:6px;background:transparent;color:inherit;font:inherit;font-size:12px;cursor:pointer;white-space:nowrap}
-.harness-model-tabs button:hover{background:rgba(127,127,127,.08)}
-.harness-model-tabs button.active{background:rgba(82,127,245,.12);color:#3869db;font-weight:600}
-.harness-model-tabs button:focus-visible{outline:2px solid #527ff5;outline-offset:1px}
+.harness-model-tabs button:hover{background:var(--surface-2)}
+.harness-model-tabs button.active{background:var(--soft);color:var(--accent);font-weight:600}
+.harness-model-tabs button:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
+
+.harness-model-tabs button:has(svg){display:inline-flex;align-items:center;gap:5px}
+.harness-model-tabs button svg{flex:none;font-size:15px}
+@media(max-width:480px){.harness-model-tabs:has(svg){padding-inline:4px;gap:1px}.harness-model-tabs button:has(svg){flex:1;padding-inline:3px;gap:2px}.harness-model-tabs button svg{font-size:13px}}

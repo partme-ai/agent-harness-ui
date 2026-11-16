@@ -29,7 +29,7 @@ function writeHtml(file,result,title){
   fs.writeFileSync(path.join(assets,`workspace-${name}.js`),bootstrap+'\n'+js);
   fs.writeFileSync(path.join(assets,`workspace-${name}.css`),css);
   const prefix=file.includes('/')?'../':'./';
-  fs.writeFileSync(target,`<!doctype html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title}</title><link rel="stylesheet" href="${prefix}assets/workspace-${name}.css"></head><body><div id="buddy-root"></div><script defer src="${prefix}assets/workspace-${name}.js"></script></body></html>`);
+  fs.writeFileSync(target,`<!doctype html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title}</title><link rel="stylesheet" href="${prefix}fonts/theme-fonts.css"><link rel="stylesheet" href="${prefix}assets/workspace-${name}.css"></head><body><div id="buddy-root"></div><script defer src="${prefix}assets/workspace-${name}.js"></script></body></html>`);
 }
 for(const [entry,file] of [['AutoEntry.jsx','index.html'],['mobile/main.jsx','mobile/index.html'],['tablet/main.jsx','tablet/index.html'],['desktop/main.jsx','desktop/index.html']])writeHtml(file,await bundle(entry),'Agent Harness UI · 智能体工作台');
 writeHtml('compare.html',await bundle('Compare.jsx'),'Agent Harness UI · 三端界面设计');

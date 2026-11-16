@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
+    "desktop:macos": "sh scripts/build-desktop-macos.sh",
     "test": "node --experimental-strip-types --test tests/*.test.ts",
     "typecheck": "tsc --noEmit",
     "preview": "python3 scripts/serve.py"

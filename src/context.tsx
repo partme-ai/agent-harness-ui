@@ -1,4 +1,6 @@
+import {withModelServiceExamples} from './model_services';
 import {retainCurrentAgentChecks} from './agent_linkage';
+import {dispatchModel,type GatewayRequest,type GatewayCall} from './model_gateway';
 import {createContext,useContext,useState,useEffect,useRef,useCallback,type ReactNode} from 'react';
 import {App as AntApp} from 'antd';
 import {initialStore,type Store} from './state';
@@ -10,7 +12,7 @@ import {resolveConsoleHost} from './shell_layout';
 import {readSystemBrand,writeSystemBrand,systemBrandKey,type SystemBrand} from './system_brand';
 import {publicModelOptions} from './harness_bridge';
 type NavigationGuard=(proceed:()=>void)=>void;
-type Context=ReturnType<typeof useSystemTheme>&{branding:SystemBrand;brandingError:string;saveBranding:(value:SystemBrand)=>boolean;setNavigationGuard:(guard:NavigationGuard|null)=>void;product:ProductState;setProduct:React.Dispatch<React.SetStateAction<ProductState>>;store:Store;setStore:React.Dispatch<React.SetStateAction<Store>>;page:string;go:(page:string,id?:string)=>void;selected:string;host:Host;setHost:(h:Host)=>void;device:Device;theme:'light'|'dark';setTheme:(t:'light'|'dark')=>void;scenario:string;setScenario:(s:string)=>void;notify:(s:string)=>void;confirm:(title:string,body:string,action:()=>void)=>void};
+type Context=ReturnType<typeof useSystemTheme>&{callModel:(request:Omit<GatewayRequest,'platform'>)=>GatewayCall;branding:SystemBrand;brandingError:string;saveBranding:(value:SystemBrand)=>boolean;setNavigationGuard:(guard:NavigationGuard|null)=>void;product:ProductState;setProduct:React.Dispatch<React.SetStateAction<ProductState>>;store:Store;setStore:React.Dispatch<React.SetStateAction<Store>>;page:string;go:(page:string,id?:string)=>void;selected:string;host:Host;setHost:(h:Host)=>void;device:Device;theme:'light'|'dark';setTheme:(t:'light'|'dark')=>void;scenario:string;setScenario:(s:string)=>void;notify:(s:string)=>void;confirm:(title:string,body:string,action:()=>void)=>void};
 const Ctx=createContext<Context|null>(null);
 export const useConsole=()=>{const c=useContext(Ctx);if(!c)throw new Error('Console context missing');return c;};
 export function ConsoleProvider({children}:{children:ReactNode}){
@@ -23,7 +25,7 @@ export function ConsoleProvider({children}:{children:ReactNode}){
  const query=new URLSearchParams(location.search);
  const device=(query.get('device')|| (innerWidth<600?'mobile':innerWidth<1000?'tablet':'desktop')) as Device;
  const [product,setProduct]=useState(initialProduct);
- const [store,setStore]=useState(initialStore),[page,setPage]=useState(()=>location.hash?resolvePage(location.hash.slice(1)):'01');
+ const [store,setStore]=useState(()=>{const store=initialStore();return {...store,connections:withModelServiceExamples(store.connections)};}),[page,setPage]=useState(()=>location.hash?resolvePage(location.hash.slice(1)):'01');
  useEffect(()=>{if(query.get('embed')==='1'&&window.parent!==window)window.parent.postMessage({type:'harness-models',models:publicModelOptions(store.connections)},location.origin);},[store.connections]);
  const previousStore=useRef(store);
  useEffect(()=>{const before=previousStore.current;previousStore.current=store;const labels:Partial<Record<keyof Store,string>>={agents:'智能体配置',connections:'模型连接',roleMemories:'智能体记忆',knowledge:'知识库',docs:'知识文档',bots:'设备配置',systemEntries:'系统参数',storage:'存储配置',preferences:'客户端偏好',extensions:'插件与连接'};const changes=(Object.keys(labels) as (keyof Store)[]).filter(key=>before[key]!==store[key]);if(changes.length)setProduct(p=>({...p,audits:[audit('更新'+changes.map(key=>labels[key]).join('、'),'当前工作空间'),...p.audits].slice(0,500)}));},[store]);
@@ -34,11 +36,29 @@ export function ConsoleProvider({children}:{children:ReactNode}){
  const {message,modal}=AntApp.useApp();
  const navigationGuard=useRef<NavigationGuard|null>(null),lastHash=useRef(location.hash);
  const setNavigationGuard=useCallback((guard:NavigationGuard|null)=>{navigationGuard.current=guard;},[]);
+ useEffect(()=>{
+  const beforeModelTab=(event:Event)=>{
+   const proceed=(event as CustomEvent).detail;
+   if(navigationGuard.current&&typeof proceed==='function'){
+    event.preventDefault();
+    navigationGuard.current(proceed);
+   }
+  };
+  window.addEventListener('harness-before-model-tab',beforeModelTab);
+  return ()=>window.removeEventListener('harness-before-model-tab',beforeModelTab);
+ },[]);
  function performGo(id:string,item=''){
   setSelected(item);let path=pathFor(id,item);if(id==='10'){const doc=store.docs.find(d=>d.id===item);if(doc)path=path.replace('/knowledge/k1/',`/knowledge/${encodeURIComponent(doc.knowledge)}/`);}location.hash=path+(item?`?item=${encodeURIComponent(item)}`:'');
   lastHash.current=location.hash;setPage(id);document.querySelector('.main-scroll')?.scrollTo({top:0});
  }
  function go(id:string,item=''){const proceed=()=>performGo(id,item);if(navigationGuard.current)navigationGuard.current(proceed);else proceed();}
  useEffect(()=>{const change=()=>{const nextHash=location.hash;const apply=()=>{lastHash.current=nextHash;setPage(resolvePage(nextHash.slice(1)));setSelected(selectionFromPath(nextHash));};if(nextHash!==lastHash.current&&navigationGuard.current){history.replaceState(null,'',location.pathname+location.search+lastHash.current);navigationGuard.current(()=>{history.replaceState(null,'',location.pathname+location.search+nextHash);apply();});}else apply();};addEventListener('hashchange',change);return()=>removeEventListener('hashchange',change);},[]);
- return <Ctx.Provider value={{...systemTheme,branding,brandingError,saveBranding,product,setProduct,setNavigationGuard,store,setStore,page,go,selected,host,setHost,device,scenario,setScenario,notify:s=>message.info(s),confirm:(title,body,action)=>modal.confirm({title,content:body,okText:'确认',cancelText:'取消',onOk:action})}}>{children}</Ctx.Provider>;
+ const callHistory=useRef(product.gatewayCalls);
+ function callModel(request:Omit<GatewayRequest,'platform'>){
+  const call=dispatchModel(store.connections,product.rules,callHistory.current,{...request,platform:device});
+  callHistory.current=[call,...callHistory.current];
+  setProduct(p=>({...p,gatewayCalls:[call,...p.gatewayCalls]}));
+  return call;
+ }
+ return <Ctx.Provider value={{...systemTheme,callModel,branding,brandingError,saveBranding,product,setProduct,setNavigationGuard,store,setStore,page,go,selected,host,setHost,device,scenario,setScenario,notify:s=>message.info(s),confirm:(title,body,action)=>modal.confirm({title,content:body,okText:'确认',cancelText:'取消',onOk:action})}}>{children}</Ctx.Provider>;
 }

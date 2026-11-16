@@ -85,7 +85,7 @@ export function navigationThemeConfig(c:SystemThemeColors,mode:'light'|'dark',de
 export function themeVariablesFromToken(t:GlobalToken,palette:SystemThemeColors):Record<string,string>{
  return {...systemThemeVariables(colorsFromToken(t,palette)),
   '--surface-2':t.colorFillAlter,'--soft':t.colorPrimaryBg,'--focus':t.colorPrimaryBorder,'--border-hover':t.colorPrimaryHover,
-  '--text-disabled':t.colorTextDisabled,'--line-secondary':t.colorBorderSecondary,'--popup-surface':t.colorBgElevated,
+  '--sidebar-selected-ink':palette.sidebarSelectedInk||palette.sidebarInk,'--text-disabled':t.colorTextDisabled,'--line-secondary':t.colorBorderSecondary,'--popup-surface':t.colorBgElevated,
   '--status-success':t.colorSuccess,'--status-warning':t.colorWarning,'--status-error':t.colorError,
   '--console-font-family':t.fontFamily,'--console-code-font-family':t.fontFamilyCode,'--console-font-size':t.fontSize+'px','--console-line-height':String(t.lineHeight),'--console-radius':t.borderRadius+'px','--console-card-radius':t.borderRadiusLG+'px','--console-line-width':t.lineWidth+'px','--console-line-style':t.lineType,'--console-card-padding':t.paddingLG+'px','--console-table-padding':t.paddingSM+'px','--console-card-shadow':t.boxShadowTertiary,'--heading':t.colorTextHeading,
   '--sidebar-motion':t.motion?t.motionDurationMid:'0s','--sidebar-ease':t.motionEaseInOut

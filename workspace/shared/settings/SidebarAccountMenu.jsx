@@ -4,7 +4,7 @@ import { Globe, Palette, MagnifyingGlassPlus, SignOut, CaretRight, Check, Plus, 
 
 // 按 ZCode WorkspaceSidebarFooter 的菜单顺序与子菜单交互适配。
 // 邀请好友来自用户提供的桌面截图；主工作区与设置页只渲染这一份组件。
-export function SidebarAccountMenu({ menuRef, themeMode, onThemeChange, preferences, onPreferencesChange, onOpenSettings, onOpenAction, onClose }) {
+export function SidebarAccountMenu({ desktopAuth, menuRef, themeMode, onThemeChange, preferences, onPreferencesChange, onOpenSettings, onOpenAction, onClose }) {
   const [submenu, setSubmenu] = useState(null)
   const triggers = useRef({})
   const focusSibling = (event) => {
@@ -23,9 +23,10 @@ export function SidebarAccountMenu({ menuRef, themeMode, onThemeChange, preferen
     { id:"zoom", label:"界面缩放", Icon:MagnifyingGlassPlus },
   ]
   return <div ref={menuRef} id="sidebar-account-popover" className="zc-account-menu" role="menu" aria-label="账号菜单" onKeyDown={focusSibling}>
-    <AntNativeButton type="button" data-handled="true" role="menuitem" onClick={() => choose(() => onOpenSettings('account-profile'))}><UserCircle /><span>演示账户 · ID local-demo</span></AntNativeButton>
+    <AntNativeButton type="button" data-handled="true" role="menuitem" onClick={() => choose(() => onOpenSettings('account-profile'))}><UserCircle /><span>{desktopAuth?.native?(desktopAuth.phase==='authorized'?'已授权':'本地工作区'):'演示账户 · ID local-demo'}</span></AntNativeButton>
     <AntNativeButton type="button" data-handled="true" role="menuitem" onClick={() => choose(() => onOpenSettings('account-profile'))}><UserCircle /><span>基础信息</span></AntNativeButton>
-    <AntNativeButton type="button" data-handled="true" role="menuitem" onClick={() => choose(() => onOpenSettings('system-theme'))}><PaintBrush /><span>系统主题</span><small>查看当前主题</small></AntNativeButton>
+    <AntNativeButton type="button" data-handled="true" role="menuitem" onClick={() => choose(() => onOpenSettings('system-theme'))}><PaintBrush /><span>主题</span><small>查看当前主题</small></AntNativeButton>
+    {desktopAuth && <AntNativeButton type="button" role="menuitem" data-handled="true" onClick={() => choose(desktopAuth.open)}><Globe/><span>{preferences.locale==='en-US'?'Browser authorization':'浏览器授权'}</span></AntNativeButton>}
     <hr role="separator" />
     {groups.map(({id,label,Icon,value,options}) => <div className="zc-menu-sub" key={id} onMouseEnter={() => setSubmenu(id)}>
       <AntNativeButton type="button" data-handled="true" role="menuitem" aria-haspopup="menu" aria-expanded={submenu===id} ref={node => { triggers.current[id]=node }} onClick={() => setSubmenu(id)} onKeyDown={event => { if(event.key==="ArrowRight") { event.preventDefault(); setSubmenu(id); requestAnimationFrame(() => menuRef.current?.querySelector(`[data-submenu="${id}"] button`)?.focus()) } }}><Icon /><span>{label}</span><CaretRight /></AntNativeButton>
@@ -38,6 +39,6 @@ export function SidebarAccountMenu({ menuRef, themeMode, onThemeChange, preferen
       </div>}
     </div>)}
     <hr role="separator" />
-    <AntNativeButton type="button" data-handled="true" role="menuitem" onMouseEnter={() => setSubmenu(null)} onClick={() => choose(() => onOpenAction({title:'注销登录',subtitle:'当前为本地预览，没有真实登录会话；模型与工作区配置不会被清理。',readOnly:true}))}><SignOut /><span>注销登录</span></AntNativeButton>
+    <AntNativeButton type="button" data-handled="true" role="menuitem" onMouseEnter={() => setSubmenu(null)} onClick={() => choose(() => desktopAuth?.native ? desktopAuth.send('logout') : onOpenAction({title:'注销登录',subtitle:'当前为本地预览，没有真实登录会话；模型与工作区配置不会被清理。',readOnly:true}))}><SignOut /><span>注销登录</span></AntNativeButton>
   </div>
 }
