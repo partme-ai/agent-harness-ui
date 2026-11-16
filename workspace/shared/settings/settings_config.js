@@ -49,6 +49,14 @@ export const GENERAL_GROUPS = [
   ["消息", ["interaction", "autoResolve", "fullRetention", "reasoning", "todos", "groupExplore", "groupTerminal", "groupChanges"]],
   ["归档", ["autoArchive", "archiveDays"]], ["数据", ["dataRoot"]],
 ].map(([title, ids]) => ({ title, rows: ids.map(id => generalRows[id]) }))
+// 桌面宿主的进程、文件路径和更新选项仅在桌面客户端展示。
+const desktopOnlyRows = new Set(['terminalProfile','terminalFont','nativeSearch','proxy','noProxy','certificate','hardware','awake','previewUpdates','autoUpdates','dataRoot']);
+export function generalGroupsForDevice(device) {
+  return GENERAL_GROUPS.map(group => ({
+    ...group,
+    rows: group.rows.filter(([id]) => id !== 'mode' && (device === 'desktop' || !desktopOnlyRows.has(id))),
+  })).filter(group => group.rows.length);
+}
 export const GENERAL_DEFAULTS = Object.fromEntries(GENERAL_GROUPS.flatMap(group => group.rows.map(([id,,, , value]) => [id, value])))
 export const RESOURCE_CONFIG = {
   agents: { singular: "子智能体", description: "管理可被主智能体调用的专用角色、指令和工具范围。", file: "AGENT.md", field: "角色指令", placeholder: "描述职责、执行方法和输出要求", samples: [["code-reviewer", "代码审查", "检查正确性、兼容性和测试覆盖，先报告可复现的问题。"], ["explorer", "代码探索", "只读查找代码入口和调用关系，给出来源文件与证据。"]] },

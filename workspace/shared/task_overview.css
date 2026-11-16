@@ -1,4 +1,4 @@
-.task-overview{--card:var(--bg,#fff);--accent:#476cc8;--soft:color-mix(in srgb,var(--accent) 9%,var(--card));display:grid;gap:12px;min-width:0;color:var(--text);font-size:13px}
+.task-overview{--card:var(--surface,#fff);--soft:color-mix(in srgb,var(--accent) 9%,var(--card));display:grid;gap:8px;min-width:0;color:var(--text);font-size:13px;line-height:1.45}
 .tc-page-body:has(>.task-overview),.tc-desktop-page:has(>.task-overview){padding:16px;max-width:none}
 .task-overview h1,.task-overview h2,.task-overview p{margin:0}
 .to-heading,.to-actions,.to-dates,.to-filters,.to-panel>header{display:flex;align-items:center;gap:6px}
@@ -9,13 +9,13 @@
 .to-filters .ant-select{min-width:120px}
 .to-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
 .to-metrics>*,.to-panel{background:var(--card);border:1px solid var(--line);border-radius:8px;min-width:0}
-.to-metrics>*{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;gap:4px}
+.to-metrics>*{display:flex;align-items:center;justify-content:space-between;padding:6px 10px;gap:4px}
 .to-metrics span{font-size:12px}.to-metrics b{font-size:20px;font-variant-numeric:tabular-nums}
 .to-metrics button,.to-calendar button,.to-line,.to-table-wrap button{cursor:pointer;color:inherit;font:inherit}
 .to-metrics button{color:#ad501f;background:color-mix(in srgb,#d98744 9%,var(--card))}
 .to-metrics b .anticon{font-size:10px;margin-left:4px}
 .to-panel{overflow:hidden}
-.to-panel>header{padding:10px 12px;border-bottom:1px solid var(--line)}
+.to-panel>header{padding:6px 10px;border-bottom:1px solid var(--line)}
 .to-panel h2{font-size:15px;line-height:20px}
 .to-planner{display:grid;grid-template-columns:minmax(0,1fr) minmax(190px,24%);gap:10px;align-items:start}
 .to-week-head,.to-week-body{display:grid;grid-template-columns:39px repeat(7,minmax(0,1fr))}
@@ -30,7 +30,7 @@
 .to-event strong,.to-event small,.to-line strong,.to-line span.to-actor{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .to-event small{font-size:10px}.to-event.智能体{border-color:#33977a;background:color-mix(in srgb,#22a475 13%,var(--card))}
 .to-event.conflict{border-color:#ca6541;background:color-mix(in srgb,#e89e57 20%,var(--card))}
-.to-line{width:100%;border:0;background:transparent;display:grid;grid-template-columns:38px 7px minmax(0,1fr) auto;gap:6px;align-items:center;padding:9px 10px;text-align:left}
+.to-line{width:100%;border:0;background:transparent;display:grid;grid-template-columns:38px 7px minmax(0,1fr) auto;gap:6px;align-items:center;padding:5px 10px;text-align:left}
 .to-line+.to-line,.to-history+.to-history{border-top:1px solid var(--line)}
 .to-line:hover,.to-table-wrap tr:hover td{background:var(--soft)}
 .to-line i{width:6px;height:6px;border-radius:50%;background:var(--accent)}
@@ -48,11 +48,11 @@
 .to-form{display:grid;gap:10px;padding:6px 0}.to-form>div{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .to-form label{display:grid;gap:4px;min-width:0}.to-form p[role=alert]{color:#c34e36}
 .task-overview.tablet .to-planner{grid-template-columns:minmax(0,1fr)}
-.tablet .to-line{padding:6px 10px}
+.task-overview.phone .to-line,.task-overview.tablet .to-line{min-height:44px}
 .task-overview.phone{gap:8px}.phone .to-heading h1{font-size:20px}.phone .to-actions{gap:3px}
 .phone .to-actions .ant-btn{font-size:12px;padding-inline:6px}.phone .to-metrics{gap:4px}
 .phone .to-metrics>*{flex-direction:column;align-items:flex-start;padding:6px 8px}
-.phone .to-metrics b{font-size:17px}.phone .to-heading small{font-size:11px}
+.phone .to-metrics b{font-size:17px}
 .phone .to-filters .ant-select{min-width:0;width:105px}.phone .to-dates{gap:3px}.phone .to-dates input{width:112px}
 .phone .to-table-wrap th,.phone .to-table-wrap td{padding:5px}.phone .to-table-wrap{font-size:11px}
 .phone .to-calendar{overflow-x:auto}.phone .to-week-body,.phone .to-week-head{min-width:575px}

@@ -1,7 +1,9 @@
 import React, {useEffect,useLayoutEffect,useRef,useState} from 'react';
+import {ModelServiceIcon} from '../../src/ModelServiceIcon';
 import {createRoot} from 'react-dom/client';
-import {ConfigProvider,Button,Select,Modal,theme as antTheme} from 'antd';
-import zhCN from 'antd/locale/zh_CN';
+import {ConfigProvider,Button,Select,Modal} from 'antd';
+import {readInitialTheme,SystemThemeSurface} from '../../src/system_theme_provider';
+import {resolveSystemMode} from '../../src/system_theme';
 import {useDeviceWorkspace,DeviceWorkspacePanels} from './DeviceWorkspace.jsx';
 import {Workbench,IconAction} from './Workbench.jsx';
 import {ArrowLeftOutlined} from '@ant-design/icons';
@@ -11,6 +13,7 @@ import {SETTINGS_GROUPS,settingsGroupsForDevice} from './settings/settings_confi
 import {CONSOLE_SECTIONS,consolePath,modelSettingsParent,modelSettingsTabs,modelSettingsActiveTab} from './settings/harness_sections.js';
 import {DeviceMobile,GearSix,CaretDown,X,Question} from '@phosphor-icons/react';
 import {BuddySettingsSidebar,BuddySettingsCenter,SettingsNavigationIcon} from './settings/SettingsCenter.jsx';
+import {DesktopAuthorization,useDesktopAuthorization} from '../desktop/DesktopAuthorization.jsx';
 import {SidebarAccountMenu} from './settings/SidebarAccountMenu.jsx';
 import {MobileLinkModal} from './channels/MobileLinkModal.jsx';
 import {PairingPage} from './mock/PairingPage.jsx';
@@ -23,11 +26,14 @@ import './baseline.css';
 import './zcode/generated.css';
 import './zcode/adaptation.css';
 import './harness_integration.css';
+import './workspace_theme.css';
+import './workbench_finish.css';
+import '../../src/console_material.css';
 
 const hostMessage = data => {if(window.parent!==window)window.parent.postMessage(data,location.origin);};
 function WorkspaceApp(){
  const entry=new URLSearchParams(location.search),entrySurface=entry.get('surface')||(entry.has('section')?'settings':'home');
- const [section,setSection]=useState(entry.get('section')||'general'),[settings,setSettings]=useState(entrySurface==='settings'),[mobile,setMobile]=useState(entrySurface==='mobile'),[account,setAccount]=useState(false),[themeMode,setThemeMode]=useState(entry.get('theme')==='dark'?'dark':'light'),[systemDark,setSystemDark]=useState(matchMedia('(prefers-color-scheme: dark)').matches),[preferences,setPreferences]=useState({locale:'zh-CN',mode:'coding',zoom:100}),[toast,setToast]=useState(''),[action,setAction]=useState(null),[pair,setPair]=useState(null);
+ const [section,setSection]=useState(entry.get('section')||'general'),[settings,setSettings]=useState(entrySurface==='settings'),[mobile,setMobile]=useState(entrySurface==='mobile'),[account,setAccount]=useState(false),[preferences,setPreferences]=useState({locale:'zh-CN',mode:'coding',zoom:100}),[toast,setToast]=useState(''),[action,setAction]=useState(null),[pair,setPair]=useState(null);
  const [sidebarWidth,setSidebarWidth]=useState(264);
  const [consoleModels,setConsoleModels]=useState(null);
  const [page,setPage]=useState(['settings','mobile'].includes(entrySurface)?'home':entrySurface),[sharedDraft,setSharedDraft]=useState('');
@@ -37,11 +43,17 @@ function WorkspaceApp(){
  const deviceRole=document.documentElement.dataset.device||new URLSearchParams(location.search).get('device');
  const isPhone=deviceRole==='phone'||(!deviceRole&&viewportWidth<600);
  const isDesktop=deviceRole==='desktop'||(!deviceRole&&viewportWidth>=1100);
+ const auth=useDesktopAuthorization();
  const settingsDevice=isPhone?'phone':isDesktop?'desktop':'tablet';
  const modelTabs=modelSettingsTabs(section),activeModelTab=modelSettingsActiveTab(section);
  useEffect(()=>{const path=consolePath(section);if(path&&adminRef.current?.contentWindow)adminRef.current.contentWindow.location.hash=path;},[section]);
- useEffect(()=>{const receive=event=>{if(event.origin===location.origin&&event.source===adminRef.current?.contentWindow&&event.data?.type==='harness-models'&&Array.isArray(event.data.models))setConsoleModels(event.data.models)};addEventListener('message',receive);return()=>removeEventListener('message',receive)},[]);
+ useEffect(()=>{const receive=event=>{if(event.origin!==location.origin||event.source!==adminRef.current?.contentWindow)return;if(event.data?.type==='harness-open-authorization')auth.open();if(event.data?.type==='harness-models'&&Array.isArray(event.data.models))setConsoleModels(event.data.models);if(event.data?.type==='harness-model-usage'){setSection('model-stats');hostMessage({type:'surfium-buddy-navigation',section:'model-stats'});}};addEventListener('message',receive);return()=>removeEventListener('message',receive)},[]);
  useLayoutEffect(()=>{if(!settings||!canvasRef.current)return;const canvas=canvasRef.current;const update=()=>{const {left,top,width,height}=canvas.getBoundingClientRect();setAdminRect({left,top,width,height})};update();const observer=new ResizeObserver(update);observer.observe(canvas);return()=>observer.disconnect();},[settings,section,sidebarWidth,viewportWidth]);
+ function selectModelTab(id){
+  const change=()=>{setSection(id);hostMessage({type:'surfium-buddy-navigation',section:id});};
+  const frame=adminRef.current?.contentWindow;
+  if(!frame||frame.dispatchEvent(new CustomEvent('harness-before-model-tab',{cancelable:true,detail:change})))change();
+ }
  const deviceWorkspace=useDeviceWorkspace(settingsDevice);
  useEffect(()=>{if(['work','work-chat'].includes(entrySurface)){deviceWorkspace.setKind('work');deviceWorkspace.setSession(`work-${settingsDevice}`)}},[]);
  function reviewBinding(token,session){setMobile(false);setPair(null);window.SURFIUM_PAIR=null;deviceWorkspace.setBindingRequest({token,deviceId:session.ownerRole||'desktop'})}
@@ -50,14 +62,44 @@ function WorkspaceApp(){
  const composerReturnDraft=useRef(null),accountMenuRef=useRef(null),accountFooterRef=useRef(null);
  const toastTimer=useRef(null),mobileTrigger=useRef(null),settingsTrigger=useRef(null);
  const linkEntry=<IconAction label={linkLabel} icon={linkIcon} onClick={()=>openMobile()}/>;
- const theme=themeMode==='system'?(systemDark?'dark':'light'):themeMode;
+ const [themeState,setThemeState]=useState(()=>{
+  const settings=readInitialTheme().settings;
+  return {settings,mode:resolveSystemMode(settings.mode,matchMedia('(prefers-color-scheme: dark)').matches),reduceMotion:matchMedia('(prefers-reduced-motion: reduce)').matches};
+ });
+ const {settings:themeSettings,mode:theme,reduceMotion}=themeState;
+ const themeMode=themeSettings.mode;
+ const themeReady=useRef(false),pendingTheme=useRef(null),hostDark=useRef(null);
+ function sendTheme(type,mode){
+  const command={type,mode};
+  if(themeReady.current)adminRef.current?.contentWindow?.postMessage(command,location.origin);
+  else pendingTheme.current=command;
+ }
+ useLayoutEffect(()=>{
+  const receive=event=>{
+   if(event.origin!==location.origin||event.source!==adminRef.current?.contentWindow||event.data?.type!=='harness-theme-state')return;
+   const {settings,mode,reduceMotion}=event.data;
+   themeReady.current=true;
+   setThemeState({settings,mode,reduceMotion});
+   if(pendingTheme.current){
+    adminRef.current.contentWindow.postMessage(pendingTheme.current,location.origin);
+    pendingTheme.current=null;
+   }
+  };
+  window.addEventListener('message',receive);
+  return()=>window.removeEventListener('message',receive);
+ },[]);
  const shellStyle={"--interface-scale":preferences.zoom/100,...(isDesktop?{"--primary-sidebar-width":`${sidebarWidth}px`,"--settings-sidebar-width":`${sidebarWidth}px`,...(settings?{gridTemplateColumns:`${sidebarWidth}px minmax(0,1fr)`,columnGap:3}:{})}:{})};
  function showToast(value){setToast(value);clearTimeout(toastTimer.current);toastTimer.current=setTimeout(()=>setToast(''),4000);}
- function changeTheme(mode){setThemeMode(mode);hostMessage({type:'surfium-buddy-theme',dark:mode==='dark'||(mode==='system'&&systemDark)});}
+ function changeTheme(mode){
+  const dark=resolveSystemMode(mode,matchMedia('(prefers-color-scheme: dark)').matches)==='dark';
+  hostDark.current=dark;
+  sendTheme('harness-theme-select',mode);
+  hostMessage({type:'surfium-buddy-theme',dark});
+ }
  function navigate(next,draft=''){setSharedDraft(draft);setPage(next);setSettings(false);setMobile(false);hostMessage({type:'surfium-buddy-surface',surface:next,draft});}
  function closeSurface(){setMobile(false);setAccount(false);const draft=composerReturnDraft.current;composerReturnDraft.current=null;navigate(draft!==null?'new':page,draft||'');}
- useEffect(()=>{document.documentElement.dataset.theme=theme;document.body.dataset.theme=theme;},[theme]);
- useEffect(()=>{const media=matchMedia('(prefers-color-scheme: dark)'),change=()=>setSystemDark(media.matches);media.addEventListener('change',change);return()=>media.removeEventListener('change',change);},[]);
+ useEffect(()=>{document.body.dataset.theme=theme;},[theme]);
+
  useEffect(()=>{
    function receive(event){
     if(event.source!==window.parent||event.origin!==location.origin||event.data?.type!=='surfium-buddy-state')return;
@@ -65,7 +107,7 @@ function WorkspaceApp(){
     if(value.surface==='settings'){setSettings(true);setMobile(false)}
     else if(value.surface==='mobile'){setMobile(true)}
     else if(value.surface){if(['work','work-chat'].includes(value.surface)){deviceWorkspace.setKind('work');deviceWorkspace.setSession(`work-${settingsDevice}`)}setPage(value.surface);setSettings(false);setMobile(false)}
-    if((value.dark?'dark':'light')!==document.documentElement.dataset.theme)setThemeMode(value.dark?'dark':'light');
+    if(typeof value.dark==='boolean'&&hostDark.current!==value.dark){hostDark.current=value.dark;sendTheme('harness-theme-override',value.dark?'dark':'light');}
    }
    function pairing(event){const anchor=event.target.closest('a');if(!anchor)return;let params;try{params=new URL(anchor.href).searchParams;}catch{return;}if(!params.get('mockPair'))return;event.preventDefault();window.SURFIUM_PAIR=params;setPair(params.toString());}
    addEventListener('message',receive);document.addEventListener('click',pairing,true);hostMessage({type:'surfium-buddy-ready'});
@@ -76,15 +118,16 @@ function WorkspaceApp(){
  function openMobile(){setAccount(false);setMobile(true);hostMessage({type:'surfium-buddy-surface',surface:'mobile'});}
  useEffect(()=>{const resize=()=>{setViewportWidth(innerWidth);setSidebarWidth(w=>Math.max(264,Math.min(innerWidth*.5,w)))};addEventListener('resize',resize);return()=>removeEventListener('resize',resize)},[]);
  useEffect(()=>{if(!account)return;const dismiss=event=>{if(!accountFooterRef.current?.contains(event.target))setAccount(false)};const key=event=>{if(event.key==='Escape'){setAccount(false);accountFooterRef.current?.querySelector('[aria-label="工作区账号菜单"]')?.focus()}};document.addEventListener('pointerdown',dismiss);document.addEventListener('keydown',key);return()=>{document.removeEventListener('pointerdown',dismiss);document.removeEventListener('keydown',key)}},[account]);
- const footer=<footer ref={accountFooterRef} className="surfium-utility-footer"><div className="surfium-utility-row"><Button className="surfium-account-trigger" aria-label="工作区账号菜单" aria-expanded={account} onClick={()=>setAccount(!account)}><span className="surfium-avatar">{isDesktop?'A':'S'}</span><span>{isDesktop?'演示账户':'本地工作区'}</span><CaretDown/></Button><Button ref={mobileTrigger} aria-label={linkLabel} title={linkLabel} onClick={openMobile}>{linkIcon}</Button><Button ref={settingsTrigger} aria-label="设置" title="设置" aria-pressed={settings} onClick={()=>settings?closeSurface():openSettings()}><GearSix/></Button></div>{account&&<SidebarAccountMenu menuRef={accountMenuRef} themeMode={themeMode} onThemeChange={changeTheme} preferences={preferences} onPreferencesChange={setPreferences} onOpenSettings={openSettings} onOpenAction={setAction} onClose={()=>setAccount(false)}/>}</footer>;
- return <ConfigProvider button={{autoInsertSpace:false}} locale={zhCN} componentSize={isPhone?'small':'middle'} theme={{algorithm:theme==='dark'?antTheme.darkAlgorithm:antTheme.defaultAlgorithm,token:{fontSize:14,borderRadius:8,colorPrimary:viewStyle==='buddy'?'#278575':'#527ff5'}}}><div data-style={viewStyle} className={`app-shell aligned-shell shell-settings shell-device-${settingsDevice} theme-${theme}`} style={shellStyle} data-theme={theme}>
-  {settings?<><BuddySettingsSidebar device={settingsDevice} section={section} setSection={next=>{setSection(next);hostMessage({type:'surfium-buddy-navigation',section:next})}} onBack={closeSurface} footer={footer}/><main className="workspace"><div className="settings-window-bar"><IconAction label="返回工作区" icon={<ArrowLeftOutlined/>} onClick={closeSurface}/><Select virtual={false} className="mobile-settings-selector" aria-label="设置页面" value={modelSettingsParent(section)||section} onChange={next=>{setSection(next);hostMessage({type:"surfium-buddy-navigation",section:next})}} options={settingsGroupsForDevice(settingsDevice).flatMap(g=>g.items.map(([value,label,icon])=>({value,label:<span className="settings-navigation-label"><SettingsNavigationIcon name={icon}/><span>{label}</span></span>})))}/><span className="surfium-preview-status">Agent Harness UI · 设置</span>{linkEntry}<Button aria-label="帮助与反馈" onClick={()=>setSection('about')}><Question/></Button></div><div className={`settings-canvas ${CONSOLE_SECTIONS[section]?'harness-console-canvas':''}`}>{CONSOLE_SECTIONS[section]?<>{modelTabs&&<nav className="harness-model-tabs" role="tablist" aria-label={`${modelSettingsParent(section)==='local-model'?'本地模型':modelSettingsParent(section)==='model-services'?'模型服务':'模型网关'}配置`}>{modelTabs.map(tab=><button key={tab.id} type="button" role="tab" aria-selected={activeModelTab===tab.id} className={activeModelTab===tab.id?'active':''} onClick={()=>{setSection(tab.id);hostMessage({type:'surfium-buddy-navigation',section:tab.id})}}>{tab.label}</button>)}</nav>}<div className="harness-console-anchor" ref={canvasRef}/></>:<BuddySettingsCenter onBrowsePlugins={action=>navigate('plugins',typeof action==='string'?action:'')} device={settingsDevice} section={section} setSection={next=>{setSection(next);hostMessage({type:'surfium-buddy-navigation',section:next})}} theme={theme} themeMode={themeMode} onThemeChange={changeTheme} interfacePreferences={preferences} onInterfacePreferencesChange={setPreferences}/>}</div></main></>:<Workbench consoleModels={consoleModels} deviceWorkspace={deviceWorkspace} sidebarWidth={sidebarWidth} onSidebarWidthChange={setSidebarWidth} accountFooter={footer} initialDraft={sharedDraft} page={page} isPhone={isPhone} isDesktop={isDesktop} onNavigate={navigate} onSettings={openSettings} linkEntry={linkEntry}/>}
-  <iframe ref={adminRef} className="harness-admin-frame harness-persistent-admin" title="Agent Harness UI 配置页面" src={`/admin.html?device=${settingsDevice==='phone'?'mobile':settingsDevice}&embed=1${initialAdminPath.current}`} onLoad={()=>{const path=consolePath(section);if(path&&adminRef.current?.contentWindow)adminRef.current.contentWindow.location.hash=path}} style={{display:settings&&CONSOLE_SECTIONS[section]?'block':'none',...adminRect}}/>
+ const footer=<footer ref={accountFooterRef} className="surfium-utility-footer"><div className="surfium-utility-row"><Button className="surfium-account-trigger" aria-label="工作区账号菜单" aria-expanded={account} onClick={()=>setAccount(!account)}><span className="surfium-avatar">{isDesktop?'A':'S'}</span><span>{auth.native?(auth.phase==='authorized'?'已授权':'本地工作区'):isDesktop?'演示账户':'本地工作区'}</span><CaretDown/></Button><Button ref={mobileTrigger} aria-label={linkLabel} title={linkLabel} onClick={openMobile}>{linkIcon}</Button><Button ref={settingsTrigger} aria-label="设置" title="设置" aria-pressed={settings} onClick={()=>settings?closeSurface():openSettings()}><GearSix/></Button></div>{account&&<SidebarAccountMenu desktopAuth={isDesktop?auth:null} menuRef={accountMenuRef} themeMode={themeMode} onThemeChange={changeTheme} preferences={preferences} onPreferencesChange={setPreferences} onOpenSettings={openSettings} onOpenAction={setAction} onClose={()=>setAccount(false)}/>}</footer>;
+ return <SystemThemeSurface settings={themeSettings} mode={theme} reduceMotion={reduceMotion} device={isPhone?'mobile':settingsDevice}><div data-style={viewStyle} className={`app-shell aligned-shell shell-settings shell-device-${settingsDevice} theme-${theme}`} style={shellStyle} data-theme={theme}>
+  {settings?<><BuddySettingsSidebar device={settingsDevice} section={section} setSection={next=>{setSection(next);hostMessage({type:'surfium-buddy-navigation',section:next})}} onBack={closeSurface} footer={footer}/><main className="workspace"><div className="settings-window-bar"><IconAction className="settings-mobile-back" label="返回工作区" icon={<ArrowLeftOutlined/>} onClick={closeSurface}/><Select virtual={false} className="mobile-settings-selector" aria-label="设置页面" value={modelSettingsParent(section)||section} onChange={next=>{setSection(next);hostMessage({type:"surfium-buddy-navigation",section:next})}} options={settingsGroupsForDevice(settingsDevice).flatMap(g=>g.items.map(([value,label,icon])=>({value,label:<span className="settings-navigation-label"><SettingsNavigationIcon name={icon}/><span>{label}</span></span>})))}/><span className="surfium-preview-status">Agent Harness UI · 设置</span><span className="settings-mobile-link">{linkEntry}</span><Button aria-label="帮助与反馈" onClick={()=>setSection('about')}><Question/></Button></div><div className={`settings-canvas ${CONSOLE_SECTIONS[section]?'harness-console-canvas':''}`}>{CONSOLE_SECTIONS[section]?<>{modelTabs&&<nav className="harness-model-tabs" role="tablist" aria-label={`${modelSettingsParent(section)==='local-model'?'本地模型':modelSettingsParent(section)==='model-services'?'模型服务':'模型网关'}配置`}>{modelTabs.map(tab=><button key={tab.id} type="button" role="tab" aria-selected={activeModelTab===tab.id} className={activeModelTab===tab.id?'active':''} onClick={()=>selectModelTab(tab.id)}>{modelSettingsParent(section)==='model-services'&&<ModelServiceIcon name={tab.icon}/>} {tab.label}</button>)}</nav>}<div className="harness-console-anchor" ref={canvasRef}/></>:<BuddySettingsCenter onBrowsePlugins={action=>navigate('plugins',typeof action==='string'?action:'')} device={settingsDevice} section={section} setSection={next=>{setSection(next);hostMessage({type:'surfium-buddy-navigation',section:next})}} theme={theme} themeMode={themeMode} onThemeChange={changeTheme} interfacePreferences={preferences} onInterfacePreferencesChange={setPreferences}/>}</div></main></>:<Workbench consoleModels={consoleModels} deviceWorkspace={deviceWorkspace} sidebarWidth={sidebarWidth} onSidebarWidthChange={setSidebarWidth} accountFooter={footer} initialDraft={sharedDraft} page={page} isPhone={isPhone} isDesktop={isDesktop} onNavigate={navigate} onSettings={openSettings} linkEntry={linkEntry}/>}
+  <iframe ref={adminRef} className="harness-admin-frame harness-persistent-admin" title="Agent Harness UI 配置页面" src={`/admin.html?device=${settingsDevice==='phone'?'mobile':settingsDevice}&embed=1${['light','dark'].includes(entry.get('theme'))?'&theme='+entry.get('theme'):''}${initialAdminPath.current}`} onLoad={()=>{const path=consolePath(section);if(path&&adminRef.current?.contentWindow)adminRef.current.contentWindow.location.hash=path}} style={{display:settings&&CONSOLE_SECTIONS[section]?'block':'none',...adminRect}}/>
+  {isDesktop&&<DesktopAuthorization auth={auth} locale={preferences.locale}/>}
   <DeviceWorkspacePanels workspace={deviceWorkspace}/>{mobile&&(isPhone?<PhoneLinkScan onBindingReview={reviewBinding} onClose={()=>{setMobile(false);hostMessage({type:'surfium-buddy-surface',surface:settings?'settings':page})}}/>:<MobileLinkModal deviceRole={settingsDevice} onClose={()=>{setMobile(false);mobileTrigger.current?.focus();hostMessage({type:'surfium-buddy-surface',surface:settings?'settings':page});}} onToast={showToast}/>)}
   {pair&&<Modal open title="模拟手机确认" width={500} getContainer={()=>document.getElementById('buddy-root')} onCancel={()=>{setPair(null);window.SURFIUM_PAIR=null}} footer={<Button onClick={()=>{setPair(null);window.SURFIUM_PAIR=null}}>返回手机联动</Button>}><PairingPage onBindingReview={reviewBinding}/></Modal>}
   {action&&<div className="zs-modal-backdrop"><section className="zs-modal" role="dialog" aria-modal="true" aria-label={action.title}><header><h2>{action.title}</h2><Button aria-label="关闭说明" onClick={()=>setAction(null)}><X/></Button></header><p>{action.subtitle}</p><p>开发预览：此操作未连接真实账户或运行服务。</p><Button onClick={()=>setAction(null)}>关闭</Button></section></div>}
   {toast&&<div className="toast" role="status">{toast}</div>}
- </div></ConfigProvider>;
+ </div></SystemThemeSurface>;
 }
 function PhonePairingReview(){const workspace=useDeviceWorkspace('phone');return <><PairingPage onBindingReview={(token,session)=>workspace.setBindingRequest({token,deviceId:session.ownerRole||'desktop'})}/><DeviceWorkspacePanels workspace={workspace}/></>}
 export function mountWorkspace(device){

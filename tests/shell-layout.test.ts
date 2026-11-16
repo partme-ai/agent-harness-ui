@@ -49,7 +49,7 @@ test('终端互联由快捷入口承接，与物理Bot列表分离，旧远程�
 test('常规合并进系统设置，旧常规链接选中新入口且保留主题和终端互联',()=>{
  const system=shellGroups[0].items.find(n=>n.key==='system')!;
  assert.equal(system.children!.some(n=>n.label==='常规'),false);
- assert.deepEqual(system.children!.slice(0,2).map(n=>n.label),['基础信息','系统主题']);
+ assert.deepEqual(system.children!.slice(0,2).map(n=>n.label),['基础信息','主题']);
  assert.equal(shellTarget('system/general'),undefined);
  assert.equal(shellTarget('system/configuration/general')?.page,'52');
  assert.equal(shellOwner('30','settings'),'system');

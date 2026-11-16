@@ -1,0 +1,26 @@
+.harness-desktop-auth .harness-auth-glass {
+  position: relative;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  height: 104px;
+  margin-block: 8px 16px;
+  border-radius: var(--console-radius, 12px);
+  background: radial-gradient(ellipse at center, var(--soft), transparent 72%);
+}
+.harness-auth-glass > * {
+  grid-area: 1/1;
+  width: 58px;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 22%, transparent), transparent 65%, var(--soft));
+  backdrop-filter: blur(5px);
+}
+.harness-auth-glass i:first-child {transform: translate(-9px,-7px) rotate(-12deg)}
+.harness-auth-glass i:nth-child(2) {transform: translate(9px,5px) rotate(9deg)}
+.harness-auth-glass span {position:relative; display:grid; place-items:center; overflow:hidden; color:var(--accent)}
+.harness-auth-glass span::after {content:""; position:absolute; inset:-20% 0; background:linear-gradient(110deg, transparent 25%, color-mix(in srgb, var(--accent) 25%, transparent), transparent 70%); animation:harness-auth-light 3s ease-in-out infinite}
+@keyframes harness-auth-light {from {transform:translateX(-100%)} to {transform:translateX(100%)}}
+@media (prefers-reduced-motion: reduce) {.harness-auth-glass span::after {animation:none}}
+.harness-desktop-auth [role="status"] {color:var(--text); line-height:1.6}

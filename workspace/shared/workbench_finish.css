@@ -1,0 +1,62 @@
+/* Compact workbench chrome uses the active Ant palette, including custom themes. */
+html:not([data-theme-density="spacious"]):not([data-theme-density="comfortable"]) #buddy-root {
+  .tc-desktop-header, .tc-desktop-window-strip, .shell-device-desktop .settings-window-bar {
+    height: 40px;
+    min-height: 40px;
+    padding-block: 2px;
+  }
+  .tc-desktop-shell .tc-desktop-primary {
+    padding-block: 4px 8px;
+    gap: 1px;
+  }
+  .tc-desktop-primary .ant-btn { height: 28px; }
+  .tc-desktop-task-toolbar { margin-bottom: 8px; }
+  .tc-header { height: 48px; min-height: 48px; }
+  .shell-device-tablet .tc-rail button { height: 48px; }
+}
+
+#buddy-root .task-start h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  line-height: 1.3;
+}
+.task-start-mark { position: relative; width: 32px; height: 35px; flex: none; }
+.task-start-mark i {
+  position: absolute;
+  inset: 6px 3px auto;
+  height: 24px;
+  border-radius: 5px;
+  transform: rotate(-35deg) skew(20deg) scale(.9,.73);
+  border: 1px solid color-mix(in srgb,var(--accent) 58%,var(--surface));
+  background: linear-gradient(135deg,var(--surface),color-mix(in srgb,var(--accent) 72%,var(--surface)));
+}
+.task-start-mark i:first-child { top: 13px; opacity: .45; }
+.task-start-mark i:nth-child(2) { top: 8px; opacity: .75; }
+.task-start-mark i:last-child { top: 3px; }
+#buddy-root .task-start .tc-task-home { background: transparent; padding: 0 0 16px; }
+#buddy-root .task-start .tc-composer { border-radius: 14px; }
+#buddy-root .desktop-task-start .tc-composer { padding: 12px 14px 9px; }
+#buddy-root .desktop-task-start .tc-composer textarea { min-height: 44px; }
+#buddy-root .task-start > .tc-home-shortcuts { margin: 10px 0 0; gap: 6px; }
+#buddy-root .tc-chat-body .task-start {
+  justify-content: safe center;
+  overflow-y: auto;
+  padding: 12px clamp(12px, 3vw, 24px) max(16px,env(safe-area-inset-bottom));
+}
+#buddy-root .tc-chat-body .task-start > .tc-empty-scroll {
+  flex: none;
+  overflow: visible;
+  padding: 0;
+}
+#buddy-root .tc-chat-body .task-start .tc-task-home { margin: 0 auto; }
+#buddy-root .tc-chat-body .task-start > .conversation-dock {
+  align-self: stretch;
+  width: auto;
+  max-height: none;
+  margin: 0;
+}
+#buddy-root .tc-chat-body .task-start .tc-composer { margin: 0; }
+#buddy-root .tc-phone .task-start .tc-home-shortcuts button { min-height: 36px; }

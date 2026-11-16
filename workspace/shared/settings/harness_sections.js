@@ -4,11 +4,11 @@ const native=(id,label,icon)=>({id,label,icon});
 const consolePage=(id,label,icon,page,item)=>({id,label,icon,page,item});
 export const MODEL_SETTINGS_TABS={
  'model-services':[
-  consolePage('model-service-text','文本生成','Cube','models','text'),
-  consolePage('model-service-image','图片生成','Cube','models','image'),
-  consolePage('model-service-video','视频生成','Cube','models','video'),
-  consolePage('model-service-tts','语音合成','Cube','models','tts'),
-  consolePage('model-service-asr','语音识别','Cube','models','asr'),
+  consolePage('model-service-text','文本生成','message-outlined','models','text'),
+  consolePage('model-service-image','图片生成','photo-outlined','models','image'),
+  consolePage('model-service-video','视频生成','movie-outlined','models','video'),
+  consolePage('model-service-tts','语音合成','microphone-outlined','models','tts'),
+  consolePage('model-service-asr','语音识别','chart-column-outlined','models','asr'),
  ],
  'local-model':[
   consolePage('local-runtime','运行环境','Cube','models/local/environments'),
@@ -28,15 +28,15 @@ export function modelSettingsParent(section){return MODEL_SETTINGS_TABS[section]
 export function modelSettingsTabs(section){return MODEL_SETTINGS_TABS[modelSettingsParent(section)]||null;}
 export function modelSettingsActiveTab(section){return modelTabParent[section]?section:modelSettingsTabs(section)?.[0].id||null;}
 export const HARNESS_SETTINGS_GROUPS=[
-  {title:'账户设置',items:[consolePage('account-profile','用户信息','Robot','account/profile'),native('sandbox-keys','沙箱密钥','Anchor'),native('vault','凭据保险库','ShieldCheck'),native('personalization','个性化','SlidersHorizontal'),native('bot','Bot','Robot')]},
-  {title:'基础设置',items:[native('general','常规','SlidersHorizontal'),native('appearance','外观','Palette'),consolePage('system-theme','系统主题','Palette','settings/general','theme'),native('notifications','通知','ChartBar'),consolePage('voice','语音','Robot','models/voice-pipeline'),consolePage('storage','存储','Cube','settings/storage'),native('shortcuts','键盘快捷键','Keyboard')]},
-  {title:'模型设置',items:[consolePage('model-services','模型服务','Cube','models','text'),consolePage('local-model','本地模型','Cube','models/local/environments'),consolePage('model-gateway','模型网关','Cube','models/defaults'),consolePage('model-stats','数据与统计','ChartBar','models/reports')]},
-  {title:'知识库',items:[consolePage('knowledge-public','公共知识库','Brain','knowledge/market'),consolePage('knowledge-manage','知识库管理','Brain','knowledge'),consolePage('knowledge-shared','共享空间','Brain','knowledge/spaces'),consolePage('knowledge-mcp','MCP 服务','Plug','knowledge/mcp')]},
-  {title:'智能体',items:[consolePage('agent-market','市场','Robot','agents/templates'),consolePage('agent-plugins','插件','PuzzlePiece','agents/plugins'),consolePage('agent-connections','连接 · MCP','Plug','agents/connections'),consolePage('agent-skills','技能','Sparkle','agents/skills'),native('commands','命令','Terminal'),native('hooks','钩子','Anchor'),consolePage('agent-installed','已安装','Robot','agents'),consolePage('agent-memory','记忆','Brain','agents/memory'),consolePage('agent-stats','数据与统计','ChartBar','agents/reports')]},
-  {title:'内置工具',items:[native('computer','电脑控制','Monitor'),native('browser','浏览器','Globe'),consolePage('web-search','网页搜索','Globe','agents/tools','search'),consolePage('web-fetch','网页抓取','Globe','agents/tools','fetch'),consolePage('document-parser','文档解析','Cube','agents/tools','documents'),consolePage('ocr','OCR','Palette','agents/tools','ocr')]},
-  {title:'资源管理',items:[consolePage('resource-info','基础信息','Cube','resources/info'),consolePage('resource-spaces','资源空间','Cube','resources/spaces'),consolePage('storage-engines','存储引擎','Cube','settings/storage')]},
-  {title:'数据与扩展',items:[native('vector-engines','向量数据库引擎','Cube'),consolePage('sandbox','沙箱设置','Robot','agents/sandbox'),native('archives','归档管理','Cube')]},
-  {title:'其他',items:[native('guide','引导','Sparkle'),native('about','关于','Robot')]},
+  {title:'账户设置',items:[consolePage('account-profile','用户信息','UserCircle','account/profile'),native('sandbox-keys','沙箱密钥','Key'),native('vault','凭据保险库','ShieldCheck'),native('personalization','个性化','Faders'),native('bot','Bot','Robot')]},
+  {title:'基础设置',items:[native('general','常规','SlidersHorizontal'),native('appearance','外观','Layout'),consolePage('system-theme','主题','Palette','settings/general','theme'),native('notifications','通知','Bell'),consolePage('voice','语音','Microphone','models/voice-pipeline'),consolePage('storage','存储','HardDrive','settings/storage'),native('shortcuts','键盘快捷键','Keyboard')]},
+  {title:'模型设置',items:[consolePage('model-services','模型服务','Plug','models','text'),consolePage('local-model','本地模型','Cpu','models/local/environments'),consolePage('model-gateway','模型网关','TreeStructure','models/defaults'),consolePage('model-stats','数据与统计','ChartBar','models/reports')]},
+  {title:'知识库',items:[consolePage('knowledge-public','公共知识库','Books','knowledge/market'),consolePage('knowledge-manage','知识库管理','BookOpen','knowledge'),consolePage('knowledge-shared','共享空间','UsersThree','knowledge/spaces'),consolePage('knowledge-mcp','MCP 服务','PlugsConnected','knowledge/mcp')]},
+  {title:'智能体',items:[consolePage('agent-market','市场','Storefront','agents/templates'),consolePage('agent-plugins','插件','PuzzlePiece','agents/plugins'),consolePage('agent-connections','连接 · MCP','Link','agents/connections'),consolePage('agent-skills','技能','Sparkle','agents/skills'),native('commands','命令','Terminal'),native('hooks','钩子','Anchor'),consolePage('agent-installed','已安装','Robot','agents'),consolePage('agent-memory','记忆','Brain','agents/memory'),consolePage('agent-stats','数据与统计','ChartLine','agents/reports')]},
+  {title:'内置工具',items:[native('computer','电脑控制','Monitor'),native('browser','浏览器','Browser'),consolePage('web-search','网页搜索','MagnifyingGlass','agents/tools','search'),consolePage('web-fetch','网页抓取','DownloadSimple','agents/tools','fetch'),consolePage('document-parser','文档解析','FileText','agents/tools','documents'),consolePage('ocr','OCR','Scan','agents/tools','ocr')]},
+  {title:'资源管理',items:[consolePage('resource-info','基础信息','Info','resources/info'),consolePage('resource-spaces','资源空间','Folders','resources/spaces'),consolePage('storage-engines','存储引擎','Database','settings/storage')]},
+  {title:'数据与扩展',items:[native('vector-engines','向量数据库引擎','Stack'),consolePage('sandbox','沙箱设置','BoundingBox','agents/sandbox'),native('archives','归档管理','Archive')]},
+  {title:'其他',items:[native('guide','引导','Compass'),native('about','关于','Info')]},
 ];
 export const SETTINGS_GROUPS=HARNESS_SETTINGS_GROUPS.map(group=>({title:group.title,items:group.items.map(({id,label,icon})=>[id,label,icon])}));
 export const CONSOLE_SECTIONS=Object.fromEntries([...HARNESS_SETTINGS_GROUPS.flatMap(group=>group.items.filter(item=>item.page)),...Object.values(MODEL_SETTINGS_TABS).flat()].map(item=>[item.id,item]));

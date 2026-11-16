@@ -19,7 +19,7 @@ test('完整配方进入定制后保留明暗映射；手动改色退出引用�
  for(const r of recipes){const custom=systemThemes.find(t=>t.id===r.id)!.palette!;const s=parseSystemTheme(JSON.stringify({...defaultSystemTheme(),preset_id:'custom',custom}));assert.equal(s.custom!.ui_reference,r.id);assert.deepEqual(buildSystemTheme(s,'dark'),r.modes.dark);
  for(const target of ['primary','background','sidebar'] as const){const edited=editThemeTargetColor(custom,target,'#123456');assert.equal(edited.ui_reference,undefined);assert.equal(edited[target],'#123456');}}
  assert.throws(()=>parseSystemTheme(JSON.stringify({...defaultSystemTheme(),preset_id:'custom',custom:{...systemThemes.find(t=>t.id===recipes[0].id)!.palette,primary:'#123456'}})));
- assert.equal(defaultSystemTheme().preset_id,'jilan');assert.ok(systemThemes.some(t=>t.id==='curated-blue-02'));
+ assert.equal(defaultSystemTheme().preset_id,'interface-modern-minimal');assert.ok(systemThemes.some(t=>t.id==='curated-blue-02'));
  assert.throws(()=>parseSystemTheme(JSON.stringify({...defaultSystemTheme(),preset_id:'custom',custom:{...systemThemes.find(t=>t.id===recipes[0].id)!.palette,ui_reference:'https://bad.invalid'}})));
 });
 

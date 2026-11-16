@@ -2,7 +2,7 @@
 import {mkdir,writeFile} from 'node:fs/promises';
 import {pages,pathFor} from '../src/catalog.ts';
 const cases=pages.map(p=>({id:p.id,title:p.title,path:pathFor(p.id)}));
-for(const [id,item,title] of [['30','theme','系统主题'],['30','terminals','终端互联'],['30','guide','首次引导'],['39','analysis','模型使用分析'],['39','cost','模型成本分析'],['44','cost','智能体成本分析'],['45','analysis','设备使用分析'],['51','operations','操作日志'],['52','dictionary','数据字典'],['52','variables','变量参数']])cases.push({id,title,path:pathFor(id)+'?item='+item});
+for(const [id,item,title] of [['30','theme','主题'],['30','terminals','终端互联'],['30','guide','首次引导'],['39','analysis','模型使用分析'],['39','cost','模型成本分析'],['44','cost','智能体成本分析'],['45','analysis','设备使用分析'],['51','operations','操作日志'],['52','dictionary','数据字典'],['52','variables','变量参数']])cases.push({id,title,path:pathFor(id)+'?item='+item});
 const runtime=String.raw`
 const cases=CASES;
 const dimensions=[['desktop',1280,1024],['tablet',768,1024],['mobile',390,884]];

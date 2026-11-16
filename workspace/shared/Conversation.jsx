@@ -37,11 +37,13 @@ export function Conversation({empty=false,initialDraft="",homeContent=null,deskt
  function sendNow(item){if(dispatch(item.text,item.config))setQueue(items=>items.filter(row=>row.id!==item.id));}
 
  async function copy(text){try{await navigator.clipboard.writeText(text);setCopied(true);setTimeout(()=>setCopied(false),1500)}catch{setCopied(false)}}
- return <section className="conversation-view">
+ const taskHome = shownRows.length === 0 && !homeContent;
+ const shortcuts = taskHome && <div className="tc-home-shortcuts">{taskHomeScenes[workspace?.kind==='work'?'work':'chat'][homeMode].map(title=><Button key={title} onClick={()=>{setDraft(taskHomePrompt(workspace?.kind,title));requestAnimationFrame(()=>scroll.current?.closest('.conversation-view')?.querySelector('textarea')?.focus())}}>{title}</Button>)}</div>;
+ return <section className={taskHome ? "conversation-view task-start" + (desktop ? " desktop-task-start" : "") : "conversation-view"}>
 
  {sendError&&<Alert className="tc-session-error" closable onClose={()=>setSendError('')} type="error" title={sendError}/>}
  <div className={"conversation-scroll"+(shownRows.length===0?" tc-empty-scroll":"")} ref={scroll} onScroll={e=>{following.current=e.currentTarget.scrollHeight-e.currentTarget.scrollTop-e.currentTarget.clientHeight<48}}>
- {shownRows.length===0&&(homeContent||<div className="tc-chat-welcome tc-task-home" aria-label="新建任务主页"><h1>{workspace?.kind==='work'?'Agent Harness UI，今天在本地完成什么？':'Agent Harness UI，今天帮你做什么？'}</h1>{workspace?.kind==='work'&&<p className="tc-work-home-scope">围绕本地文件、项目与资料开展工作 · 记录仅在本机可见</p>}<div className="tc-home-shortcuts">{taskHomeScenes[workspace?.kind==='work'?'work':'chat'][homeMode].map(title=><Button key={title} onClick={()=>{setDraft(taskHomePrompt(workspace?.kind,title));requestAnimationFrame(()=>scroll.current?.closest('.conversation-view')?.querySelector('textarea')?.focus())}}>{title}</Button>)}</div></div>)}
+ {shownRows.length===0&&(homeContent||<div className="tc-chat-welcome tc-task-home" aria-label="新建任务主页"><h1><span className="task-start-mark" aria-hidden="true"><i/><i/><i/></span>{workspace?.kind==='work'?'今天想完成什么工作？':'今天想做点什么？'}</h1>{workspace?.kind==='work'&&<p className="tc-work-home-scope">围绕本地文件、项目与资料开展工作 · 记录仅在本机可见</p>}</div>)}
  {shownRows.length>0&&<><Alert title={stored?'本地预览记录 · 尚未连接真实执行服务':'演示会话 · 工具过程为固定示例，尚未连接真实执行服务'} type="info" showIcon />
  <div className="conversation-date">{stored?'本地预览记录':'示例会话'}</div></>}
  {shownRows.map(row=><div className={'conversation-row '+row.kind} key={row.rowId}>
@@ -55,5 +57,6 @@ export function Conversation({empty=false,initialDraft="",homeContent=null,deskt
  {queue.length>0&&<div className="tc-queue" aria-label="等待列表"><small>等待列表 · 本地演示</small><ul>{queue.map((item,index)=><li className="tc-queue-item" key={item.id} draggable onDragStart={()=>dragging.current=item.id} onDragOver={e=>e.preventDefault()} onDrop={e=>{e.preventDefault();setQueue(items=>reorderQueue(items,dragging.current,item.id));dragging.current=null}}><HolderOutlined/><span title={item.text}>{item.config?.references?.map(r=>`[${contextTypeNames[r.type]}：${r.name}]`).join(" ")} {item.text}</span><Button size="small" type="text" aria-label="上移队列项" icon={<UpOutlined/>} disabled={index===0} onClick={()=>setQueue(items=>reorderQueue(items,item.id,items[index-1].id))}/><Button size="small" type="text" aria-label="下移队列项" icon={<DownOutlined/>} disabled={index===queue.length-1} onClick={()=>setQueue(items=>reorderQueue(items,item.id,items[index+1].id))}/><Button size="small" type="text" aria-label="立即发送队列项" title="本地演示立即发送" icon={<ArrowUpOutlined/>} onClick={()=>sendNow(item)}>立即</Button><Button size="small" type="text" aria-label="编辑队列项" icon={<EditOutlined/>} onClick={()=>editQueued(item)}/><Button size="small" type="text" aria-label="删除队列项" icon={<DeleteOutlined/>} onClick={()=>setQueue(items=>items.filter(row=>row.id!==item.id))}/></li>)}</ul></div>}
  <Composer consoleModels={consoleModels} targetControl={workspace&&<DeviceConversationBar workspace={workspace}/>} draft={draft} setDraft={setDraft} onSubmit={send} hasRows={shownRows.length>0} desktop={desktop} onSettings={onSettings} queued={queued} setQueued={setQueued} references={references} setReferences={setReferences} restoreConfig={restoreConfig}/>
  </div>
+ {shortcuts}
  </section>;
 }

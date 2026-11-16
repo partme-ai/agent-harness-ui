@@ -1,0 +1,174 @@
+/* The workspace, its portals, and the embedded settings consume the same Ant tokens. */
+html[data-system-theme] {
+  --page-ink: var(--text);
+  --page-line: var(--line);
+  --color-background: var(--bg);
+  --color-background-alt: var(--surface-2);
+  --color-card: var(--surface);
+  --color-surface: var(--surface-2);
+  --color-selected: var(--soft);
+  --color-popover: var(--popup-surface);
+  --color-menu: var(--popup-surface);
+  --color-menu-hover: var(--surface-2);
+  --color-input: var(--surface);
+  --color-foreground: var(--text);
+  --color-foreground-subtle: var(--muted);
+  --color-foreground-subtlest: var(--muted);
+  --color-border: var(--line);
+  --color-border-hover: var(--border-hover);
+  --color-popover-border: var(--line-secondary);
+  --color-input-border: var(--line);
+  --color-primary: var(--accent);
+  --color-primary-foreground: var(--primary-text);
+  --color-secondary: var(--surface-2);
+  --color-hover: var(--surface-2);
+  --ui-font-size: var(--console-font-size);
+}
+html[data-system-theme], html[data-system-theme] body, html[data-system-theme] #buddy-root .app-shell {
+  font-family: var(--console-font-family);
+  font-size: var(--console-font-size);
+  line-height: var(--console-line-height);
+  color: var(--text);
+  background-color: var(--bg);
+}
+html[data-system-theme] #buddy-root :is(.app-shell,.app-shell .zs-center) {
+  --bg: inherit;
+  --surface: inherit;
+  --surface-2: inherit;
+  --text: inherit;
+  --line: inherit;
+  --rail: var(--surface);
+  --sidebar: var(--surface);
+  --surface-3: var(--surface-2);
+  --line-soft: var(--line-secondary);
+  --text-1: var(--text);
+  --text-2: var(--muted);
+  --text-3: var(--muted);
+  --blue: var(--accent);
+  --accent-strong: var(--accent);
+  --accent-wash: var(--soft);
+  --green: var(--status-success);
+  --amber: var(--status-warning);
+  --red: var(--status-error);
+  --shadow: var(--console-card-shadow);
+  --radius: var(--console-radius);
+  --settings-font-size: var(--console-font-size);
+}
+html[data-system-theme] #buddy-root .zs-center, html[data-system-theme] .buddy-bots-dialog {
+  --zc-bg: var(--bg);
+  --zc-card: var(--surface);
+  --zc-surface: var(--surface-2);
+  --zc-hover: var(--soft);
+  --zc-line: var(--line);
+  --zc-text: var(--text);
+  --zc-subtle: var(--muted);
+  --zc-muted: var(--muted);
+  --zc-primary: var(--accent);
+  --zc-on-primary: var(--primary-text);
+  --zc-border-hover: var(--border-hover);
+  --zc-ring: var(--focus);
+}
+html[data-system-theme] #buddy-root :is(.tc-desktop-primary [aria-current=page],.tc-library-sidebar .selected,.zs-sidebar nav button.active,.harness-model-tabs button.active) {
+  background: var(--soft);
+  color: var(--accent);
+  border-radius: var(--console-radius);
+}
+html[data-system-theme] #buddy-root :is(.zs-button.primary,.ant-switch.ant-switch-checked) {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--primary-text);
+}
+html[data-system-theme] #buddy-root :is(.tc-library-main,.zs-header) h1 {
+  font-size: calc(var(--console-font-size) * 1.6);
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--heading);
+}
+html[data-system-theme] #buddy-root .tc-project-tile.ant-btn {
+  border-radius: var(--console-card-radius);
+  padding: var(--console-card-padding);
+}
+html[data-system-theme] #buddy-root .ant-input { font-size: inherit; }
+html[data-system-theme] body :is(code,pre,kbd) { font-family: var(--console-code-font-family); }
+
+/* Both navigation surfaces use the sidebar swatch from the selected preset. */
+html[data-system-theme] #buddy-root .app-shell :is(.tc-desktop-sidebar,.tc-rail,.zs-sidebar) {
+  --bg: var(--sidebar-surface);
+  --text: var(--sidebar-ink);
+  --text-1: var(--sidebar-ink);
+  --text-2: var(--sidebar-ink);
+  --text-3: var(--sidebar-ink);
+  --blue: var(--sidebar-accent);
+  --surface-3: var(--sidebar-selected);
+  --soft: var(--sidebar-selected);
+  --line: color-mix(in srgb, var(--sidebar-ink) 18%, var(--sidebar-surface));
+  background: var(--sidebar-surface);
+  color: var(--sidebar-ink);
+}
+html[data-system-theme] #buddy-root :is(.tc-desktop-sidebar,.tc-rail,.zs-sidebar) :is(.ant-btn-text,.surfium-utility-row > button) {
+  background: transparent;
+  color: var(--sidebar-ink);
+}
+html[data-system-theme] #buddy-root :is(.tc-desktop-sidebar,.tc-rail,.zs-sidebar) :is(.ant-btn-text:hover,.surfium-utility-row > button:hover,.ant-btn[aria-current=page],nav button.active) {
+  background: var(--sidebar-selected);
+  color: var(--sidebar-selected-ink);
+}
+html[data-system-theme] #buddy-root :is(.tc-brand,.zs-sidebar nav button.active svg) { color: var(--sidebar-accent); }
+html[data-system-theme] #buddy-root :is(.settings-window-bar,.tc-desktop-header,.tc-header) {
+  background: var(--topbar-surface);
+  border-bottom: 1px solid var(--line-secondary);
+}
+html[data-system-theme] #buddy-root .shell-device-desktop .settings-window-bar {
+  height: 48px;
+  min-height: 48px;
+}
+html[data-system-theme] #buddy-root .tc-desktop-shell { font-size: var(--console-font-size); }
+html[data-system-theme] #buddy-root .zc-account-menu {
+  --text: var(--page-ink);
+  --text-3: var(--muted);
+  --line: var(--page-line);
+  --surface-3: var(--surface-2);
+}
+html[data-system-theme] #buddy-root .zc-account-menu button { color: var(--text); }
+html[data-system-theme] #buddy-root :is(.tc-desktop-sidebar,.tc-rail,.zs-sidebar) .zc-account-menu button:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+/* The back and device actions move to the title bar when the settings sidebar is hidden. */
+@media (min-width: 600px) {
+  #buddy-root .settings-window-bar :is(.settings-mobile-back,.settings-mobile-link) { display: none; }
+}
+#buddy-root .shell-device-tablet .tc-rail {
+  gap: 6px;
+  padding-block: 12px;
+  overflow-y: auto;
+}
+#buddy-root .shell-device-tablet .tc-rail nav { gap: 2px; }
+#buddy-root .shell-device-tablet .tc-rail button {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  width: 56px;
+  height: 52px;
+  font-size: 12px;
+  line-height: 16px;
+}
+#buddy-root .shell-device-tablet .tc-rail button svg,
+#buddy-root .shell-device-tablet .tc-header > button:not(.tc-mode-switch) svg,
+#buddy-root .shell-device-tablet .settings-window-bar > button svg {
+  display: block;
+  width: 23px;
+  height: 23px;
+}
+#buddy-root .shell-device-tablet .tc-header { gap: 4px; padding-inline: 10px; }
+#buddy-root .shell-device-tablet .tc-header > button:not(.tc-mode-switch),
+#buddy-root .shell-device-tablet .settings-window-bar > button:not(.settings-mobile-back) {
+  min-width: 44px;
+  height: 44px;
+  padding: 0;
+}
+#buddy-root .shell-device-tablet .zs-sidebar nav button { min-height: 44px; }
+#buddy-root .shell-device-tablet .zs-sidebar nav button svg { width: 22px; height: 22px; }

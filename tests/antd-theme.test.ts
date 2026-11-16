@@ -7,8 +7,10 @@ import {systemThemeConfig,resolveThemeColors,navigationThemeConfig,themeVariable
 test('官方算法及组件Token覆盖明暗与触控尺寸，自有壳消费相同Token',()=>{
  for(const mode of ['light','dark'] as const)for(const device of ['desktop','tablet','mobile'] as const){
   const config=systemThemeConfig(defaultSystemTheme(),mode,device);
-  assert.deepEqual(config.algorithm,[mode==='dark'?theme.darkAlgorithm:theme.defaultAlgorithm,theme.compactAlgorithm]);
+  assert.ok(Array.isArray(config.algorithm));
+  assert.deepEqual(config.algorithm.slice(0,2),[mode==='dark'?theme.darkAlgorithm:theme.defaultAlgorithm,theme.compactAlgorithm]);
   const t=theme.getDesignToken(config),colors=resolveThemeColors(defaultSystemTheme(),mode,device);
+  assert.equal(t.colorPrimary,config.token?.colorPrimary);
   const vars=themeVariablesFromToken(t,colors);
   assert.equal(vars['--accent'],t.colorPrimary);assert.equal(vars['--surface'],t.colorBgContainer);assert.equal(vars['--text'],t.colorText);
   assert.equal(t.controlHeight,device==='desktop'?28:40);

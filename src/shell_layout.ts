@@ -16,7 +16,7 @@ const roots:ShellItem[]=[
  {...link('agents','智能体','03'),children:[link('market','市场','05'),link('plugins','插件','41'),link('connections','连接 · MCP','42'),link('skills','技能','43'),link('sandbox','沙箱','64'),{...link('tools','工具','65','computer'),children:[link('computer','电脑操控','65','computer'),link('browser','浏览器','65','browser'),link('search','网页搜索','65','search'),link('fetch','网页抓取','65','fetch'),link('documents','文档处理','65','documents'),link('ocr','OCR','65','ocr')]},link('mine','我的智能体','03'),link('debug','智能体调试','02'),reports('agents','44')]},
 
  {...link('resources','资源','46'),children:[link('info','基础信息','46'),link('spaces','资源空间','47'),link('storage','存储引擎','28')]},
- {...link('system','系统','48'),children:[link('info','基础信息','48'),link('theme','系统主题','30','theme'),link('roles','系统角色','49'),link('users','系统用户','50'),{...link('audit','安全审计','51','login'),children:[link('login','登录日志','51','login'),link('operations','操作日志','51','operations')]},{...link('configuration','系统设置','52','general'),children:[link('general','常规设置','52','general'),link('dictionary','数据字典','52','dictionary'),link('variables','变量参数','52','variables')]}]}
+ {...link('system','系统','48'),children:[link('info','基础信息','48'),link('theme','主题','30','theme'),link('roles','系统角色','49'),link('users','系统用户','50'),{...link('audit','安全审计','51','login'),children:[link('login','登录日志','51','login'),link('operations','操作日志','51','operations')]},{...link('configuration','系统设置','52','general'),children:[link('general','常规设置','52','general'),link('dictionary','数据字典','52','dictionary'),link('variables','变量参数','52','variables')]}]}
 ];
 export const shellGroups=[{label:'',items:roots}];
 /** 使用完整菜单路径区分同名入口，三端共享语义图标。 */
