@@ -95,6 +95,7 @@ html[data-system-theme] body :is(code,pre,kbd) { font-family: var(--console-code
 html[data-system-theme] #buddy-root .app-shell :is(.tc-desktop-sidebar,.tc-rail,.zs-sidebar) {
   --bg: var(--sidebar-surface);
   --text: var(--sidebar-ink);
+  --text-1: var(--sidebar-ink);
   --text-2: var(--sidebar-ink);
   --text-3: var(--sidebar-ink);
   --blue: var(--sidebar-accent);
@@ -133,3 +134,41 @@ html[data-system-theme] #buddy-root :is(.tc-desktop-sidebar,.tc-rail,.zs-sidebar
   background: var(--surface-2);
   color: var(--text);
 }
+
+/* The back and device actions move to the title bar when the settings sidebar is hidden. */
+@media (min-width: 600px) {
+  #buddy-root .settings-window-bar :is(.settings-mobile-back,.settings-mobile-link) { display: none; }
+}
+#buddy-root .shell-device-tablet .tc-rail {
+  gap: 6px;
+  padding-block: 12px;
+  overflow-y: auto;
+}
+#buddy-root .shell-device-tablet .tc-rail nav { gap: 2px; }
+#buddy-root .shell-device-tablet .tc-rail button {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  width: 56px;
+  height: 52px;
+  font-size: 12px;
+  line-height: 16px;
+}
+#buddy-root .shell-device-tablet .tc-rail button svg,
+#buddy-root .shell-device-tablet .tc-header > button:not(.tc-mode-switch) svg,
+#buddy-root .shell-device-tablet .settings-window-bar > button svg {
+  display: block;
+  width: 23px;
+  height: 23px;
+}
+#buddy-root .shell-device-tablet .tc-header { gap: 4px; padding-inline: 10px; }
+#buddy-root .shell-device-tablet .tc-header > button:not(.tc-mode-switch),
+#buddy-root .shell-device-tablet .settings-window-bar > button:not(.settings-mobile-back) {
+  min-width: 44px;
+  height: 44px;
+  padding: 0;
+}
+#buddy-root .shell-device-tablet .zs-sidebar nav button { min-height: 44px; }
+#buddy-root .shell-device-tablet .zs-sidebar nav button svg { width: 22px; height: 22px; }

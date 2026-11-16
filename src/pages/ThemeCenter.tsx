@@ -24,7 +24,7 @@ export function ThemeCenter(){
  useEffect(()=>{if(live)preview(draft.custom&&!draft.custom.name.trim()?{...draft,custom:{...draft.custom,name:'我的主题'}}:draft);else clear();},[draft,live,preview,clear]);
  const [page,setPage]=useState(1);
  const dirty=JSON.stringify(draft)!==JSON.stringify(c.savedSystemTheme),mode=resolveSystemMode(draft.mode,c.systemDark),colors=resolveThemeColors(draft,mode,c.device);
- const catalog=useMemo(()=>[...recommendedSystemThemes.filter(t=>t.id==='jilan'),classicSystemTheme,...(collection==='interface'?interfaceSystemThemes:recommendedSystemThemes).filter(t=>t.id!=='jilan')].map(theme=>({theme,colors:resolveThemeColors({...defaultSystemTheme(),preset_id:theme.id},mode,c.device)})),[mode,c.device,collection]);
+ const catalog=useMemo(()=>[...interfaceSystemThemes.filter(t=>t.id===defaultSystemTheme().preset_id),...recommendedSystemThemes.filter(t=>t.id==='jilan'),classicSystemTheme,...(collection==='interface'?interfaceSystemThemes:recommendedSystemThemes).filter(t=>t.id!=='jilan'&&t.id!==defaultSystemTheme().preset_id)].map(theme=>({theme,colors:resolveThemeColors({...defaultSystemTheme(),preset_id:theme.id},mode,c.device)})),[mode,c.device,collection]);
  const familyCounts=Object.fromEntries(colorFamilies.map(f=>[f.id,catalog.filter(t=>themeFilterFamily(t.colors,filterTarget)===f.id).length]));
  const choices=catalog.filter(t=>family==='all'||themeFilterFamily(t.colors,filterTarget)===family).map(t=>t.theme);
  if(!catalog.some(t=>t.theme.id===draft.preset_id)&&draft.preset_id!=='custom'){const legacy=systemThemes.find(t=>t.id===draft.preset_id);if(legacy&&(family==='all'||themeFilterFamily(colors,filterTarget)===family))choices.unshift(legacy);}

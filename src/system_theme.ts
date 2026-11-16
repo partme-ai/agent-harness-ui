@@ -44,7 +44,7 @@ export const recommendedSystemThemes:SystemThemePreset[]=combinationData.map(map
 export const interfaceSystemThemes:SystemThemePreset[]=interfaceRecipes.map(r=>({id:r.id,name:r.name,description:r.description,color_id:'',family:classifyColorFamily(r.modes.light.primary),color_family:classifyColorFamily(r.modes.light.primary),sidebar_style:'tinted',source:r.source,palette:{name:r.name,primary:r.modes.light.primary,background:r.modes.light.bg,sidebar:r.modes.light.sidebar,sidebar_style:'tinted',palette_version:3,palette_family:classifyColorFamily(r.modes.light.primary),ui_reference:r.id}}));
 export const systemThemes:SystemThemePreset[]=[...legacySystemThemes,...legacyCombinationData.filter(t=>!legacySystemThemes.some(old=>old.id===t.id)).map(mapCombination),...recommendedSystemThemes.filter(t=>!legacySystemThemes.some(old=>old.id===t.id)),...interfaceSystemThemes];
 export const classicSystemTheme=systemThemes.find(t=>t.id==='default')!;
-export function defaultSystemTheme():SystemThemeSettings{return {schema_version:1,preset_id:'jilan',mode:'light'};}
+export function defaultSystemTheme():SystemThemeSettings{return {schema_version:1,preset_id:'interface-modern-minimal',mode:'light'};}
 export function resolveSystemMode(mode:SystemThemeMode,systemDark:boolean):'light'|'dark'{return mode==='system'?(systemDark?'dark':'light'):mode;}
 const hexPattern=/^#[\da-f]{6}$/i;
 const channels=(hex:string)=>[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16));

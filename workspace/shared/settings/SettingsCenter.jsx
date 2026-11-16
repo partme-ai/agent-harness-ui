@@ -1,5 +1,5 @@
 import {usePluginResources,pluginOperation,refreshPluginRuntime} from '../plugin_runtime.js';
-import {deviceControlLabel,settingsGroupsForDevice} from './settings_config.js';
+import {deviceControlLabel,generalGroupsForDevice,settingsGroupsForDevice} from './settings_config.js';
 import {modelSettingsParent} from './harness_sections.js';
 import {EXTRA_SECTIONS,ExtraSections} from './ExtraSections.jsx';
 import {Modal as AntModal, Select as AntSelect} from 'antd';
@@ -12,8 +12,8 @@ import { SourceResources, SourceMemory } from './SourceSettings.jsx'
 import { createCatalogSamples } from './resource_catalog.js'
 import { createProviderSamples } from './settings_samples.js'
 import { isValidElement, useEffect, useRef, useState } from "react"
-import { SlidersHorizontal, Layout, Palette, Cube, Globe, Keyboard, Brain, Robot, PuzzlePiece, Plug, Sparkle, Terminal, Anchor, ChartBar, ArrowLeft, ArrowRight, MagnifyingGlass, X, Plus, Check, CaretRight, ArrowCounterClockwise, Sun, Moon, Monitor, FileText, Folder, Info, Rocket, Question, PencilSimple, ShieldCheck } from "@phosphor-icons/react"
-import { SETTINGS_GROUPS, SETTINGS_LABELS, GENERAL_GROUPS, GENERAL_DEFAULTS, RESOURCE_CONFIG, PROVIDERS, SHORTCUTS } from "./settings_config.js"
+import { Archive, Bell, BookOpen, Books, BoundingBox, Browser, ChartLine, Compass, Cpu, Database, DownloadSimple, Faders, Folders, HardDrive, Key, Link, Microphone, PlugsConnected, Scan, Stack, Storefront, TreeStructure, UserCircle, UsersThree, SlidersHorizontal, Layout, Palette, Cube, Globe, Keyboard, Brain, Robot, PuzzlePiece, Plug, Sparkle, Terminal, Anchor, ChartBar, ArrowLeft, ArrowRight, MagnifyingGlass, X, Plus, Check, CaretRight, ArrowCounterClockwise, Sun, Moon, Monitor, FileText, Folder, Info, Rocket, Question, PencilSimple, ShieldCheck } from "@phosphor-icons/react"
+import { SETTINGS_GROUPS, SETTINGS_LABELS, GENERAL_DEFAULTS, RESOURCE_CONFIG, PROVIDERS, SHORTCUTS } from "./settings_config.js"
 import { PREFERENCES_KEY, normalizePreferences, validateEndpoint, recordShortcut } from "./settings_state.js"
 import providerLogo0 from "./provider_icons/logo-bigmodel.svg"
 import providerLogo1 from "./provider_icons/model-provider-start-plan.png"
@@ -22,7 +22,7 @@ import providerLogo3 from "./provider_icons/model-provider-anthropic.png"
 import providerLogo4 from "./provider_icons/model-provider-deepseek.png"
 import "./settings.css"
 
-const ICONS = { SlidersHorizontal, Layout, Palette, Cube, Globe, Keyboard, Brain, Robot, PuzzlePiece, Plug, Sparkle, Terminal, Anchor, ChartBar, Monitor, ShieldCheck }
+const ICONS = { Archive, Bell, BookOpen, Books, BoundingBox, Browser, ChartLine, Compass, Cpu, Database, DownloadSimple, Faders, FileText, Folders, HardDrive, Info, Key, Link, MagnifyingGlass, Microphone, PlugsConnected, Scan, Stack, Storefront, TreeStructure, UserCircle, UsersThree, SlidersHorizontal, Layout, Palette, Cube, Globe, Keyboard, Brain, Robot, PuzzlePiece, Plug, Sparkle, Terminal, Anchor, ChartBar, Monitor, ShieldCheck }
 export function SettingsNavigationIcon({name}) {
   const Icon=ICONS[name] || SlidersHorizontal
   return <Icon size={16} aria-hidden="true" />
@@ -50,8 +50,7 @@ export function BuddySettingsSidebar({ section, setSection, onBack, footer, coll
       {settingsGroupsForDevice(device).map(group => <div className="zs-nav-group" key={group.title}>
         <h3>{group.title}</h3>
         {group.items.map(([id, name, icon]) => {
-          const Icon = ICONS[icon] || SlidersHorizontal
-          return <AntNativeButton type="button" data-handled="true" key={id} aria-label={name} title={collapsed ? name : undefined} aria-current={current === id ? "page" : undefined} className={current === id ? "active" : ""} onClick={() => setSection(id)}><Icon /><span>{name}</span></AntNativeButton>
+          return <AntNativeButton type="button" data-handled="true" key={id} aria-label={name} title={collapsed ? name : undefined} aria-current={current === id ? "page" : undefined} className={current === id ? "active" : ""} onClick={() => setSection(id)}><SettingsNavigationIcon name={icon}/><span>{name}</span></AntNativeButton>
         })}
       </div>)}
     </nav>
@@ -63,13 +62,12 @@ function General({ values, onChange, interfacePreferences, onInterfacePreference
   const [error, setError] = useState("")
   const [saved, setSaved] = useState("")
   const [draft,setDraft]=useState(values)
-  return <><div className="zs-general-groups">{GENERAL_GROUPS.map(group => <div className="zs-group-card" key={group.title}>{group.rows.map(([id,label,description,type,,options]) => <Row key={id} label={label} description={description}>
+  return <><div className="zs-general-groups">{generalGroupsForDevice(device).map(group => <div className="zs-group-card" key={group.title}>{group.rows.map(([id,label,description,type,,options]) => <Row key={id} label={label} description={description}>
     {id === "language" ? <Select label={label} value={interfacePreferences.locale} options={[["system","系统默认"],["en-US","English"],["zh-CN","中文简体"]]} onChange={locale => onInterfacePreferencesChange({...interfacePreferences,locale})} />
-    : id === "mode" ? <Select label={label} value={interfacePreferences.mode} options={[["coding","编程模式"],["office","办公模式"]]} onChange={mode => onInterfacePreferencesChange({...interfacePreferences,mode})} />
     : type === "switch" ? <Switch label={label} value={values[id]} disabled={id === "sound" && !values.notifications} onChange={value => onChange({...values,[id]:value})} />
     : type === "select" ? <Select label={label} value={values[id]} options={options} disabled={id === "archiveDays" && !values.autoArchive} onChange={value => onChange({...values,[id]:value})} />
     : <div className="zs-field-save"><AntNativeInput aria-label={label} value={draft[id]} placeholder={options} onChange={event => setDraft({...draft,[id]:event.target.value})} /><Btn onClick={() => { const issue = id === "proxy" && draft.proxy ? validateEndpoint(draft.proxy) : ""; setError(issue); if(!issue){onChange({...values,[id]:draft[id]});setSaved(label)} }}>保存</Btn></div>}
-  </Row>)}</div>)}</div>{error && <Notice error>{error}</Notice>}<p className="zs-footnote" role="status">{saved ? `${saved}已保存到模拟服务。` : "Mock 模式 · 配置已持久保存。"} 语言和模式为界面偏好，完整本地化与业务模式切换待接入。</p></>
+  </Row>)}</div>)}</div>{error && <Notice error>{error}</Notice>}<p className="zs-footnote" role="status">{saved ? `${saved}已保存到模拟服务。` : "Mock 模式 · 配置已持久保存。"}</p></>
 }
 
 function Appearance({ theme, themeMode, onThemeChange, preferences, setPreferences, storageError }) {
@@ -153,7 +151,7 @@ export function BuddySettingsCenter({ onBrowsePlugins, section, setSection, them
     catch { setStorageError("无法保存界面偏好，请检查浏览器是否允许本地存储。") }
   }
   let content
-  if (current === "general") content = <General values={general} onChange={setGeneral} {...{interfacePreferences,onInterfacePreferencesChange}} />
+  if (current === "general") content = <General device={device} values={general} onChange={setGeneral} {...{interfacePreferences,onInterfacePreferencesChange}} />
   else if (current === "appearance") content = <Appearance {...{ theme, themeMode, onThemeChange, preferences, setPreferences, storageError }} />
   else if (current === "models") content = <Models providers={providers} setProviders={setProviders} device={device} />
   else if (current === "plugins") content = <SourceResources key={`plugins-${pluginTab}`} kind={pluginTab} onBrowsePlugins={onBrowsePlugins} {...{resources,setResources,preferences,theme,pluginTab,setPluginTab}} />

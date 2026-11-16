@@ -15,3 +15,68 @@
 .tc-space-task-section{margin:8px 0 4px}.tc-space-task-section>.ant-btn{width:100%;justify-content:flex-start!important;color:var(--text-3);font-size:12px;padding:0 8px;height:28px}.tc-space-task-row{padding-left:18px;display:flex;flex-direction:column}.tc-space-task-row>.ant-btn{justify-content:flex-start!important;text-align:left;height:28px;font-size:13px;overflow:hidden;text-overflow:ellipsis}.tc-space-task-row>.tc-space-task-child{padding-left:24px;color:var(--text-3);font-size:12px}
 .harness-status-list{margin:10px 0}.harness-status-list>div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}.harness-status-list dt{color:var(--text-3)}.harness-status-list dd{margin:0;text-align:right;overflow-wrap:anywhere}.tc-goals .tc-goal-scroll>p{color:var(--text-3)}
 .tc-desktop-terminal{height:220px;display:flex;flex-direction:column;gap:8px}.tc-desktop-terminal header{gap:12px}.tc-desktop-terminal header small{color:var(--text-3);margin-left:auto;font-family:inherit}.harness-terminal-output{flex:1;min-height:0;overflow:auto;font-size:12px}.harness-terminal-output p{margin:0 0 6px;line-height:1.5;overflow-wrap:anywhere}.harness-terminal-output p span{color:var(--text)}.tc-desktop-terminal>.ant-input{flex:none;font-family:ui-monospace,monospace;font-size:12px}
+
+/* Keep the empty desktop conversation a single reading column at any window size. */
+#buddy-root .tc-desktop-content > .desktop-task-start {
+  max-width: min(704px, calc(100% - 48px));
+  justify-content: safe center;
+  padding-block: 20px clamp(32px, 8vh, 88px);
+  overflow-y: auto;
+}
+#buddy-root .desktop-task-start > .tc-empty-scroll {
+  flex: none;
+  overflow: visible;
+  padding: 0;
+}
+#buddy-root .desktop-task-start .tc-task-home {
+  margin: 0;
+  padding: 0 0 30px;
+  background: transparent;
+}
+#buddy-root .desktop-task-start h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  margin: 0;
+  font-size: clamp(23px, 2.1vw, 28px);
+  line-height: 1.35;
+  font-weight: 600;
+}
+.desktop-task-start h1 svg { width: 1.12em; height: 1.12em; color: var(--accent); }
+#buddy-root .desktop-task-start > .conversation-dock { margin: 0; max-height: none; }
+#buddy-root .desktop-task-start .tc-composer {
+  margin: 0;
+  padding: 15px 16px 11px;
+  border-radius: 18px;
+  box-shadow: 0 4px 15px color-mix(in srgb, var(--text) 5%, transparent);
+}
+#buddy-root .desktop-task-start .tc-composer:focus-within {
+  border-color: var(--accent);
+}
+#buddy-root .desktop-task-start .tc-composer textarea { min-height: 54px; }
+#buddy-root .desktop-task-start > .tc-home-shortcuts {
+  margin: 16px 0 0;
+  gap: 8px;
+}
+#buddy-root .desktop-task-start .tc-home-shortcuts button {
+  height: 29px;
+  color: var(--muted);
+  background: transparent;
+  box-shadow: none;
+}
+#buddy-root .desktop-task-start .tc-home-shortcuts button:hover { color: var(--accent); }
+#buddy-root .tc-desktop-shell:has(.desktop-task-start) .tc-desktop-primary { gap: 2px; padding-block: 8px 12px; }
+#buddy-root .tc-desktop-shell:has(.desktop-task-start) .tc-desktop-task-toolbar {
+  border-top: 1px solid color-mix(in srgb, currentColor 14%, transparent);
+  padding-top: 10px;
+}
+#buddy-root .tc-desktop-shell:has(.desktop-task-start) .tc-desktop-task-toolbar .ant-segmented {
+  background: transparent;
+  color: inherit;
+}
+#buddy-root .tc-desktop-shell:has(.desktop-task-start) .tc-desktop-task-toolbar .ant-segmented-item-selected {
+  background: color-mix(in srgb, currentColor 13%, transparent);
+  color: inherit;
+  box-shadow: none;
+}
