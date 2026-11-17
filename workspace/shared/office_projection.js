@@ -136,13 +136,19 @@ export function normalizeOfficeProjection(payload, now = Date.now()) {
 
 /** This same-origin endpoint is a future authenticated BFF; never fetch an MCP server URL in the browser. */
 export async function loadOfficeProjection({ fetchImpl = globalThis.fetch, endpoint = OFFICE_PROJECTION_ENDPOINT, signal, now = Date.now() } = {}) {
-  const response = await fetchImpl(endpoint, {
-    method: 'GET',
-    credentials: 'same-origin',
-    cache: 'no-store',
-    headers: { Accept: 'application/json' },
-    signal,
-  });
+  let response;
+  try {
+    response = await fetchImpl(endpoint, {
+      method: 'GET',
+      credentials: 'same-origin',
+      cache: 'no-store',
+      headers: { Accept: 'application/json' },
+      signal,
+    });
+  } catch (error) {
+    if (error?.name === 'AbortError') throw error;
+    throw new OfficeProjectionError('NOT_CONNECTED', '数字办公室尚未连接工作台数据服务');
+  }
   if (!response.ok) {
     const status = response.status;
     if (status === 401 || status === 403) throw new OfficeProjectionError('FORBIDDEN', '当前身份没有工作空间读取权限');
