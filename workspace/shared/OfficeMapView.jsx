@@ -155,6 +155,9 @@ export function OfficeMapView({onSettings}) {
       setPhase('ready');
     }).catch(cause => {
       if (!mounted || cause?.name === 'AbortError') return;
+      // Never keep a previously live-looking map on a failed refresh.
+      setProjection(null);
+      setSelectedId(null);
       setError(cause);
       setPhase('error');
     });
