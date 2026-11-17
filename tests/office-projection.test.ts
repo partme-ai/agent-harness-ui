@@ -77,6 +77,9 @@ test('重复工位、未知状态、超容量和错误协议拒绝进入工作�
   const duplicate = fixture();
   duplicate.departments[1].actors[0].id = 'agent-a';
   assert.throws(() => normalizeOfficeProjection(duplicate,now), /工位标识重复/);
+  const duplicateDepartment = fixture();
+  duplicateDepartment.departments[1].id = 'eng';
+  assert.throws(() => normalizeOfficeProjection(duplicateDepartment,now), /部门标识重复/);
   const unknown = fixture();
   unknown.departments[0].actors[0].state = 'teleporting';
   assert.throws(() => normalizeOfficeProjection(unknown,now), /工位状态未知/);

@@ -65,11 +65,15 @@ export function normalizeOfficeProjection(payload, now = Date.now()) {
   }
 
   const ids = new Set();
+  const departmentIds = new Set();
   let total = 0;
   const departments = payload.departments.map((item, index) => {
     if (!object(item) || !Array.isArray(item.actors) || item.actors.length > 80) {
       throw new OfficeProjectionError('INVALID_PROJECTION', '部门结构无效');
     }
+    const departmentId = label(item.id, 'department.id');
+    if (departmentIds.has(departmentId)) throw new OfficeProjectionError('INVALID_PROJECTION', '部门标识重复');
+    departmentIds.add(departmentId);
     const actors = item.actors.map(actor => {
       if (!object(actor)) throw new OfficeProjectionError('INVALID_PROJECTION', '工位数据无效');
       const id = label(actor.id, 'actor.id');
@@ -107,7 +111,7 @@ export function normalizeOfficeProjection(payload, now = Date.now()) {
     });
     total += actors.length;
     return {
-      id: label(item.id, 'department.id'),
+      id: departmentId,
       name: label(item.name, 'department.name', true, 80),
       accent: ACCENTS[index % ACCENTS.length],
       actors,

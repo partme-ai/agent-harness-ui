@@ -35,6 +35,8 @@ npm run preview -- --port 5189
 
 - 桌面、平板、手机独立工作台入口及三端对比页面。
 - 对话、任务列表、本地项目看板、工作与创作空间，以及独立设置界面。
+- `数字办公室`作为跨办公/编程/创作模式的内置 View，具备原创部门平面布局、工位/团队详情、底部观察模式和统一设置入口；当前从授权 BFF 读取快照的接口尚未接通，无服务时明确显示未连接。
+- [BOSS 工作台深度调研与原创整合](docs/workstation-boss-deep-research.md) · [办公室前端与数据契约](docs/office-view-integration.md)。参考项目采用自定义非商业许可，未复制其代码或图片资产。
 - 模型服务与网关规则、知识库与共享空间、智能体、资源、系统管理等菜单和交互页面。
 - 模型选择、知识库、智能体配置、试聊、发布、绑定设备的本地引导流程；检查与回复均在前端模拟。
 - 原有配置路由见 [`src/catalog.ts`](src/catalog.ts)，新设置菜单映射见 [`workspace/shared/settings/harness_sections.js`](workspace/shared/settings/harness_sections.js)。

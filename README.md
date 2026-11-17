@@ -35,6 +35,8 @@ The automatic page chooses its layout from viewport width. The independent entri
 
 - Independent desktop, tablet, and mobile workbench entries plus a comparison page.
 - Conversation, task list, local project boards, office and creative spaces, and a dedicated settings surface.
+- A built-in Office Map view shared by work modes: original floor-plan styling, department/actor detail, bottom observation dock, and the same Settings Center. Its authorized BFF projection is not yet wired; no runtime data is simulated in production mode.
+- [In-depth BOSS workstation research (Chinese)](docs/workstation-boss-deep-research.md) and [office integration contract](docs/office-view-integration.md). The reference has a custom non-commercial license; no upstream code or visual assets were copied.
 - Menus and interactive pages for model services and gateway rules, knowledge bases and shared spaces, agents, resources, and system administration.
 - A local agent setup flow covering model selection, knowledge, agent configuration, trial, publishing, and device binding. Its checks and responses are simulated in the frontend.
 - Existing configuration routes are in [`src/catalog.ts`](src/catalog.ts); the new settings mapping is in [`workspace/shared/settings/harness_sections.js`](workspace/shared/settings/harness_sections.js).

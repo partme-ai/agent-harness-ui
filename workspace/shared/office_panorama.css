@@ -1,0 +1,108 @@
+/* Partme 原创的 2D 工作空间布局：轻量俯视房间、中心指挥台及只读部门画像。 */
+.om-root{background:#fbfbfc}
+.om-center{background:#f9fafb}
+.om-map-surface{background-color:#f0f3f7;background-image:linear-gradient(90deg,#fff6 1px,transparent 1px),linear-gradient(#fff6 1px,transparent 1px);background-size:18px 18px;border-color:#e0e7ed;padding:12px;min-height:470px}
+.om-rooms{gap:10px;align-items:stretch}
+.om-room{position:relative;background:linear-gradient(155deg,#fdfbff,#f4f5fb);min-height:235px;border:1px solid #dde3ec;border-top:3px solid var(--om-room-accent);box-shadow:0 2px 9px #25354b0c}
+.om-room:nth-child(4n + 2){background:linear-gradient(135deg,#fffdf9,#f6f2ea)}
+.om-room:nth-child(4n + 3){background:linear-gradient(135deg,#fafffe,#edf7f5)}
+.om-room:nth-child(4n + 4){background:linear-gradient(135deg,#f8fbff,#eff5fb)}
+.om-room:after{content:'';position:absolute;right:13px;bottom:12px;width:11px;height:11px;background:#7bbd9c;box-shadow:-5px -4px 0 #a9dabb,5px -5px 0 #74b997;border-radius:50%;opacity:.62;pointer-events:none}
+.om-room-head{padding:5px 8px;gap:4px;background:#fff9;min-height:36px}
+.om-room-select{display:flex;align-items:center;gap:7px;flex:1;min-width:0;padding:5px 2px;background:transparent;border:0;color:#324054;text-align:left;cursor:pointer;border-radius:5px}
+.om-room-select:hover,.om-room-select:focus-visible{background:#eef3fb;outline:2px solid #a8c7fa;outline-offset:1px}
+.om-room-select strong{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.om-room-select small{margin-left:auto}
+.om-room-head .om-room-active{margin-left:5px;white-space:nowrap}
+.om-seat-grid{padding:21px 8px 16px}
+.om-seat{border-radius:8px}
+.om-seat:hover{background:#ffffffc9}
+.om-desk{width:50px;height:27px;border-color:#e0e7f0;background:#eef2f7;border-radius:3px 3px 7px 7px;box-shadow:0 4px 0 #d9e0ea}
+.om-screen{width:22px;height:16px;background:#c7d6e5;border-color:#6e849d}
+.om-seat-name{margin-top:4px}
+.om-room .om-seat-grid.dense{gap:10px 1px}
+.om-command-room{display:flex;flex-direction:column;align-items:stretch;position:relative;min-height:235px;overflow:hidden;background:linear-gradient(148deg,#fff8ed 0%,#f3e2cd 100%);border:2px solid #e4ceb3;border-radius:9px;box-shadow:0 3px 14px #ab805b22}
+.om-command-room:before{content:'';position:absolute;inset:40px 7px 8px;border:1px solid #e9dac5;border-radius:7px;pointer-events:none}
+.om-command-head{height:36px;display:flex;gap:7px;align-items:center;padding:6px 11px;border-bottom:1px solid #e2cfb8;background:#fff8edb8}
+.om-command-head svg{color:#8e653d}
+.om-command-head strong{font-size:11px;color:#604a38}
+.om-command-chip{margin-left:auto;background:#f8efe3;border:1px solid #e6d1b8;font-size:9px;border-radius:12px;color:#92714f;padding:3px 6px}
+.om-command-visual{display:flex;justify-content:center;align-items:center;flex-direction:column;position:relative;min-height:100px;flex:1}
+.om-command-screen{width:60%;height:40px;background:linear-gradient(135deg,#1f344d,#243e61);border:4px solid #e9e0d3;border-radius:5px;box-shadow:0 4px 0 #c5b9a9,0 8px 13px #64442425;display:flex;align-items:center;justify-content:center;gap:8px}
+.om-screen-bar{height:17px;width:28%;border-radius:4px;background:linear-gradient(90deg,#4477b4,#6e9ad6)}
+.om-screen-lines{width:35%;display:flex;align-items:flex-end;gap:3px;height:22px}
+.om-screen-lines i{width:6px;border-radius:2px;background:#6da3bb}
+.om-screen-lines i:nth-child(1){height:7px}.om-screen-lines i:nth-child(2){height:15px}.om-screen-lines i:nth-child(3){height:12px}.om-screen-lines i:nth-child(4){height:19px}
+.om-command-console{position:relative;display:flex;flex-direction:column;align-items:center;margin-top:8px;gap:2px}
+.om-command-seat{height:20px;width:22px;border-radius:50%;background:#576575;border:4px solid #9caaaf;box-shadow:0 2px 2px #594c4026}
+.om-command-seat i{display:block;margin:auto;width:7px;height:7px;background:#e3ebf0;border-radius:50%}
+.om-command-desk{height:14px;width:94px;background:linear-gradient(#cfaa7b,#ad8661);border-radius:5px;box-shadow:0 4px 0 #997252;display:flex;align-items:center;justify-content:space-around}
+.om-command-desk span{height:7px;width:13px;border-radius:2px;background:#f5e4cf}
+.om-command-caption{display:flex;flex-direction:column;gap:2px;align-items:center;text-align:center;margin-bottom:4px;padding:0 7px}
+.om-command-caption strong{font-size:11px;color:#604a38;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.om-command-caption small{font-size:9px;color:#927f70;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.om-command-facts{display:flex;align-items:center;justify-content:center;gap:7px;padding:3px 8px 7px}
+.om-command-facts span{font-size:9px;display:flex;align-items:center;gap:4px;color:#765f48}
+.om-command-facts b{font-variant-numeric:tabular-nums;font-size:12px}
+.om-command-action{align-self:center;margin-bottom:7px;color:#835e3f!important;font-size:10px!important}
+.om-filter-copy{font-size:11px;color:#a0abb9}
+.om-dock{display:flex;justify-content:center;padding:7px 12px 12px;pointer-events:none;flex-shrink:0;background:linear-gradient(0deg,#fafbfc,#fafbfc00)}
+.om-dock .ant-segmented{pointer-events:auto;background:#fff;padding:4px;border:1px solid #e4e9f0;box-shadow:0 8px 24px #23344518;border-radius:24px}
+.om-dock .ant-segmented-item{border-radius:17px;color:#8b94a1}
+.om-dock .ant-segmented-item-selected{background:#283341;color:#fff;box-shadow:none}
+.om-rail-tabs{display:grid;grid-template-columns:1fr 1fr;padding:10px 10px 0;gap:4px;border-bottom:1px solid #eaedf2}
+.om-rail-tabs button{background:transparent;padding:9px 5px;border:0;border-bottom:2px solid transparent;color:#949eab;font-size:12px;cursor:pointer}
+.om-rail-tabs button[aria-selected=true]{border-bottom-color:#35475e;color:#384a60;font-weight:700}
+.om-rail-tabs button:focus-visible{outline:2px solid #8dadf3}
+.om-roster{padding:18px 14px}
+.om-roster header{display:flex;gap:9px;align-items:center;margin-bottom:8px;color:#536276}
+.om-roster header h3{font-size:13px;margin:0}
+.om-roster p{font-size:11px;line-height:1.6;color:#98a2ae}
+.om-roster>button{width:100%;display:flex;align-items:center;gap:9px;text-align:left;background:#fff;border:1px solid #eef0f3;padding:10px 7px;border-radius:6px;margin-top:7px;cursor:pointer}
+.om-roster>button:hover,.om-roster>button:focus-visible{border-color:#a7c9f0;background:#f7fbff;outline:0}
+.om-roster-dot{height:8px;width:8px;border-radius:50%}
+.om-roster-info{display:flex;flex-direction:column;flex:1;min-width:0}
+.om-roster-info strong{font-size:11px;color:#43546a}
+.om-roster-info small{font-size:10px;color:#a0a8b2}
+.om-roster-risk{font-size:10px;color:#b0804d}
+.om-department-detail{padding:14px}
+.om-department-detail>header{display:flex;align-items:center;gap:10px;margin:15px 0}
+.om-department-detail h2{font-size:16px;margin:0 0 4px}
+.om-department-detail header small{font-size:11px;color:#919ba8}
+.om-department-mark{width:6px;height:38px;border-radius:5px}
+.om-department-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.om-department-facts div{display:flex;flex-direction:column;gap:5px;align-items:center;background:#f5f7f9;border-radius:6px;padding:12px 3px}
+.om-department-facts strong{font-size:19px}
+.om-department-facts small{font-size:10px;color:#929ba7}
+.om-department-capacity{display:flex;justify-content:space-between;margin:20px 0;color:#8e99a7;font-size:11px;gap:8px}
+.om-department-capacity strong{color:#536476}
+.om-department-detail h3{display:flex;align-items:center;gap:7px;font-size:12px;margin:20px 0 10px}
+.om-department-actors{display:flex;flex-direction:column;gap:7px}
+.om-department-actors button{display:flex;align-items:center;gap:9px;border:1px solid #e9edf2;background:#fff;border-radius:7px;padding:8px 7px;text-align:left;cursor:pointer}
+.om-department-actors button:hover{background:#f6faff;border-color:#cbdcf3}
+.om-department-avatar{background:#506b90;border-radius:50%;width:29px;height:29px;display:grid;place-items:center;color:#fff;font-weight:bold}
+.om-department-avatar.om-human{background:#90a07c}.om-department-avatar.om-service{background:#9385b3}
+.om-department-actors button>span:nth-child(2){flex:1;display:flex;flex-direction:column;gap:3px}
+.om-department-actors button strong{font-size:11px;color:#48586b}
+.om-department-actors button small{font-size:10px;color:#9ba3b0}
+.om-department-actors button em{font-size:10px;font-style:normal;padding:3px 5px;border-radius:3px;background:#f3f5f7}
+.om-department-detail .om-disclaimer{margin-top:16px;line-height:1.7;font-size:10px;color:#9fa8b2}
+.om-none{font-size:11px;padding:12px 0;color:#a0a7b1}
+/* 在大屏鸟瞰时优先让多个真实部门同时可见，仍可手动放大到工位层级。 */
+@media(min-width:1281px){
+  .om-room{min-height:185px}
+  .om-seat{min-height:69px;padding:3px 2px 2px}
+  .om-seat-grid{padding:12px 7px 8px;gap:4px 1px}
+  .om-seat-grid.dense{gap:5px 0}
+  .om-seat-name{margin-top:2px}
+  .om-command-room{min-height:185px}
+  .om-command-visual{min-height:65px}
+  .om-command-screen{height:33px}
+  .om-command-console{margin-top:5px}
+  .om-command-head{height:32px}
+  .om-command-facts{padding:1px 8px 3px}
+}
+@media(max-width:1280px){.om-rooms{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:820px){.om-command-room{min-height:205px}.om-room{min-height:210px}}
+@media(max-width:570px){.om-rooms{grid-template-columns:1fr}.om-dock .ant-segmented{max-width:100%;overflow:auto}.om-filter-copy{display:none}}
+@media(prefers-reduced-motion:reduce){.om-room-select,.om-roster>button{transition:none}}

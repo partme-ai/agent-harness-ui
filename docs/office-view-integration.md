@@ -2,6 +2,7 @@
 
 日期：2026-11-17  
 状态：前端视图已实现，后端数据契约待接通；不代表 Agent-Job / MCP BFF 已联通。
+本地参考库：`../research/workstation-BOSS`，来源提交 `8acd1680b3fda845b56987f60f8a30e221f9fb46`。详细证据与功能映射见 [BOSS 深度研究](workstation-boss-deep-research.md)。
 
 ## 决策与许可
 
@@ -17,6 +18,11 @@
 | workspace/shared/OfficeMapView.jsx | 原创 UI：工位/详情/搜索/缩放/刷新/观察模式 |
 | workspace/shared/office_map.css | 白色轻量俯视空间、三端响应式 |
 | workspace/shared/office_projection.js | BFF 只读协议、校验、事件证据与过期处理 |
+| workspace/shared/office_scene.js | 部门布局、中心指挥室、证据衍生的负载/风险与鸟瞰缩放 |
+| workspace/shared/OfficeControlPanels.jsx | 中央指挥台、部门工位名册、团队画像 |
+| workspace/shared/office_panorama.css | 自主绘制的轻量俯视视觉设计与底部模式 Dock |
+| workspace/shared/transient_view_state.js | 切换 Settings 后保留 UI 观察状态，纯内存、不保存密钥 |
+| tests/office-scene.test.ts、tests/transient-view-state.test.ts | 布局与视图状态契约测试 |
 | workspace/shared/Workbench.jsx | office-map 页面出口 |
 | workspace/shared/workspace_navigation.js | 跨终端数字办公室导航 |
 | workspace/desktop/DesktopLayout.jsx | 桌面导航映射 |
